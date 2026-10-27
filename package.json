@@ -7,6 +7,7 @@
     "dev:server": "npm run dev --workspace server",
     "dev:client": "npm run dev --workspace client",
     "build": "npm run build --workspaces",
+    "prestart": "npm run build --workspace server",
     "start": "npm run start --workspace server",
     "test": "npm run test --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
