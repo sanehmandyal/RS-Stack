@@ -36,10 +36,20 @@ export default function AdminLayout() {
   const crumbs = pathname.replace(/^\/admin\/?/, '').split('/').filter(Boolean);
 
   const sidebar = (
-    <nav aria-label="Admin" className="flex h-full flex-col gap-1 overflow-y-auto p-3">
+    <nav aria-label="Admin" className="flex h-full flex-col gap-1 overflow-y-auto p-3 bg-white">
       <Link to="/admin/dashboard" className="mb-4 px-2 pt-2"><Logo /></Link>
       {ITEMS.filter(([, , , p]) => can(...p)).map(([to, label, Icon]) => (
-        <NavLink key={to} to={to} className={({ isActive }) => `flex min-h-[40px] items-center gap-3 rounded-xl px-3 text-sm ${isActive ? 'bg-primary/20 text-ink' : 'text-muted hover:bg-white/5 hover:text-ink'}`}>
+        <NavLink
+          key={to}
+          to={to}
+          className={({ isActive }) =>
+            `flex min-h-[40px] items-center gap-3 rounded-xl px-3 text-sm transition-colors ${
+              isActive
+                ? 'bg-primary/10 text-primary font-semibold shadow-xs'
+                : 'text-slate-600 hover:bg-slate-100 hover:text-ink font-medium'
+            }`
+          }
+        >
           <Icon className="h-4 w-4" aria-hidden /> {label}
         </NavLink>
       ))}
@@ -47,27 +57,27 @@ export default function AdminLayout() {
   );
 
   return (
-    <div className="min-h-dvh lg:grid lg:grid-cols-[250px_1fr]">
-      <aside className="glass-strong sticky top-0 hidden h-dvh border-r border-white/10 lg:block">{sidebar}</aside>
+    <div className="min-h-dvh bg-bg lg:grid lg:grid-cols-[250px_1fr]">
+      <aside className="bg-white sticky top-0 hidden h-dvh border-r border-slate-200 lg:block">{sidebar}</aside>
       {open && (
         <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
-          <button className="absolute inset-0 bg-black/60" aria-label="Close menu" onClick={() => setOpen(false)} />
-          <aside className="glass-strong absolute inset-y-0 left-0 w-72 max-w-[85vw]">{sidebar}</aside>
+          <button className="absolute inset-0 bg-black/40 backdrop-blur-xs" aria-label="Close menu" onClick={() => setOpen(false)} />
+          <aside className="bg-white absolute inset-y-0 left-0 w-72 max-w-[85vw] border-r border-slate-200 shadow-2xl">{sidebar}</aside>
         </div>
       )}
-      <div className="min-w-0">
-        <header className="glass-strong sticky top-0 z-30 flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+      <div className="min-w-0 flex flex-col min-h-dvh">
+        <header className="bg-white/95 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-3 shadow-xs">
           <div className="flex min-w-0 items-center gap-3">
             <button className="btn-ghost btn-sm lg:hidden" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}</button>
-            <nav aria-label="Breadcrumb" className="truncate text-sm text-muted"><Link to="/admin/dashboard" className="hover:text-ink">Admin</Link>{crumbs.map((c) => <span key={c}> / <span className="capitalize text-ink">{c.replace(/-/g, ' ').slice(0, 24)}</span></span>)}</nav>
+            <nav aria-label="Breadcrumb" className="truncate text-sm text-muted"><Link to="/admin/dashboard" className="hover:text-primary transition">Admin</Link>{crumbs.map((c) => <span key={c}> / <span className="capitalize text-ink font-medium">{c.replace(/-/g, ' ').slice(0, 24)}</span></span>)}</nav>
           </div>
           <div className="flex items-center gap-2">
-            <span className="hidden text-right text-xs sm:block"><span className="block font-semibold">{user!.name}</span><span className="capitalize text-muted">{user!.role.replace('_', ' ')}</span></span>
+            <span className="hidden text-right text-xs sm:block"><span className="block font-semibold text-ink">{user!.name}</span><span className="capitalize text-muted">{user!.role.replace('_', ' ')}</span></span>
             <Link to="/admin/account" className="btn-ghost btn-sm" aria-label="Account and password"><KeyRound className="h-4 w-4" /></Link>
             <button className="btn-ghost btn-sm" onClick={async () => { await logout(); nav('/admin/login'); }}><LogOut className="h-4 w-4" aria-hidden /> <span className="hidden sm:inline">Sign out</span></button>
           </div>
         </header>
-        <main className="p-4 sm:p-6"><Outlet /></main>
+        <main className="p-4 sm:p-6 flex-1"><Outlet /></main>
       </div>
     </div>
   );

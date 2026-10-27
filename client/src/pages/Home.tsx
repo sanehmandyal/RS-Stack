@@ -68,17 +68,17 @@ export default function Home() {
                 {home.secondaryCta ?? 'Explore Our Services'}
               </Link>
             </div>
-            <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
+            <div className="mt-8 grid grid-cols-3 gap-4 border-t border-slate-200 pt-6">
               <div>
-                <p className="text-2xl font-bold text-white">99.9%</p>
+                <p className="text-2xl font-bold text-ink">99.9%</p>
                 <p className="text-xs text-muted">Uptime & Reliability</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-secondary">100%</p>
+                <p className="text-2xl font-bold text-primary">100%</p>
                 <p className="text-xs text-muted">Code Ownership</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-white">&lt;1.2s</p>
+                <p className="text-2xl font-bold text-ink">&lt;1.2s</p>
                 <p className="text-xs text-muted">Mobile Load Speed</p>
               </div>
             </div>
@@ -306,7 +306,7 @@ export default function Home() {
                     />
                   )}
                   <div>
-                    <span className="block text-sm font-semibold text-white">{t.authorName}</span>
+                    <span className="block text-sm font-semibold text-ink">{t.authorName}</span>
                     <span className="block text-xs text-muted">
                       {[t.authorRole, t.businessName].filter(Boolean).join(', ')}
                     </span>

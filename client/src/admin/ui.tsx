@@ -37,13 +37,17 @@ export function PageTitle({ title, children }: { title: string; children?: React
 
 /** Responsive table: horizontal scroll on narrow screens, with an accessible region label. */
 export function DataTable({ label, children }: { label: string; children: ReactNode }) {
-  return <div className="glass overflow-x-auto rounded-2xl" role="region" aria-label={label} tabIndex={0}><table className="w-full min-w-[640px] text-left text-sm">{children}</table></div>;
+  return <div className="card overflow-x-auto rounded-2xl p-0 border border-slate-200 bg-white shadow-xs" role="region" aria-label={label} tabIndex={0}><table className="w-full min-w-[640px] text-left text-sm">{children}</table></div>;
 }
-export const Th = ({ children }: { children?: ReactNode }) => <th scope="col" className="whitespace-nowrap border-b border-white/10 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted">{children}</th>;
-export const Td = ({ children, className = '' }: { children?: ReactNode; className?: string }) => <td className={`border-b border-white/5 px-4 py-3 align-top ${className}`}>{children}</td>;
+export const Th = ({ children }: { children?: ReactNode }) => <th scope="col" className="whitespace-nowrap border-b border-slate-200 bg-slate-50/80 px-4 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-700">{children}</th>;
+export const Td = ({ children, className = '' }: { children?: ReactNode; className?: string }) => <td className={`border-b border-slate-100 px-4 py-3 align-top text-slate-800 ${className}`}>{children}</td>;
 
 export const STATUS_COLORS: Record<string, string> = {
-  new: 'bg-sky-400/15 text-sky-200', contacted: 'bg-violet-400/15 text-violet-200', qualified: 'bg-amber-400/15 text-amber-200',
-  proposal_sent: 'bg-fuchsia-400/15 text-fuchsia-200', won: 'bg-emerald-400/15 text-emerald-200', lost: 'bg-zinc-400/15 text-zinc-300',
+  new: 'bg-blue-50 text-blue-700 border border-blue-200',
+  contacted: 'bg-indigo-50 text-indigo-700 border border-indigo-200',
+  qualified: 'bg-amber-50 text-amber-700 border border-amber-200',
+  proposal_sent: 'bg-purple-50 text-purple-700 border border-purple-200',
+  won: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+  lost: 'bg-slate-100 text-slate-600 border border-slate-200',
 };
-export const Badge = ({ value }: { value: string }) => <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${STATUS_COLORS[value] ?? 'bg-white/10 text-muted'}`}>{value.replace(/_/g, ' ')}</span>;
+export const Badge = ({ value }: { value: string }) => <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold capitalize ${STATUS_COLORS[value] ?? 'bg-slate-100 text-slate-700 border border-slate-200'}`}>{value.replace(/_/g, ' ')}</span>;

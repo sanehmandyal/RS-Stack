@@ -7,27 +7,27 @@ import { useAuth } from './auth';
 
 function Shell({ title, subtitle, children }: { title: string; subtitle?: string; children: ReactNode }) {
   return (
-    <div className="relative min-h-dvh flex flex-col justify-center items-center px-4 py-12 overflow-hidden bg-[#0A0D14]">
+    <div className="relative min-h-dvh flex flex-col justify-center items-center px-4 py-12 overflow-hidden bg-bg">
       {/* Dynamic ambient lighting & reflective background mesh */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[32rem] w-[32rem] rounded-full bg-gradient-to-tr from-primary/25 via-indigo-500/20 to-secondary/20 blur-[130px]" />
-        <div className="absolute bottom-10 -right-20 h-72 w-72 rounded-full bg-secondary/15 blur-[100px]" />
-        <div className="absolute -bottom-10 -left-20 h-72 w-72 rounded-full bg-primary/15 blur-[100px]" />
-        <div className="absolute inset-0 grid-bg opacity-30" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[32rem] w-[32rem] rounded-full bg-gradient-to-tr from-primary/15 via-secondary/15 to-blue-400/10 blur-[130px]" />
+        <div className="absolute bottom-10 -right-20 h-72 w-72 rounded-full bg-secondary/10 blur-[100px]" />
+        <div className="absolute -bottom-10 -left-20 h-72 w-72 rounded-full bg-primary/10 blur-[100px]" />
+        <div className="absolute inset-0 grid-bg opacity-40" />
       </div>
 
       {/* Top Header Row with Back to Website Button */}
       <div className="relative z-10 w-full max-w-md mb-4 flex items-center justify-between">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-muted hover:text-white px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/[0.1] hover:border-white/25 backdrop-blur-xl shadow-lg transition duration-200 group"
+          className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-slate-700 hover:text-ink px-3.5 py-2 rounded-full border border-slate-200 bg-white/90 hover:bg-white hover:border-slate-300 backdrop-blur-xl shadow-sm transition duration-200 group"
           title="Return to the RS Stack homepage"
         >
-          <ArrowLeft className="h-3.5 w-3.5 text-secondary transition-transform group-hover:-translate-x-1" />
+          <ArrowLeft className="h-3.5 w-3.5 text-primary transition-transform group-hover:-translate-x-1" />
           <span>Back to site</span>
         </Link>
-        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-[11px] font-medium tracking-wide">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-emerald-400/40 bg-emerald-50 text-emerald-800 text-[11px] font-semibold tracking-wide shadow-xs">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
           Secure Admin
         </span>
       </div>
@@ -35,23 +35,23 @@ function Shell({ title, subtitle, children }: { title: string; subtitle?: string
       {/* Reflective Glossy Card */}
       <div className="relative z-10 w-full max-w-md">
         {/* Ambient aura glow behind card */}
-        <div className="absolute -inset-0.5 rounded-[2.2rem] bg-gradient-to-r from-primary/40 via-secondary/25 to-indigo-500/40 blur-xl opacity-75" />
+        <div className="absolute -inset-0.5 rounded-[2.2rem] bg-gradient-to-r from-primary/25 via-secondary/20 to-indigo-500/25 blur-xl opacity-75" />
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/20 bg-surface/90 backdrop-blur-2xl p-7 sm:p-9 shadow-2xl ring-1 ring-white/15">
+        <div className="relative overflow-hidden rounded-[2rem] border border-slate-200/90 bg-white/95 backdrop-blur-2xl p-7 sm:p-9 shadow-2xl ring-1 ring-slate-100">
           {/* Top specular highlight reflection line */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent" />
           {/* Subtle glossy glass reflection gradient */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.08] via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-blue-50/[0.3] via-transparent to-transparent" />
 
           <div className="relative z-10">
             <div className="mb-6 flex items-center justify-between">
               <Logo />
-              <div className="rounded-xl border border-white/15 bg-white/[0.07] p-2 text-secondary shadow-inner">
+              <div className="rounded-xl border border-blue-100 bg-blue-50/80 p-2 text-primary shadow-xs">
                 <ShieldCheck className="h-5 w-5" />
               </div>
             </div>
 
-            <h1 className="text-2xl font-bold tracking-tight text-white">{title}</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-ink">{title}</h1>
             {subtitle && <p className="mt-1 text-sm text-muted">{subtitle}</p>}
 
             <div className="mt-6">{children}</div>
@@ -60,7 +60,7 @@ function Shell({ title, subtitle, children }: { title: string; subtitle?: string
       </div>
 
       {/* Subtle footer label */}
-      <p className="relative z-10 mt-8 text-center text-xs text-muted/60">
+      <p className="relative z-10 mt-8 text-center text-xs text-muted">
         RS Stack Management Portal • Phase 5, Mohali
       </p>
     </div>
@@ -69,8 +69,8 @@ function Shell({ title, subtitle, children }: { title: string; subtitle?: string
 
 const Err = ({ msg }: { msg: string }) =>
   msg ? (
-    <div role="alert" className="flex items-center gap-2 rounded-xl border border-red-400/30 bg-red-500/10 p-3 text-sm text-red-200">
-      <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
+    <div role="alert" className="flex items-center gap-2 rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-700">
+      <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
       <span>{msg}</span>
     </div>
   ) : null;
@@ -111,7 +111,7 @@ export function Login() {
     <Shell title="Admin sign in" subtitle="Enter your credentials to access the management portal">
       <form onSubmit={submit} className="space-y-4">
         <div>
-          <label className="label text-xs font-semibold uppercase tracking-wider text-muted" htmlFor="email">
+          <label className="label text-xs font-semibold uppercase tracking-wider text-slate-700" htmlFor="email">
             Email address
           </label>
           <input
@@ -120,7 +120,7 @@ export function Login() {
             required
             autoComplete="username"
             placeholder="admin@rs-stack.com"
-            className="input text-white bg-white/[0.05] border-white/15 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/40 transition"
+            className="input text-ink bg-slate-50/70 border-slate-300 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60 transition"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -128,16 +128,16 @@ export function Login() {
 
         <div>
           <div className="flex items-center justify-between mb-1.5">
-            <label className="label text-xs font-semibold uppercase tracking-wider text-muted mb-0" htmlFor="password">
+            <label className="label text-xs font-semibold uppercase tracking-wider text-slate-700 mb-0" htmlFor="password">
               Password
             </label>
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="text-xs text-muted hover:text-secondary transition inline-flex items-center gap-1 focus:outline-none"
+              className="text-xs text-muted hover:text-primary transition inline-flex items-center gap-1 focus:outline-none"
               aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
-              {showPassword ? <EyeOff className="h-3.5 w-3.5 text-secondary" /> : <Eye className="h-3.5 w-3.5" />}
+              {showPassword ? <EyeOff className="h-3.5 w-3.5 text-primary" /> : <Eye className="h-3.5 w-3.5" />}
               <span>{showPassword ? 'Hide' : 'Show'}</span>
             </button>
           </div>
@@ -148,7 +148,7 @@ export function Login() {
               required
               autoComplete="current-password"
               placeholder="••••••••••••"
-              className="input pr-11 text-white bg-white/[0.05] border-white/15 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/40 transition"
+              className="input pr-11 text-ink bg-slate-50/70 border-slate-300 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60 transition"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -156,10 +156,10 @@ export function Login() {
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               tabIndex={-1}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-white transition focus:outline-none rounded-lg"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-primary transition focus:outline-none rounded-lg"
               aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
-              {showPassword ? <EyeOff className="h-4 w-4 text-secondary" /> : <Eye className="h-4 w-4" />}
+              {showPassword ? <EyeOff className="h-4 w-4 text-primary" /> : <Eye className="h-4 w-4" />}
             </button>
           </div>
         </div>
@@ -168,7 +168,7 @@ export function Login() {
 
         <button
           type="submit"
-          className="btn-primary w-full py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-primary via-primary to-indigo-600 hover:from-primary-600 hover:to-indigo-500 shadow-[0_0_25px_rgba(121,91,255,0.35)] hover:shadow-[0_0_35px_rgba(121,91,255,0.55)] transition-all duration-200 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2"
+          className="btn-primary w-full py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-primary to-blue-600 hover:from-primary-600 hover:to-blue-700 shadow-md shadow-primary/25 transition-all duration-200 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2"
           disabled={busy}
         >
           {busy ? (
@@ -185,7 +185,7 @@ export function Login() {
         </button>
 
         <p className="text-center text-sm pt-2">
-          <Link to="/admin/forgot-password" className="text-secondary hover:text-secondary-400 hover:underline transition">
+          <Link to="/admin/forgot-password" className="text-primary hover:text-primary-600 font-medium hover:underline transition">
             Forgot password?
           </Link>
         </p>
@@ -218,7 +218,7 @@ export function ForgotPassword() {
     <Shell title="Reset your password" subtitle="We will send a secure link to your email">
       {done ? (
         <div className="space-y-4 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
             <ShieldCheck className="h-6 w-6" />
           </div>
           <p className="text-sm text-muted leading-relaxed">
@@ -231,7 +231,7 @@ export function ForgotPassword() {
       ) : (
         <form onSubmit={submit} className="space-y-4">
           <div>
-            <label className="label text-xs font-semibold uppercase tracking-wider text-muted" htmlFor="fe">
+            <label className="label text-xs font-semibold uppercase tracking-wider text-slate-700" htmlFor="fe">
               Registered email
             </label>
             <input
@@ -239,7 +239,7 @@ export function ForgotPassword() {
               type="email"
               required
               placeholder="admin@rs-stack.com"
-              className="input text-white bg-white/[0.05] border-white/15 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/40 transition"
+              className="input text-ink bg-slate-50/70 border-slate-300 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60 transition"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -252,7 +252,7 @@ export function ForgotPassword() {
           </button>
 
           <p className="mt-4 text-center text-sm">
-            <Link to="/admin/login" className="text-secondary hover:underline">
+            <Link to="/admin/login" className="text-primary hover:underline font-medium">
               Back to sign in
             </Link>
           </p>
@@ -290,7 +290,7 @@ export function ResetPassword() {
     <Shell title="Choose new password" subtitle="Must be at least 12 characters long">
       {done ? (
         <div className="space-y-4 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
             <ShieldCheck className="h-6 w-6" />
           </div>
           <p className="text-sm text-muted">Your password has been successfully updated.</p>
@@ -302,15 +302,15 @@ export function ResetPassword() {
         <form onSubmit={submit} className="space-y-4">
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label className="label text-xs font-semibold uppercase tracking-wider text-muted mb-0" htmlFor="np">
+              <label className="label text-xs font-semibold uppercase tracking-wider text-slate-700 mb-0" htmlFor="np">
                 New password
               </label>
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="text-xs text-muted hover:text-secondary transition inline-flex items-center gap-1 focus:outline-none"
+                className="text-xs text-muted hover:text-primary transition inline-flex items-center gap-1 focus:outline-none"
               >
-                {showPassword ? <EyeOff className="h-3.5 w-3.5 text-secondary" /> : <Eye className="h-3.5 w-3.5" />}
+                {showPassword ? <EyeOff className="h-3.5 w-3.5 text-primary" /> : <Eye className="h-3.5 w-3.5" />}
                 <span>{showPassword ? 'Hide' : 'Show'}</span>
               </button>
             </div>
@@ -322,7 +322,7 @@ export function ResetPassword() {
                 minLength={12}
                 autoComplete="new-password"
                 placeholder="••••••••••••"
-                className="input pr-11 text-white bg-white/[0.05] border-white/15 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/40 transition"
+                className="input pr-11 text-ink bg-slate-50/70 border-slate-300 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60 transition"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -330,9 +330,9 @@ export function ResetPassword() {
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-white transition focus:outline-none rounded-lg"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-primary transition focus:outline-none rounded-lg"
               >
-                {showPassword ? <EyeOff className="h-4 w-4 text-secondary" /> : <Eye className="h-4 w-4" />}
+                {showPassword ? <EyeOff className="h-4 w-4 text-primary" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
             <p className="mt-1 text-xs text-muted">Minimum 12 characters including mixed cases & numbers.</p>

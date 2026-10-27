@@ -38,7 +38,7 @@ function Header() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
-      <div className={`mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-2xl px-4 py-2 sm:px-5 ${scrolled ? 'glass-strong mx-3 sm:mx-auto' : ''}`}>
+      <div className={`mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-2xl px-4 py-2 sm:px-5 transition-all duration-300 ${scrolled ? 'glass-strong mx-3 sm:mx-auto border border-slate-200/90 shadow-md' : ''}`}>
         <Link to="/" aria-label="RS Stack home"><Logo /></Link>
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {NAV.map(([to, label]) => (
@@ -51,14 +51,14 @@ function Header() {
               href={wa}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-400 hover:bg-emerald-500/20 transition"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700 hover:bg-emerald-100 transition shadow-xs"
               aria-label="Chat on WhatsApp"
             >
-              <MessageCircle className="h-4 w-4" />
+              <MessageCircle className="h-4 w-4 text-emerald-600" />
               <span className="hidden sm:inline">WhatsApp</span>
             </a>
           )}
-          <Link to="/contact" className="btn-primary btn-sm hidden md:inline-flex">Get Free Consultation</Link>
+          <Link to="/contact" className="btn-primary btn-sm hidden md:inline-flex shadow-sm">Get Free Consultation</Link>
           <button className="btn-ghost btn-sm lg:hidden" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((o) => !o)}>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -66,18 +66,18 @@ function Header() {
       </div>
       <AnimatePresence>
         {open && (
-          <motion.div id="mobile-menu" role="dialog" aria-label="Menu" className="glass-strong fixed inset-x-3 top-[72px] max-h-[calc(100dvh-90px)] overflow-y-auto rounded-2xl p-4 lg:hidden"
+          <motion.div id="mobile-menu" role="dialog" aria-label="Menu" className="glass-strong fixed inset-x-3 top-[72px] max-h-[calc(100dvh-90px)] overflow-y-auto rounded-2xl p-4 lg:hidden border border-slate-200 shadow-2xl"
             initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.18 }}>
             <nav aria-label="Mobile" className="flex flex-col">
               {NAV.map(([to, label]) => (
-                <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `min-h-[48px] rounded-xl px-4 py-3 font-medium ${isActive ? 'bg-white/10 text-ink' : 'text-muted'}`}>{label}</NavLink>
+                <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `min-h-[48px] rounded-xl px-4 py-3 font-semibold ${isActive ? 'bg-primary/10 text-primary' : 'text-slate-700 hover:bg-slate-50'}`}>{label}</NavLink>
               ))}
               {wa && (
                 <a
                   href={wa}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-lg"
+                  className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-md hover:bg-emerald-700 transition"
                 >
                   <MessageCircle className="h-4 w-4" /> Chat on WhatsApp (+91 98057 20962)
                 </a>
@@ -95,25 +95,25 @@ function Footer() {
   const s = useSettings();
   const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to get a quote for a website / SEO project.');
   return (
-    <footer className="border-t border-white/10 bg-surface/40 px-4 py-14 sm:px-6">
+    <footer className="border-t border-slate-200 bg-slate-50/90 px-4 py-14 sm:px-6">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo />
-          <p className="mt-4 max-w-sm text-sm text-muted">{s.tagline}</p>
-          <ul className="mt-4 space-y-1.5 text-sm text-muted">
-            {s.contactEmail && <li><a className="hover:text-ink transition" href={`mailto:${s.contactEmail}`}>{s.contactEmail}</a></li>}
+          <p className="mt-4 max-w-sm text-sm text-muted leading-relaxed">{s.tagline}</p>
+          <ul className="mt-4 space-y-2 text-sm text-slate-600">
+            {s.contactEmail && <li><a className="hover:text-primary transition" href={`mailto:${s.contactEmail}`}>{s.contactEmail}</a></li>}
             {s.phone && (
               <li>
-                <a className="hover:text-ink transition inline-flex items-center gap-1.5" href={`tel:${s.phone.replace(/[^\d+]/g, '')}`}>
-                  <Phone className="h-3.5 w-3.5 text-secondary" /> {s.phone}
+                <a className="hover:text-primary transition inline-flex items-center gap-1.5 font-medium" href={`tel:${s.phone.replace(/[^\d+]/g, '')}`}>
+                  <Phone className="h-3.5 w-3.5 text-primary" /> {s.phone}
                 </a>
               </li>
             )}
-            {s.address && <li className="text-muted/90 leading-relaxed font-medium">📍 {s.address}</li>}
+            {s.address && <li className="text-slate-600 leading-relaxed font-medium">📍 {s.address}</li>}
             {wa && (
               <li className="pt-2">
                 <a
-                  className="inline-flex items-center gap-2 font-semibold text-emerald-400 hover:text-emerald-300 transition"
+                  className="inline-flex items-center gap-2 font-semibold text-emerald-600 hover:text-emerald-700 transition"
                   href={wa}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -125,36 +125,36 @@ function Footer() {
           </ul>
           <ul className="mt-4 flex flex-wrap gap-3 text-sm">
             {Object.entries(s.social).filter(([, v]) => v).map(([k, v]) => (
-              <li key={k}><a className="capitalize text-secondary hover:underline" href={v} target="_blank" rel="noopener noreferrer">{k}</a></li>
+              <li key={k}><a className="capitalize text-primary hover:underline font-medium" href={v} target="_blank" rel="noopener noreferrer">{k}</a></li>
             ))}
           </ul>
         </div>
         <nav aria-label="Company">
-          <h2 className="mb-3 text-sm font-semibold">Services & Solutions</h2>
-          <ul className="space-y-2 text-sm text-muted">
-            {NAV.map(([to, label]) => <li key={to}><Link className="hover:text-ink" to={to}>{label}</Link></li>)}
+          <h2 className="mb-3 text-sm font-bold text-ink">Services & Solutions</h2>
+          <ul className="space-y-2 text-sm text-slate-600">
+            {NAV.map(([to, label]) => <li key={to}><Link className="hover:text-primary transition" to={to}>{label}</Link></li>)}
           </ul>
         </nav>
         <nav aria-label="Legal">
-          <h2 className="mb-3 text-sm font-semibold">Legal & Policies</h2>
-          <ul className="space-y-2 text-sm text-muted">
-            <li><Link className="hover:text-ink" to="/privacy-policy">Privacy Policy</Link></li>
-            <li><Link className="hover:text-ink" to="/terms-of-service">Terms of Service</Link></li>
-            <li><Link className="hover:text-ink" to="/cookie-policy">Cookie Policy</Link></li>
-            <li><Link className="hover:text-ink" to="/refund-policy">Refund & Cancellation</Link></li>
+          <h2 className="mb-3 text-sm font-bold text-ink">Legal & Policies</h2>
+          <ul className="space-y-2 text-sm text-slate-600">
+            <li><Link className="hover:text-primary transition" to="/privacy-policy">Privacy Policy</Link></li>
+            <li><Link className="hover:text-primary transition" to="/terms-of-service">Terms of Service</Link></li>
+            <li><Link className="hover:text-primary transition" to="/cookie-policy">Cookie Policy</Link></li>
+            <li><Link className="hover:text-primary transition" to="/refund-policy">Refund & Cancellation</Link></li>
             <li>
-              <Link className="hover:text-ink inline-flex items-center gap-1.5 text-primary/80 hover:text-primary transition font-medium" to="/admin/login">
+              <Link className="hover:text-primary inline-flex items-center gap-1.5 text-primary font-semibold transition" to="/admin/login">
                 <Lock className="h-3 w-3" /> Admin Portal
               </Link>
             </li>
           </ul>
         </nav>
       </div>
-      <div className="mx-auto mt-10 max-w-6xl border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+      <div className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
         <p>© {new Date().getFullYear()} {s.businessName}. All rights reserved. Phase 5, Mohali, SAS Nagar, Punjab 160059.</p>
         <div className="flex items-center gap-4">
-          <Link to="/admin/login" className="hover:text-ink text-muted/70 hover:text-primary transition inline-flex items-center gap-1.5 font-medium">
-            <Lock className="h-3 w-3" /> Admin Login
+          <Link to="/admin/login" className="hover:text-primary text-slate-600 transition inline-flex items-center gap-1.5 font-medium">
+            <Lock className="h-3 w-3 text-primary" /> Admin Login
           </Link>
           <span>•</span>
           <p>Engineered for High-Performance Local & Global Digital Growth.</p>
@@ -167,9 +167,9 @@ function Footer() {
 function Backdrop() {
   const reduce = useReducedMotion();
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div className={`absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-primary/20 blur-[120px] ${reduce ? '' : 'animate-drift'}`} />
-      <div className={`absolute -right-24 top-1/3 h-[24rem] w-[24rem] rounded-full bg-secondary/10 blur-[120px] ${reduce ? '' : 'animate-drift [animation-delay:-8s]'}`} />
+    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-bg">
+      <div className={`absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-blue-400/10 blur-[130px] ${reduce ? '' : 'animate-drift'}`} />
+      <div className={`absolute -right-24 top-1/3 h-[24rem] w-[24rem] rounded-full bg-sky-400/10 blur-[130px] ${reduce ? '' : 'animate-drift [animation-delay:-8s]'}`} />
     </div>
   );
 }

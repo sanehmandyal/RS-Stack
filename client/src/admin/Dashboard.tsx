@@ -19,10 +19,10 @@ function TrendChart({ data }: { data: { date: string; count: number }[] }) {
       <svg viewBox={`0 0 ${w} ${h + 18}`} role="img" aria-label={`Inquiries per day for the last 30 days. Total ${total}.`} className="h-auto w-full">
         {data.map((d, i) => {
           const bh = (d.count / max) * h;
-          return <rect key={d.date} x={i * bw + 2} y={h - bh} width={bw - 4} height={Math.max(bh, d.count ? 2 : 1)} rx="2" fill={d.count ? '#795BFF' : 'rgba(255,255,255,.12)'}><title>{`${d.date}: ${d.count}`}</title></rect>;
+          return <rect key={d.date} x={i * bw + 2} y={h - bh} width={bw - 4} height={Math.max(bh, d.count ? 2 : 1)} rx="2" fill={d.count ? '#1D4ED8' : '#E2E8F0'}><title>{`${d.date}: ${d.count}`}</title></rect>;
         })}
-        <text x="0" y={h + 14} fontSize="10" fill="#A5AEC0">{data[0]?.date}</text>
-        <text x={w} y={h + 14} fontSize="10" textAnchor="end" fill="#A5AEC0">{data[data.length - 1]?.date}</text>
+        <text x="0" y={h + 14} fontSize="10" fill="#64748B">{data[0]?.date}</text>
+        <text x={w} y={h + 14} fontSize="10" textAnchor="end" fill="#64748B">{data[data.length - 1]?.date}</text>
       </svg>
       <figcaption className="sr-only">Daily inquiry counts for the last 30 days; peak {max}.</figcaption>
     </figure>

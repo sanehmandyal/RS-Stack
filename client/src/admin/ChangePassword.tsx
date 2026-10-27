@@ -33,24 +33,24 @@ export default function ChangePassword({ forced }: { forced?: boolean }) {
   };
 
   const form = (
-    <form onSubmit={submit} className="glass-strong max-w-md space-y-4 rounded-2xl p-6 sm:p-7 border border-white/15 shadow-xl">
+    <form onSubmit={submit} className="glass-strong max-w-md space-y-4 rounded-2xl p-6 sm:p-7 border border-slate-200 bg-white shadow-xl">
       {forced && (
-        <p className="rounded-xl border border-amber-300/30 bg-amber-300/10 p-3 text-sm text-amber-100">
+        <p className="rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-800">
           You must set a new password before continuing.
         </p>
       )}
 
       <div>
         <div className="flex items-center justify-between mb-1">
-          <label className="label text-xs font-semibold uppercase tracking-wider text-muted mb-0" htmlFor="cp">
+          <label className="label text-xs font-semibold uppercase tracking-wider text-slate-700 mb-0" htmlFor="cp">
             Current password
           </label>
           <button
             type="button"
             onClick={() => setShowCur(!showCur)}
-            className="text-xs text-muted hover:text-secondary transition inline-flex items-center gap-1 focus:outline-none"
+            className="text-xs text-muted hover:text-primary transition inline-flex items-center gap-1 focus:outline-none"
           >
-            {showCur ? <EyeOff className="h-3.5 w-3.5 text-secondary" /> : <Eye className="h-3.5 w-3.5" />}
+            {showCur ? <EyeOff className="h-3.5 w-3.5 text-primary" /> : <Eye className="h-3.5 w-3.5" />}
             <span>{showCur ? 'Hide' : 'Show'}</span>
           </button>
         </div>
@@ -60,7 +60,7 @@ export default function ChangePassword({ forced }: { forced?: boolean }) {
             type={showCur ? 'text' : 'password'}
             required
             autoComplete="current-password"
-            className="input pr-11 text-white bg-white/[0.05] border-white/15 focus:border-primary transition"
+            className="input pr-11 text-ink bg-slate-50 border-slate-300 focus:bg-white focus:border-primary transition"
             value={cur}
             onChange={(e) => setCur(e.target.value)}
           />
@@ -68,24 +68,24 @@ export default function ChangePassword({ forced }: { forced?: boolean }) {
             type="button"
             onClick={() => setShowCur(!showCur)}
             tabIndex={-1}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-white transition focus:outline-none rounded-lg"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-primary transition focus:outline-none rounded-lg"
           >
-            {showCur ? <EyeOff className="h-4 w-4 text-secondary" /> : <Eye className="h-4 w-4" />}
+            {showCur ? <EyeOff className="h-4 w-4 text-primary" /> : <Eye className="h-4 w-4" />}
           </button>
         </div>
       </div>
 
       <div>
         <div className="flex items-center justify-between mb-1">
-          <label className="label text-xs font-semibold uppercase tracking-wider text-muted mb-0" htmlFor="nn">
+          <label className="label text-xs font-semibold uppercase tracking-wider text-slate-700 mb-0" htmlFor="nn">
             New password
           </label>
           <button
             type="button"
             onClick={() => setShowNext(!showNext)}
-            className="text-xs text-muted hover:text-secondary transition inline-flex items-center gap-1 focus:outline-none"
+            className="text-xs text-muted hover:text-primary transition inline-flex items-center gap-1 focus:outline-none"
           >
-            {showNext ? <EyeOff className="h-3.5 w-3.5 text-secondary" /> : <Eye className="h-3.5 w-3.5" />}
+            {showNext ? <EyeOff className="h-3.5 w-3.5 text-primary" /> : <Eye className="h-3.5 w-3.5" />}
             <span>{showNext ? 'Hide' : 'Show'}</span>
           </button>
         </div>
@@ -96,7 +96,7 @@ export default function ChangePassword({ forced }: { forced?: boolean }) {
             required
             minLength={12}
             autoComplete="new-password"
-            className="input pr-11 text-white bg-white/[0.05] border-white/15 focus:border-primary transition"
+            className="input pr-11 text-ink bg-slate-50 border-slate-300 focus:bg-white focus:border-primary transition"
             value={next}
             onChange={(e) => setNext(e.target.value)}
           />
@@ -104,15 +104,15 @@ export default function ChangePassword({ forced }: { forced?: boolean }) {
             type="button"
             onClick={() => setShowNext(!showNext)}
             tabIndex={-1}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-white transition focus:outline-none rounded-lg"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-primary transition focus:outline-none rounded-lg"
           >
-            {showNext ? <EyeOff className="h-4 w-4 text-secondary" /> : <Eye className="h-4 w-4" />}
+            {showNext ? <EyeOff className="h-4 w-4 text-primary" /> : <Eye className="h-4 w-4" />}
           </button>
         </div>
         <p className="mt-1 text-xs text-muted">At least 12 characters.</p>
       </div>
 
-      {error && <p role="alert" className="text-sm text-red-300 rounded-lg bg-red-500/10 border border-red-500/20 p-2.5">{error}</p>}
+      {error && <p role="alert" className="text-sm text-red-700 rounded-lg bg-red-50 border border-red-200 p-2.5">{error}</p>}
 
       <button type="submit" className="btn-primary w-full py-2.5 font-semibold flex items-center justify-center gap-2" disabled={busy}>
         <Lock className="h-4 w-4" />
@@ -123,7 +123,7 @@ export default function ChangePassword({ forced }: { forced?: boolean }) {
   );
 
   return forced ? (
-    <div className="grid min-h-dvh place-items-center p-4 bg-[#0A0D14]">{form}</div>
+    <div className="grid min-h-dvh place-items-center p-4 bg-bg">{form}</div>
   ) : (
     <>
       <PageTitle title="Account" />
