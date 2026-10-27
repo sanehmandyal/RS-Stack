@@ -2,10 +2,12 @@ import { createApp } from './app.js';
 import { connectDb, disconnectDb } from './config/db.js';
 import { env } from './config/env.js';
 import { logger } from './config/logger.js';
+import { autoSeedAndBootstrap } from './seed/autoSeed.js';
 
 async function main() {
   try {
     await connectDb();
+    await autoSeedAndBootstrap();
   } catch (err) {
     logger.error({ err }, 'Database connection failed. Server continuing to listen so health checks respond.');
   }

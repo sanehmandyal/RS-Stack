@@ -11,10 +11,10 @@ const schema = z
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     PORT: z.coerce.number().int().positive().default(4000),
     MONGODB_URI: z.string().optional(),
-    CLIENT_ORIGINS: z.string().default('http://localhost:5173'),
+    CLIENT_ORIGINS: z.string().default('http://localhost:5173,https://rs-stack.vercel.app'),
     SITE_URL: z.string().url().default('http://localhost:5173'),
     SESSION_TTL_HOURS: z.coerce.number().positive().default(12),
-    COOKIE_SAMESITE: z.enum(['lax', 'strict', 'none']).default('lax'),
+    COOKIE_SAMESITE: z.enum(['lax', 'strict', 'none']).default(process.env.NODE_ENV === 'production' ? 'none' : 'lax'),
     COOKIE_DOMAIN: z.string().optional(),
     IP_HASH_SALT: z.string().min(16).default('dev-only-salt-change-me-please'),
     TRUST_PROXY: z.coerce.number().int().min(0).default(1),
@@ -70,5 +70,13 @@ export const env = {
   cookieSecure: e.NODE_ENV === 'production' || e.COOKIE_SAMESITE === 'none',
   smtpConfigured: Boolean(e.SMTP_HOST),
 };
+
+export function isAllowedOrigin(origin?: string): boolean {
+  if (!origin) return true;
+  if (env.clientOrigins.includes(origin)) return true;
+  if (/^https:\/\/([a-z0-9-]+\.)*vercel\.app$/i.test(origin)) return true;
+  if (/^http:\/\/localhost(:\d+)?$/i.test(origin)) return true;
+  return false;
+}
 
 export type Env = typeof env;

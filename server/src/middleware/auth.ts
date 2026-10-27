@@ -1,5 +1,5 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
-import { env } from '../config/env.js';
+import { env, isAllowedOrigin } from '../config/env.js';
 import { can, type Permission } from '../config/permissions.js';
 import { Session } from '../models/auth.js';
 import { asyncHandler, forbidden, unauthorized } from '../utils/errors.js';
@@ -37,7 +37,7 @@ export const requireAuth: RequestHandler = asyncHandler(async (req, _res, next) 
 
   if (!SAFE_METHODS.has(req.method)) {
     const origin = req.get('origin');
-    if (origin && !env.clientOrigins.includes(origin)) throw forbidden('Origin not allowed');
+    if (origin && !isAllowedOrigin(origin)) throw forbidden('Origin not allowed');
     const header = req.get('x-csrf-token');
     if (!header || !safeEqual(header, session.csrfToken)) throw forbidden('Invalid CSRF token');
   }

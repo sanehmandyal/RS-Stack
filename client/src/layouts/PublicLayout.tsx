@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Menu, MessageCircle, Phone, X } from 'lucide-react';
+import { Lock, Menu, MessageCircle, Phone, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { CookieConsent } from '../components/Consent';
@@ -142,12 +142,23 @@ function Footer() {
             <li><Link className="hover:text-ink" to="/terms-of-service">Terms of Service</Link></li>
             <li><Link className="hover:text-ink" to="/cookie-policy">Cookie Policy</Link></li>
             <li><Link className="hover:text-ink" to="/refund-policy">Refund & Cancellation</Link></li>
+            <li>
+              <Link className="hover:text-ink inline-flex items-center gap-1.5 text-primary/80 hover:text-primary transition font-medium" to="/admin/login">
+                <Lock className="h-3 w-3" /> Admin Portal
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
       <div className="mx-auto mt-10 max-w-6xl border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
         <p>© {new Date().getFullYear()} {s.businessName}. All rights reserved. Phase 5, Mohali, SAS Nagar, Punjab 160059.</p>
-        <p>Engineered for High-Performance Local & Global Digital Growth.</p>
+        <div className="flex items-center gap-4">
+          <Link to="/admin/login" className="hover:text-ink text-muted/70 hover:text-primary transition inline-flex items-center gap-1.5 font-medium">
+            <Lock className="h-3 w-3" /> Admin Login
+          </Link>
+          <span>•</span>
+          <p>Engineered for High-Performance Local & Global Digital Growth.</p>
+        </div>
       </div>
     </footer>
   );

@@ -2,7 +2,10 @@
  * Tiny fetch wrapper. Auth uses an HttpOnly cookie set by the server, so no token is ever stored in
  * localStorage/sessionStorage. The CSRF token is kept in memory only and sent on state-changing requests.
  */
-const BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/+$/, '') ?? '/api';
+const envUrl = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/+$/, '');
+const BASE = envUrl
+  ? (envUrl.endsWith('/api') ? envUrl : `${envUrl}/api`)
+  : '/api';
 
 let csrfToken = '';
 export const setCsrfToken = (t: string) => {

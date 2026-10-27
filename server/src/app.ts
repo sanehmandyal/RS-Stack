@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import helmet from 'helmet';
 import pinoHttp from 'pino-http';
-import { env } from './config/env.js';
+import { env, isAllowedOrigin } from './config/env.js';
 import { dbReady } from './config/db.js';
 import { logger } from './config/logger.js';
 import { apiLimiter, errorHandler, notFoundHandler, requestId, sanitizeInput } from './middleware/security.js';
@@ -60,7 +60,7 @@ export function createApp(): Express {
   app.use(
     '/api',
     cors({
-      origin: (origin, cb) => cb(null, !origin || env.clientOrigins.includes(origin)),
+      origin: (origin, cb) => cb(null, isAllowedOrigin(origin)),
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
       allowedHeaders: ['Content-Type', 'X-CSRF-Token'],
