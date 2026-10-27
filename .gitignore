@@ -1,0 +1,47 @@
+# dependencies
+node_modules/
+*/node_modules/
+
+# env & secrets (NEVER COMMIT SENSITIVE FILES)
+.env
+.env.*
+*.env
+server/.env
+client/.env
+!.env.example
+!client/.env.example
+!server/.env.example
+*.pem
+*.key
+*.p12
+*.cert
+
+# build output
+dist/
+build/
+.vite/
+client/dist/
+server/dist/
+
+# runtime data & databases
+uploads/
+server/uploads/
+logs/
+*.log
+/data/
+server/data/
+*.sqlite
+*.db
+
+# tests & coverage
+coverage/
+playwright-report/
+test-results/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+.test-uploads/

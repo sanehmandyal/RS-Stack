@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: dark; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-bg font-sans text-ink antialiased; overflow-x: hidden; }
+  h1, h2, h3, h4 { @apply font-bold tracking-tight text-ink; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a, button, input, select, textarea, summary { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { @apply outline-none ring-2 ring-secondary ring-offset-2 ring-offset-bg; border-radius: 0.5rem; }
+  ::selection { background: rgba(121, 91, 255, 0.45); }
+  /* Respect reduced motion everywhere */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+@layer components {
+  .glass { @apply border border-white/10 bg-white/[0.04] shadow-card backdrop-blur-xl; }
+  .glass-strong { @apply border border-white/10 bg-surface/80 shadow-card backdrop-blur-2xl; }
+  .card { @apply glass rounded-2xl p-6 transition duration-300; }
+  .card-hover { @apply hover:-translate-y-1 hover:border-primary/40 hover:bg-white/[0.07]; }
+  .text-gradient { background: linear-gradient(120deg, #a392ff 0%, #28C7FA 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-primary { @apply btn bg-primary text-white shadow-glow hover:bg-primary-600; }
+  .btn-ghost { @apply btn border border-white/15 bg-white/5 text-ink hover:border-white/30 hover:bg-white/10; }
+  .btn-danger { @apply btn border border-red-400/40 bg-red-500/10 text-red-200 hover:bg-red-500/20; }
+  .btn-sm { @apply min-h-[36px] px-3 py-1.5 text-xs; }
+  .input { @apply w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-ink placeholder:text-muted/70 transition focus:border-primary focus:bg-white/10; }
+  .label { @apply mb-1.5 block text-sm font-medium text-ink; }
+  .field-error { @apply mt-1.5 text-xs text-red-300; }
+  .chip { @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs text-muted; }
+  .grid-bg {
+    background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+  }
+  .prose-rs { @apply text-muted leading-relaxed; }
+  .prose-rs h2 { @apply mt-10 mb-3 text-2xl; }
+  .prose-rs h3 { @apply mt-8 mb-2 text-xl; }
+  .prose-rs p { @apply my-4; }
+  .prose-rs ul { @apply my-4 list-disc space-y-1 pl-6; }
+  .prose-rs ol { @apply my-4 list-decimal space-y-1 pl-6; }
+  .prose-rs a { @apply text-secondary underline underline-offset-2; }
+  .prose-rs blockquote { @apply my-6 border-l-4 border-primary pl-4 italic; }
+  .prose-rs img { @apply my-6 rounded-xl; }
+  .prose-rs code { @apply rounded bg-white/10 px-1.5 py-0.5 text-sm text-ink; }
+  .prose-rs pre { @apply my-6 overflow-x-auto rounded-xl bg-black/40 p-4 text-sm; }
+}
+
+.skeleton { position: relative; overflow: hidden; @apply rounded-xl bg-white/[0.06]; }
+.skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); @apply animate-shimmer; }
