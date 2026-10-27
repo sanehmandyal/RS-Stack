@@ -4,7 +4,11 @@ import { env } from './config/env.js';
 import { logger } from './config/logger.js';
 
 async function main() {
-  await connectDb();
+  try {
+    await connectDb();
+  } catch (err) {
+    logger.error({ err }, 'Database connection failed. Server continuing to listen so health checks respond.');
+  }
   const app = createApp();
   const server = app.listen(env.PORT, () => logger.info(`RS Stack API listening on :${env.PORT} (${env.NODE_ENV})`));
 

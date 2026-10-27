@@ -74,6 +74,7 @@ export function createApp(): Express {
 
   app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));
   app.get('/readyz', (_req, res) => (dbReady() ? res.json({ status: 'ready' }) : res.status(503).json({ status: 'database_unavailable' })));
+  app.get('/', (_req, res) => res.json({ status: 'ok', name: 'RS Stack API', documentation: '/api/public/settings' }));
 
   // Uploaded images: static, never executable, never sniffed.
   app.use(
