@@ -8,14 +8,16 @@ export default {
         surface: '#FFFFFF',   // Pure White surface
         surface2: '#F1F5F9',  // Elevated slate 100
         primary: {
-          DEFAULT: '#1D4ED8', // Corporate Sapphire Blue
-          600: '#1E40AF',     // Deep Navy Blue
-          700: '#172554',
-          300: '#60A5FA',
-          50: '#EFF6FF',
-          100: '#DBEAFE',
+          DEFAULT: '#0F766E', // Nordic Deep Teal (Distinctive, high-trust, premium)
+          600: '#0D9488',     // Vibrant Teal
+          700: '#115E59',     // Deep Pine Teal
+          800: '#134E4A',     // Obsidian Teal
+          300: '#5EEAD4',
+          50: '#F0FDFA',
+          100: '#CCFBF1',
+          200: '#99F6E4',
         },
-        secondary: '#0284C7', // Ocean Blue
+        secondary: '#0D9488', // Teal accent
         ink: '#0F172A',       // Rich Slate 900 text
         muted: '#64748B',     // Slate 500 readable muted text
         border: '#E2E8F0',    // Clean slate border

@@ -190,7 +190,7 @@ export default function Legal({ kind }) {
                 For questions regarding these terms, privacy compliance, or project agreements, please contact our team directly:
               </p>
               <ul className="text-xs sm:text-sm text-slate-700 space-y-1">
-                <li><strong>Email:</strong> <a href={`mailto:${contactEmail || 'contact@rs-stack.com'}`} className="text-blue-700 underline">{contactEmail || 'contact@rs-stack.com'}</a></li>
+                <li><strong>Email:</strong> <a href={`mailto:${contactEmail || 'contact@rs-stack.com'}`} className="text-teal-700 underline">{contactEmail || 'contact@rs-stack.com'}</a></li>
                 <li><strong>Office:</strong> {address || 'Phase 5, Mohali, SAS Nagar, Punjab 160059, India'}</li>
                 <li><strong>Phone:</strong> +91 98057 20962</li>
               </ul>

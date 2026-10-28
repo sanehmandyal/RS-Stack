@@ -41,7 +41,7 @@ function Header() {
 
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex bg-slate-100 p-1 rounded-lg border border-slate-200/80">
           {NAV.map(([to, label]) => (<NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `rounded-md px-3.5 py-1.5 text-xs font-semibold transition duration-150 ${isActive
-                ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                ? 'bg-white text-teal-700 shadow-xs border border-slate-200'
                 : 'text-slate-600 hover:text-slate-950 hover:bg-white/50'}`}>
               {label}
             </NavLink>))}
@@ -65,7 +65,7 @@ function Header() {
         {open && (<motion.div id="mobile-menu" role="dialog" aria-label="Menu" className="fixed inset-x-3 top-[68px] max-h-[calc(100dvh-80px)] overflow-y-auto rounded-xl p-5 lg:hidden bg-white border border-slate-200 shadow-xl" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.15 }}>
             <nav aria-label="Mobile" className="flex flex-col gap-1">
               {NAV.map(([to, label]) => (<NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `min-h-[44px] rounded-lg px-4 py-2.5 text-sm font-semibold transition ${isActive
-                    ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                    ? 'bg-teal-50 text-teal-800 border border-teal-200'
                     : 'text-slate-700 hover:bg-slate-50'}`}>
                   {label}
                 </NavLink>))}
@@ -92,17 +92,17 @@ function Footer() {
           </p>
           <ul className="mt-4 space-y-2.5 text-sm text-slate-700">
             {s.contactEmail && (<li>
-                <a className="hover:text-blue-700 transition font-medium" href={`mailto:${s.contactEmail}`}>
+                <a className="hover:text-teal-700 transition font-medium" href={`mailto:${s.contactEmail}`}>
                   {s.contactEmail}
                 </a>
               </li>)}
             {s.phone && (<li>
-                <a className="hover:text-blue-700 transition inline-flex items-center gap-1.5 font-medium" href={`tel:${s.phone.replace(/[^\d+]/g, '')}`}>
-                  <Phone className="h-3.5 w-3.5 text-blue-600"/> {s.phone}
+                <a className="hover:text-teal-700 transition inline-flex items-center gap-1.5 font-medium" href={`tel:${s.phone.replace(/[^\d+]/g, '')}`}>
+                  <Phone className="h-3.5 w-3.5 text-teal-700"/> {s.phone}
                 </a>
               </li>)}
             {s.address && (<li className="text-slate-700 leading-relaxed font-medium flex items-start gap-2">
-                <MapPin className="h-4 w-4 text-blue-600 shrink-0 mt-0.5"/>
+                <MapPin className="h-4 w-4 text-teal-700 shrink-0 mt-0.5"/>
                 <span>{s.address}</span>
               </li>)}
             {wa && (<li className="pt-1">
@@ -113,7 +113,7 @@ function Footer() {
           </ul>
           <ul className="mt-4 flex flex-wrap gap-3 text-sm">
             {Object.entries(s.social).filter(([, v]) => v).map(([k, v]) => (<li key={k}>
-                <a className="capitalize text-blue-600 hover:text-blue-800 hover:underline font-medium" href={v} target="_blank" rel="noopener noreferrer">
+                <a className="capitalize text-teal-700 hover:text-teal-900 hover:underline font-medium" href={v} target="_blank" rel="noopener noreferrer">
                   {k}
                 </a>
               </li>))}
@@ -124,7 +124,7 @@ function Footer() {
           <h2 className="mb-3 text-sm font-bold text-slate-900">Services & Solutions</h2>
           <ul className="space-y-2 text-sm text-slate-600">
             {NAV.map(([to, label]) => (<li key={to}>
-                <Link className="hover:text-blue-700 transition" to={to}>
+                <Link className="hover:text-teal-700 transition" to={to}>
                   {label}
                 </Link>
               </li>))}
@@ -134,12 +134,12 @@ function Footer() {
         <nav aria-label="Legal">
           <h2 className="mb-3 text-sm font-bold text-slate-900">Legal & Policies</h2>
           <ul className="space-y-2 text-sm text-slate-600">
-            <li><Link className="hover:text-blue-700 transition" to="/privacy">Privacy Policy</Link></li>
-            <li><Link className="hover:text-blue-700 transition" to="/terms">Terms & Conditions</Link></li>
-            <li><Link className="hover:text-blue-700 transition" to="/cookie-policy">Cookie Policy</Link></li>
-            <li><Link className="hover:text-blue-700 transition" to="/refund-policy">Refund & Cancellation</Link></li>
+            <li><Link className="hover:text-teal-700 transition" to="/privacy">Privacy Policy</Link></li>
+            <li><Link className="hover:text-teal-700 transition" to="/terms">Terms & Conditions</Link></li>
+            <li><Link className="hover:text-teal-700 transition" to="/cookie-policy">Cookie Policy</Link></li>
+            <li><Link className="hover:text-teal-700 transition" to="/refund-policy">Refund & Cancellation</Link></li>
             <li className="pt-2">
-              <Link className="hover:text-blue-800 inline-flex items-center gap-1.5 text-blue-700 font-semibold transition" to="/admin/login">
+              <Link className="hover:text-teal-900 inline-flex items-center gap-1.5 text-teal-700 font-semibold transition" to="/admin/login">
                 <Lock className="h-3 w-3"/> Admin Portal
               </Link>
             </li>
@@ -150,8 +150,8 @@ function Footer() {
       <div className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         <p>© {new Date().getFullYear()} {s.businessName}. All rights reserved. Phase 5, Mohali, SAS Nagar, Punjab 160059.</p>
         <div className="flex items-center gap-4">
-          <Link to="/admin/login" className="hover:text-blue-700 text-slate-600 transition inline-flex items-center gap-1.5 font-medium">
-            <Lock className="h-3 w-3 text-blue-600"/> Admin Login
+          <Link to="/admin/login" className="hover:text-teal-700 text-slate-600 transition inline-flex items-center gap-1.5 font-medium">
+            <Lock className="h-3 w-3 text-teal-700"/> Admin Login
           </Link>
           <span>|</span>
           <p>Phase 5, Mohali, Punjab, India</p>
@@ -164,7 +164,7 @@ function Backdrop() {
       {/* Subtle clean grid pattern */}
       <div className="absolute inset-0 grid-bg opacity-30"/>
       {/* Clean high-clarity top highlight */}
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-50/50 to-transparent"/>
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-teal-50/50 to-transparent"/>
     </div>);
 }
 export default function PublicLayout() {
@@ -173,7 +173,7 @@ export default function PublicLayout() {
     const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to enquire about website or SEO services.');
     useEffect(() => { window.scrollTo({ top: 0 }); }, [pathname]);
     return (<div className="relative min-h-dvh flex flex-col justify-between">
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-teal-700 focus:text-white focus:px-4 focus:py-2">
         Skip to content
       </a>
       <Backdrop />

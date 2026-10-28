@@ -37,11 +37,11 @@ export function DataTable({ label, children }) {
 export const Th = ({ children }) => <th scope="col" className="whitespace-nowrap border-b border-slate-200 bg-slate-50/80 px-4 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-700">{children}</th>;
 export const Td = ({ children, className = '' }) => <td className={`border-b border-slate-100 px-4 py-3 align-top text-slate-800 ${className}`}>{children}</td>;
 export const STATUS_COLORS = {
-    new: 'bg-blue-50 text-blue-700 border border-blue-200',
-    contacted: 'bg-sky-50 text-sky-700 border border-sky-200',
-    qualified: 'bg-amber-50 text-amber-700 border border-amber-200',
-    proposal_sent: 'bg-blue-100 text-blue-800 border border-blue-300',
-    won: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+    new: 'bg-teal-50 text-teal-800 border border-teal-200',
+    contacted: 'bg-slate-100 text-slate-700 border border-slate-200',
+    qualified: 'bg-amber-50 text-amber-800 border border-amber-200',
+    proposal_sent: 'bg-emerald-50 text-emerald-800 border border-emerald-200',
+    won: 'bg-emerald-100 text-emerald-900 border border-emerald-300',
     lost: 'bg-slate-100 text-slate-600 border border-slate-200',
 };
 export const Badge = ({ value }) => <span className={`inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold capitalize ${STATUS_COLORS[value] ?? 'bg-slate-100 text-slate-700 border border-slate-200'}`}>{value.replace(/_/g, ' ')}</span>;

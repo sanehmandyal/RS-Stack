@@ -14,7 +14,7 @@ function Shell({ title, subtitle, children }) {
       {/* Top Header Row with Back to Website Button */}
       <div className="relative z-10 w-full max-w-md mb-4 flex items-center justify-between">
         <Link to="/" className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 bg-white shadow-xs transition duration-150 group" title="Return to the RS Stack homepage">
-          <ArrowLeft className="h-3.5 w-3.5 text-blue-600 transition-transform group-hover:-translate-x-1"/>
+          <ArrowLeft className="h-3.5 w-3.5 text-teal-700 transition-transform group-hover:-translate-x-1"/>
           <span>Back to site</span>
         </Link>
         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-emerald-300 bg-emerald-50 text-emerald-800 text-[11px] font-semibold tracking-wide shadow-xs">
@@ -27,14 +27,14 @@ function Shell({ title, subtitle, children }) {
       <div className="relative z-10 w-full max-w-md">
         <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-7 sm:p-9 shadow-sm">
           {/* Top specular highlight reflection line */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent"/>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-400/40 to-transparent"/>
           {/* Subtle glossy glass reflection gradient */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-blue-50/[0.3] via-transparent to-transparent"/>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-teal-50/[0.3] via-transparent to-transparent"/>
 
           <div className="relative z-10">
             <div className="mb-6 flex items-center justify-between">
               <Logo />
-              <div className="rounded-xl border border-blue-100 bg-blue-50/80 p-2 text-primary shadow-xs">
+              <div className="rounded-xl border border-teal-100 bg-teal-50/80 p-2 text-primary shadow-xs">
                 <ShieldCheck className="h-5 w-5"/>
               </div>
             </div>
@@ -116,7 +116,7 @@ export function Login() {
 
         <Err msg={error}/>
 
-        <button type="submit" className="btn-primary w-full py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-primary to-blue-600 hover:from-primary-600 hover:to-blue-700 shadow-md shadow-primary/25 transition-all duration-200 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2" disabled={busy}>
+        <button type="submit" className="btn-primary w-full py-2.5 text-sm font-semibold rounded-lg shadow-xs transition duration-150 active:scale-[0.98] disabled:opacity-60 flex items-center justify-center gap-2" disabled={busy}>
           {busy ? (<>
               <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin"/>
               <span>Signing in…</span>

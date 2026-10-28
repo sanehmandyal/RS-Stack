@@ -90,9 +90,9 @@ export function HeroVisual() {
             const Icon = tab.icon;
             const isSelected = tab.id === activeTab;
             return (<button key={tab.id} type="button" onClick={() => setActiveTab(tab.id)} className={`flex items-center justify-center gap-2 rounded-lg py-2 px-2 sm:px-3 text-xs sm:text-sm font-semibold transition-colors duration-150 ${isSelected
-                    ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                    ? 'bg-white text-teal-700 shadow-xs border border-slate-200'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'}`}>
-                <Icon className={`h-4 w-4 shrink-0 ${isSelected ? 'text-blue-600' : 'text-slate-500'}`}/>
+                <Icon className={`h-4 w-4 shrink-0 ${isSelected ? 'text-teal-700' : 'text-slate-500'}`}/>
                 <span className="hidden sm:inline">{tab.label}</span>
                 <span className="sm:hidden">{tab.shortLabel}</span>
               </button>);
@@ -103,7 +103,7 @@ export function HeroVisual() {
         <div className="p-5 sm:p-6">
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
             <div>
-              <span className="inline-flex items-center rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-800 mb-2">
+              <span className="inline-flex items-center rounded-md border border-teal-200 bg-teal-50 px-2.5 py-1 text-xs font-semibold text-teal-800 mb-2">
                 Engineering Standard
               </span>
               <h3 className="text-lg sm:text-xl font-bold text-slate-900">{current.title}</h3>
@@ -120,7 +120,7 @@ export function HeroVisual() {
             </h4>
             <div className="grid gap-2.5 sm:grid-cols-2">
               {current.deliverables.map((item) => (<div key={item} className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5"/>
+                  <CheckCircle2 className="h-4 w-4 text-teal-700 shrink-0 mt-0.5"/>
                   <span className="text-xs sm:text-sm text-slate-800 font-medium">{item}</span>
                 </div>))}
             </div>
@@ -144,7 +144,7 @@ export function HeroVisual() {
 
           {/* Bottom link */}
           <div className="mt-5 flex items-center justify-between border-t border-slate-200 pt-4">
-            <Link to={current.serviceLink} className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-700 hover:text-blue-900 transition">
+            <Link to={current.serviceLink} className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-teal-700 hover:text-teal-900 transition">
               Learn more about this capability <ArrowRight className="h-3.5 w-3.5"/>
             </Link>
             <Link to="/contact" className="btn btn-sm btn-primary">
