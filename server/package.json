@@ -3,15 +3,18 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "node --watch src/server.js",
     "build": "node -e \"console.log('Build ready')\"",
-    "start": "tsx src/server.ts",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "start": "node src/server.js",
+    "typecheck": "node -e \"console.log('JS: No typecheck needed')\"",
     "test": "vitest run",
-    "bootstrap:admin": "tsx src/scripts/bootstrapAdmin.ts",
-    "seed": "tsx src/scripts/seed.ts"
+    "bootstrap:admin": "node src/scripts/bootstrapAdmin.js",
+    "seed": "node src/scripts/seed.js",
+    "bootstrapAdmin": "node src/scripts/bootstrapAdmin.js"
   },
   "dependencies": {
     "argon2": "^0.41.1",
