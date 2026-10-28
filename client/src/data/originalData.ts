@@ -159,6 +159,51 @@ export const originalProjects = [
     technologies: ['React', 'Framer Motion', 'Tailwind CSS'],
     services: ['business-website-development', 'google-meta-advertising'],
     results: ['Demonstration sample showing our approach to itinerary display and inquiry capture.']
+  },
+  {
+    slug: 'demo-ecommerce-boutique-store',
+    title: 'Modern E-Commerce & Retail Showcase',
+    industry: 'Retail & Fashion Boutique',
+    category: 'ecommerce',
+    isDemo: true,
+    thumbnail: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    thumbnailAlt: 'Retail store and e-commerce platform sample',
+    summary: 'Sample implementation: lightning-fast mobile catalog with instant WhatsApp checkout and localized inventory filtering.',
+    problem: 'Independent retail stores face high customer drop-off on clunky checkout forms and slow e-commerce templates.',
+    solution: 'Built a lightweight, responsive catalog with filtered category browsing, visual lookbooks, and direct WhatsApp / UPI checkout.',
+    technologies: ['React 18', 'Tailwind CSS', 'Vite', 'Stripe & WhatsApp Flow'],
+    services: ['business-website-development', 'conversion-rate-optimization'],
+    results: ['Demonstration sample showing high-velocity mobile product browsing and instant lead conversion.']
+  },
+  {
+    slug: 'demo-healthcare-clinic-portal',
+    title: 'Healthcare & Aesthetic Clinic Presence',
+    industry: 'Medical & Aesthetic Clinics',
+    category: 'websites',
+    isDemo: true,
+    thumbnail: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
+    thumbnailAlt: 'Healthcare and clinic patient portal sample',
+    summary: 'Sample implementation: HIPAA-aware appointment scheduling portal with verified doctor profiles and treatment guides.',
+    problem: 'Patients seek clear treatment information and instant appointment slots rather than phone call queues.',
+    solution: 'Designed an approachable clinic portal featuring clinician credentials, localized service areas, and direct booking inquiries.',
+    technologies: ['React', 'MERN Stack', 'Node.js', 'Schema.org MedicalBusiness'],
+    services: ['business-website-development', 'local-seo-optimization'],
+    results: ['Demonstration sample showing streamlined patient booking flows and high-trust medical presentation.']
+  },
+  {
+    slug: 'demo-corporate-consulting-hub',
+    title: 'B2B Consulting & Legal Advisory Portal',
+    industry: 'Corporate Advisory & Finance',
+    category: 'websites',
+    isDemo: true,
+    thumbnail: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+    thumbnailAlt: 'B2B corporate consulting portal sample',
+    summary: 'Sample implementation: authority-focused digital portal with downloadable whitepapers, case briefs, and qualified lead scoring.',
+    problem: 'Professional advisory firms struggle to separate themselves from generic commodity service providers online.',
+    solution: 'Architected an editorial B2B portal highlighting verified domain expertise, client roadmaps, and confidential discovery intake forms.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    services: ['business-website-development', 'conversion-rate-optimization'],
+    results: ['Demonstration sample showing executive authority branding and enterprise lead qualification.']
   }
 ];
 

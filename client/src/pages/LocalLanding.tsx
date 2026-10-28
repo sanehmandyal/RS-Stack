@@ -13,6 +13,7 @@ interface Props {
   landmark: string;
   headline: string;
   areas: string[];
+  image: string;
 }
 
 export const LOCAL_DATA: Record<string, Props> = {
@@ -23,6 +24,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Phase 5, Sector 59, SAS Nagar',
     headline: 'Top Website Development & Local SEO Company in Mohali Phase 5',
     areas: ['Phase 5 Mohali', 'Phase 3B2', 'Phase 7', 'Sector 70', 'Sector 82 JLPL', 'IT City Mohali', 'Aerocity'],
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
   },
   chandigarh: {
     city: 'Chandigarh',
@@ -31,6 +33,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Sector 17, 34, 35, Manimajra & IT Park',
     headline: 'Premier Website Design & Digital Marketing Agency in Chandigarh',
     areas: ['Sector 17', 'Sector 34', 'Sector 35', 'Chandigarh IT Park', 'Sector 22', 'Industrial Area Phase 1 & 2'],
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
   },
   panchkula: {
     city: 'Panchkula',
@@ -39,6 +42,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Sector 5, 8, 9, 20 & Industrial Area',
     headline: 'High-Converting Web Development & SEO Services in Panchkula',
     areas: ['Sector 5', 'Sector 8', 'Sector 9', 'Sector 20', 'MDC Panchkula', 'Industrial Area Phase 1 & 2'],
+    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80',
   },
   zirakpur: {
     city: 'Zirakpur',
@@ -47,6 +51,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving VIP Road, Chandigarh-Ambala Highway & PR7 Airport Road',
     headline: 'Local SEO & Business Website Developers in Zirakpur',
     areas: ['VIP Road', 'PR7 Airport Road', 'Dhakoli', 'Baltana', 'Ambala Highway', 'High Ground'],
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80',
   },
   himachal: {
     city: 'Himachal Pradesh',
@@ -55,6 +60,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Shimla, Kangra, Solan, Mandi, Kullu & Statewide Businesses',
     headline: 'Professional Website Development & Digital Marketing for Himachal Pradesh Businesses',
     areas: ['Hotels & Homestays', 'Tour & Travel Operators', 'Local Retail', 'Clinics & Healthcare', 'Educational Institutes', 'Industrial Units'],
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
   },
   una: {
     city: 'Una',
@@ -63,6 +69,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Una Town, Mehatpur Industrial Area, Chandpur & Surrounding Regions',
     headline: 'Top Website Design & Local SEO Services in Una, Himachal Pradesh',
     areas: ['Una City Centre', 'Mehatpur Industrial Area', 'Gagret Road', 'Amb Road', 'Rakhkar', 'Jhalera'],
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
   },
   amb: {
     city: 'Amb',
@@ -71,6 +78,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Amb Market, Chintpurni Road, Gagret & Industrial Corridor',
     headline: 'Custom Website Development & Google Maps SEO in Amb, Himachal Pradesh',
     areas: ['Amb Town Market', 'Chintpurni Road', 'Gagret Highway', 'Athwan', 'Pratap Nagar'],
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
   },
   andaura: {
     city: 'Amb Andaura',
@@ -79,6 +87,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Amb Andaura Railway Station Corridor, Industrial Zone & Local Commercial Businesses',
     headline: 'Business Website Developers & Digital Growth Agency in Amb Andaura, HP',
     areas: ['Amb Andaura Station Area', 'Industrial Estate', 'Lohara', 'Chururu', 'Panoh'],
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
   },
   nangal: {
     city: 'Nangal',
@@ -87,6 +96,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Nangal Township, NFL Colony, Mehatpur Border & BBMB Area',
     headline: 'High-Performance Web Design & Local SEO Company in Nangal',
     areas: ['Nangal Township', 'Main Market', 'NFL Colony', 'BBMB Colony', 'Naya Nangal', 'Shivalik Avenue'],
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
   },
   'anandpur-sahib': {
     city: 'Sri Anandpur Sahib',
@@ -95,6 +105,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Anandpur Sahib City, Virasat-e-Khalsa Belt, Nurpur Bedi & Agampur',
     headline: 'Modern Website Development & Local Visibility Services in Anandpur Sahib',
     areas: ['Anandpur Sahib Market', 'Virasat-e-Khalsa Zone', 'Agampur Industrial Area', 'Nurpur Bedi Road', 'Bhallan'],
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
   },
   haryana: {
     city: 'Haryana',
@@ -103,6 +114,7 @@ export const LOCAL_DATA: Record<string, Props> = {
     landmark: 'Serving Ambala, Kurukshetra, Karnal, Panipat, Sonipat & Statewide Enterprises',
     headline: 'Bespoke Website Development, MERN Stack Apps & SEO Services Across Haryana',
     areas: ['Manufacturing Units', 'Healthcare & Clinics', 'Logistics & Warehousing', 'Educational Academies', 'E-Commerce Brands'],
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
   },
 };
 
@@ -159,26 +171,67 @@ export default function LocalLanding({ slug = 'mohali' }: { slug?: string }) {
       </PageHero>
 
       <Section className="pt-4">
-        {/* Value Pillars */}
+        {/* Location Visual Hero Banner */}
+        <div className="relative mb-12 overflow-hidden rounded-3xl border border-white/80 shadow-glass">
+          <div className="relative aspect-[21/9] w-full min-h-[260px] sm:min-h-[340px] bg-slate-100">
+            <img
+              src={data.image}
+              alt={`${data.city} digital growth and web engineering`}
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/30 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
+              <div className="glass px-4 py-2 rounded-2xl border border-white/90">
+                <p className="text-sm sm:text-base font-bold text-ink">
+                  📍 Verified Local Growth Partner • {data.city}, {data.region}
+                </p>
+                <p className="text-xs text-muted">
+                  Engineering bespoke websites & dominating Google Local Search across {data.areas.slice(0, 3).join(', ')}.
+                </p>
+              </div>
+              <Link to="/contact" className="btn-primary shadow-glow">
+                Get Local Quote
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Value Pillars with Imagery */}
         <div className="grid gap-6 md:grid-cols-3 mb-14">
           {[
             {
               title: `Google Maps Dominance in ${data.city}`,
               desc: `Optimize your Google Business Profile for high-intent searches in ${data.city} and surrounding areas to capture nearby customers looking for your exact services.`,
+              image: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=600&q=80',
             },
             {
               title: 'Ultra-Fast Responsive Websites',
               desc: `Modern React 18 & Vite architecture with sub-second mobile loading speeds, accessible UI, and conversion-optimized quotation forms.`,
+              image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
             },
             {
               title: 'ROI-Driven Targeted Campaigns',
               desc: `Deploy geo-fenced Google and Meta Ad campaigns targeting customers across ${data.city} and ${data.region} with zero wasted ad spend.`,
+              image: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80',
             },
           ].map((item, i) => (
-            <div key={i} className="card p-7">
-              <span className="text-xs font-bold text-secondary uppercase tracking-widest">Capability 0{i + 1}</span>
-              <h3 className="mt-2 text-xl font-bold">{item.title}</h3>
-              <p className="mt-2 text-sm text-muted leading-relaxed">{item.desc}</p>
+            <div key={i} className="card card-hover p-0 overflow-hidden flex flex-col">
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
+                <span className="absolute top-3 left-3 chip bg-white/95 backdrop-blur-md text-primary font-bold shadow-xs">
+                  Capability 0{i + 1}
+                </span>
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-bold">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed flex-1">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>

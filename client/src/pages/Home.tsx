@@ -100,25 +100,42 @@ export default function Home() {
               icon: TrendingUp,
               title: 'Search Dominance & Discovery',
               desc: 'High-intent technical SEO, Google Business Profile optimization, and local citation networks put you in front of ready-to-buy customers.',
+              image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+              imageAlt: 'Search dominance and analytics dashboard',
             },
             {
               icon: ShieldCheck,
               title: 'High-Trust Bespoke Experience',
               desc: 'Mobile-first, lightning-fast interfaces crafted with modern UI and clear value propositions that immediately command trust.',
+              image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
+              imageAlt: 'High-converting responsive modern website UI',
             },
             {
               icon: Zap,
               title: 'Frictionless Conversion Funnels',
               desc: 'Automated quotation workflows, instant WhatsApp inquiry links, and tracked pipelines turn casual clicks into booked revenue.',
+              image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80',
+              imageAlt: 'Client conversion funnels and automated communication',
             },
           ].map((item, i) => (
             <Reveal key={item.title} delay={i * 0.08}>
-              <div className="card h-full flex flex-col p-7 hover:border-secondary/30 transition">
-                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/20 text-secondary">
-                  <item.icon className="h-6 w-6" />
+              <div className="card card-hover h-full flex flex-col p-0 overflow-hidden">
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
+                  <div className="absolute top-4 left-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 shadow-md backdrop-blur-md text-primary">
+                    <item.icon className="h-5 w-5" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold">{item.title}</h3>
-                <p className="mt-3 text-sm text-muted leading-relaxed flex-1">{item.desc}</p>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <p className="mt-2.5 text-sm text-muted leading-relaxed flex-1">{item.desc}</p>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -271,12 +288,62 @@ export default function Home() {
           text="From initial architecture discovery to ongoing growth, every milestone is documented and reviewed."
         />
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {PROCESS.map(([t, d], i) => (
-            <Reveal key={t} delay={(i % 3) * 0.06}>
-              <li className="card h-full list-none p-6 relative">
-                <span className="text-xs font-bold text-secondary uppercase tracking-widest">Phase 0{i + 1}</span>
-                <h3 className="mt-2 text-lg font-bold">{t}</h3>
-                <p className="mt-2 text-sm text-muted leading-relaxed">{d}</p>
+          {[
+            {
+              phase: 'Phase 01',
+              title: 'Discovery & Business Analysis',
+              desc: 'We learn about your business, customers, competitors and goals.',
+              image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80',
+            },
+            {
+              phase: 'Phase 02',
+              title: 'Strategy & Architecture Planning',
+              desc: 'We agree scope, priorities and a realistic roadmap in writing.',
+              image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80',
+            },
+            {
+              phase: 'Phase 03',
+              title: 'UI/UX Design & Prototyping',
+              desc: 'We design clear, mobile-first layouts and review them with you.',
+              image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80',
+            },
+            {
+              phase: 'Phase 04',
+              title: 'Development & API Integration',
+              desc: 'We build, connect forms, tracking and any agreed integrations.',
+              image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80',
+            },
+            {
+              phase: 'Phase 05',
+              title: 'Testing, Launch & Optimisation',
+              desc: 'We test across devices, launch carefully and measure what happens.',
+              image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+            },
+            {
+              phase: 'Phase 06',
+              title: 'Ongoing Maintenance & Scale',
+              desc: 'We keep things secure and updated and improve based on real data.',
+              image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+            },
+          ].map((item, i) => (
+            <Reveal key={item.phase} delay={(i % 3) * 0.06}>
+              <li className="card card-hover h-full list-none p-0 overflow-hidden flex flex-col">
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
+                  <span className="absolute top-3 left-3 chip bg-white/95 backdrop-blur-md text-primary font-bold shadow-xs">
+                    {item.phase}
+                  </span>
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-base font-bold text-ink">{item.title}</h3>
+                  <p className="mt-2 text-xs text-muted leading-relaxed flex-1">{item.desc}</p>
+                </div>
               </li>
             </Reveal>
           ))}

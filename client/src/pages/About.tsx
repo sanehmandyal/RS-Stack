@@ -45,29 +45,44 @@ export default function About() {
               title: 'Our Mission',
               desc: 'Make enterprise-grade web development, local search dominance, and digital infrastructure accessible and understandable for business owners who demand tangible return on investment.',
               icon: Sparkles,
+              image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80',
             },
             {
               title: 'Radical Transparency',
               desc: 'No vague marketing jargon or false promises. We outline exact deliverables, transparent third-party costs (hosting, domains, ad spend), and realistic timelines in writing before any engagement.',
               icon: Shield,
+              image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80',
             },
             {
               title: 'Conversion-Focused Engineering',
               desc: 'A pretty site that fails to convert is useless. We optimize every pixel, typography hierarchy, mobile touchpoint, and call-to-action to maximize qualified customer inquiries.',
               icon: Award,
+              image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
             },
             {
               title: '100% Client Ownership',
               desc: 'We never lock you into restrictive proprietary ecosystems. You own 100% of your source code, design assets, database structures, and ad accounts from day one.',
               icon: Users,
+              image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80',
             },
           ].map((item) => (
-            <div key={item.title} className="card p-8 hover:border-secondary/30 transition">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/20 text-secondary">
-                <item.icon className="h-6 w-6" />
+            <div key={item.title} className="card card-hover p-0 overflow-hidden flex flex-col">
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
+                <div className="absolute top-4 left-4 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 shadow-md backdrop-blur-md text-primary">
+                  <item.icon className="h-5 w-5" />
+                </div>
               </div>
-              <h2 className="text-xl font-bold">{item.title}</h2>
-              <p className="mt-3 text-muted leading-relaxed text-sm">{item.desc}</p>
+              <div className="p-7 flex flex-col flex-1">
+                <h2 className="text-xl font-bold">{item.title}</h2>
+                <p className="mt-2.5 text-muted leading-relaxed text-sm flex-1">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
