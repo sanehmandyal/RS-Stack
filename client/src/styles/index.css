@@ -44,10 +44,10 @@
   .prose-rs p { @apply my-4; }
   .prose-rs ul { @apply my-4 list-disc space-y-1 pl-6; }
   .prose-rs ol { @apply my-4 list-decimal space-y-1 pl-6; }
-  .prose-rs a { @apply text-primary font-medium underline underline-offset-2 hover:text-primary-600; }
-  .prose-rs blockquote { @apply my-6 border-l-4 border-primary bg-slate-50 py-2 pl-4 italic text-slate-700 rounded-r-lg; }
+  .prose-rs a { @apply text-blue-600 font-medium underline underline-offset-2 hover:text-blue-800; }
+  .prose-rs blockquote { @apply my-6 border-l-4 border-blue-600 bg-slate-50 py-2 pl-4 italic text-slate-700 rounded-r-lg; }
   .prose-rs img { @apply my-6 rounded-xl shadow-md border border-slate-200; }
-  .prose-rs code { @apply rounded bg-slate-100 border border-slate-200 px-1.5 py-0.5 text-sm text-primary-700; }
+  .prose-rs code { @apply rounded bg-slate-100 border border-slate-200 px-1.5 py-0.5 text-sm text-blue-700 font-mono; }
   .prose-rs pre { @apply my-6 overflow-x-auto rounded-xl bg-slate-900 text-slate-100 p-4 text-sm shadow-md; }
 }
 
