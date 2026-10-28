@@ -12,6 +12,23 @@ export const setCsrfToken = (t: string) => {
   csrfToken = t;
 };
 
+let authToken = '';
+export const setAuthToken = (t: string) => {
+  authToken = t;
+  try {
+    if (t) sessionStorage.setItem('rs_admin_token', t);
+    else sessionStorage.removeItem('rs_admin_token');
+  } catch {}
+};
+export const getAuthToken = () => {
+  if (authToken) return authToken;
+  try {
+    return sessionStorage.getItem('rs_admin_token') || '';
+  } catch {
+    return '';
+  }
+};
+
 export class ApiError extends Error {
   constructor(public status: number, message: string, public issues?: { path: string; message: string }[], public code?: string) {
     super(message);
@@ -30,6 +47,8 @@ export async function api<T = any>(path: string, opts: Opts = {}): Promise<T> {
     body = JSON.stringify(opts.body);
   }
   if (method !== 'GET' && csrfToken) headers['X-CSRF-Token'] = csrfToken;
+  const bearer = getAuthToken();
+  if (bearer) headers['Authorization'] = `Bearer ${bearer}`;
 
   let res: Response;
   try {

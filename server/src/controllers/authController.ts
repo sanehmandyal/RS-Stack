@@ -46,7 +46,7 @@ export async function login(req: Request, res: Response) {
     csrfToken: session.csrfToken,
   };
   await audit(req, 'auth.login', { type: 'User', id: result.user.id });
-  res.json({ user: publicUser(result.user), csrfToken: session.csrfToken });
+  res.json({ user: publicUser(result.user), csrfToken: session.csrfToken, token: session.token });
 }
 
 export async function me(req: Request, res: Response) {

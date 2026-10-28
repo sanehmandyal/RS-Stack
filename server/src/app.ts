@@ -19,7 +19,7 @@ import { asyncHandler } from './utils/errors.js';
 function cspDirectives() {
   const script = ["'self'"];
   const connect = ["'self'"];
-  const img = ["'self'", 'data:'];
+  const img = ["'self'", 'data:', 'https://images.unsplash.com'];
   if (env.GA_MEASUREMENT_ID || env.GTM_ID) {
     script.push('https://www.googletagmanager.com');
     connect.push('https://www.google-analytics.com', 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://www.googletagmanager.com');
@@ -53,17 +53,26 @@ export function createApp(): Express {
   const pinoHttpFn: any = (typeof pinoHttp === 'function' ? pinoHttp : (pinoHttp as any).default || pinoHttp);
   const httpLogger = pinoHttpFn({ logger, genReqId: (req: any) => req.requestId, autoLogging: !env.isTest });
   app.use(httpLogger);
-  app.use(helmet({ contentSecurityPolicy: { useDefaults: false, directives: cspDirectives() }, crossOriginResourcePolicy: { policy: 'same-site' } }));
+  app.use(
+    helmet({
+      contentSecurityPolicy: { useDefaults: false, directives: cspDirectives() },
+      crossOriginResourcePolicy: { policy: 'cross-origin' },
+      hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
+      referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+      xContentTypeOptions: true,
+      xFrameOptions: { action: 'deny' },
+    }),
+  );
   app.use(compression());
 
-  // CORS: only approved browser origins, with credentials for the cookie session.
+  // CORS: only approved browser origins, with credentials for the session.
   app.use(
     '/api',
     cors({
       origin: (origin, cb) => cb(null, isAllowedOrigin(origin)),
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-      allowedHeaders: ['Content-Type', 'X-CSRF-Token'],
+      allowedHeaders: ['Content-Type', 'X-CSRF-Token', 'Authorization'],
       maxAge: 600,
     }),
   );

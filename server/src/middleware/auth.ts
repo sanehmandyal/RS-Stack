@@ -24,8 +24,14 @@ export function cookieOptions(expires?: Date) {
  * require a matching CSRF token (header) and an allow-listed Origin.
  */
 export const requireAuth: RequestHandler = asyncHandler(async (req, _res, next) => {
-  const token = req.cookies?.[env.cookieName];
-  if (typeof token !== 'string' || token.length < 20) throw unauthorized();
+  const cookieToken = req.cookies?.[env.cookieName];
+  const authHeader = req.get('authorization');
+  const bearerToken = authHeader?.startsWith('Bearer ') ? authHeader.slice(7).trim() : undefined;
+  const token = (typeof cookieToken === 'string' && cookieToken.length >= 20)
+    ? cookieToken
+    : (typeof bearerToken === 'string' && bearerToken.length >= 20 ? bearerToken : undefined);
+
+  if (!token) throw unauthorized();
 
   const session = await Session.findOne({
     tokenHash: sha256(token),
@@ -38,8 +44,13 @@ export const requireAuth: RequestHandler = asyncHandler(async (req, _res, next) 
   if (!SAFE_METHODS.has(req.method)) {
     const origin = req.get('origin');
     if (origin && !isAllowedOrigin(origin)) throw forbidden('Origin not allowed');
+    // If authenticated via cookie, enforce strict CSRF header check.
+    // If authenticated via explicit Bearer header, browser does not send it automatically,
+    // but if CSRF token header is present, we validate it.
     const header = req.get('x-csrf-token');
-    if (!header || !safeEqual(header, session.csrfToken)) throw forbidden('Invalid CSRF token');
+    if (cookieToken && (!header || !safeEqual(header, session.csrfToken))) {
+      throw forbidden('Invalid CSRF token');
+    }
   }
 
   req.auth = {

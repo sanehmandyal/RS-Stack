@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { AuthProvider, useAuth } from './auth';
 import AdminLayout from './AdminLayout';
@@ -25,6 +25,22 @@ function Guard() {
   return <AdminLayout />;
 }
 
+function RequirePerm({ perm, children }: { perm: string; children: React.ReactElement }) {
+  const { can } = useAuth();
+  if (!can(perm)) {
+    return (
+      <div className="card m-6 p-8 text-center max-w-md mx-auto">
+        <h3 className="text-lg font-bold text-ink">Access Restricted</h3>
+        <p className="mt-2 text-sm text-muted">You do not have administrative permission to view this section.</p>
+        <div className="mt-4">
+          <Link to="/admin/dashboard" className="btn-primary btn-sm">Return to Dashboard</Link>
+        </div>
+      </div>
+    );
+  }
+  return children;
+}
+
 export default function AdminApp() {
   return (
     <AuthProvider>
@@ -36,15 +52,15 @@ export default function AdminApp() {
           <Route path="reset-password" element={<ResetPassword />} />
           <Route element={<Guard />}>
             <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="leads" element={<Leads />} />
-            <Route path="leads/:id" element={<LeadDetail />} />
+            <Route path="dashboard" element={<RequirePerm perm="dashboard:view"><Dashboard /></RequirePerm>} />
+            <Route path="leads" element={<RequirePerm perm="leads:read_all"><Leads /></RequirePerm>} />
+            <Route path="leads/:id" element={<RequirePerm perm="leads:read_all"><LeadDetail /></RequirePerm>} />
             {Object.entries(RESOURCES).map(([path, cfg]) => <Route key={path} path={path} element={<Resource key={path} cfg={cfg} />} />)}
-            <Route path="media" element={<Media />} />
-            <Route path="integrations" element={<Integrations />} />
-            <Route path="settings" element={<SettingsPage />} />
-            <Route path="users" element={<Users />} />
-            <Route path="audit" element={<Audit />} />
+            <Route path="media" element={<RequirePerm perm="media:manage"><Media /></RequirePerm>} />
+            <Route path="integrations" element={<RequirePerm perm="integrations:manage"><Integrations /></RequirePerm>} />
+            <Route path="settings" element={<RequirePerm perm="settings:manage"><SettingsPage /></RequirePerm>} />
+            <Route path="users" element={<RequirePerm perm="users:manage"><Users /></RequirePerm>} />
+            <Route path="audit" element={<RequirePerm perm="audit:view"><Audit /></RequirePerm>} />
             <Route path="account" element={<ChangePassword />} />
             <Route path="*" element={<p className="p-8 text-muted">Page not found.</p>} />
           </Route>

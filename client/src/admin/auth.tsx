@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
-import { api, ApiError, setCsrfToken } from '../services/api';
+import { api, ApiError, setCsrfToken, setAuthToken } from '../services/api';
 
 export interface AdminUser { id: string; email: string; name: string; role: string; mustChangePassword: boolean; permissions: string[] }
 interface AuthCtx {
@@ -23,7 +23,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setCsrfToken(r.csrfToken);
       setUser(r.user);
     } catch (e) {
-      if (e instanceof ApiError && e.status === 401) setUser(null);
+      if (e instanceof ApiError && e.status === 401) {
+        setAuthToken('');
+        setUser(null);
+      }
     } finally {
       setLoading(false);
     }
@@ -31,12 +34,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => { void refresh(); }, [refresh]);
 
   const login = async (email: string, password: string) => {
-    const r = await api<{ user: AdminUser; csrfToken: string }>('/admin/auth/login', { method: 'POST', body: { email, password } });
+    const r = await api<{ user: AdminUser; csrfToken: string; token?: string }>('/admin/auth/login', { method: 'POST', body: { email, password } });
     setCsrfToken(r.csrfToken);
+    if (r.token) setAuthToken(r.token);
     setUser(r.user);
   };
   const logout = async () => {
-    try { await api('/admin/auth/logout', { method: 'POST' }); } finally { setCsrfToken(''); setUser(null); }
+    try { await api('/admin/auth/logout', { method: 'POST' }); } finally { setCsrfToken(''); setAuthToken(''); setUser(null); }
   };
   const can = (...p: string[]) => !!user && p.some((x) => user.permissions.includes(x));
   return <Ctx.Provider value={{ user, loading, login, logout, can, refresh }}>{children}</Ctx.Provider>;
