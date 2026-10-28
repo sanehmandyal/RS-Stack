@@ -19,7 +19,7 @@ export default function Audit() {
         <>
           <DataTable label="Audit log">
             <thead><tr><Th>When</Th><Th>Actor</Th><Th>Action</Th><Th>Target</Th></tr></thead>
-            <tbody>{data.items.map((a: any) => <tr key={a._id}><Td className="whitespace-nowrap">{fmtDateTime(a.createdAt)}</Td><Td>{a.actorEmail ?? '—'}</Td><Td>{a.action}</Td><Td>{a.targetType} {a.targetId}</Td></tr>)}</tbody>
+            <tbody>{data.items.map((a: any) => <tr key={a._id}><Td className="whitespace-nowrap">{fmtDateTime(a.createdAt)}</Td><Td>{a.actorEmail ?? '-'}</Td><Td>{a.action}</Td><Td>{a.targetType} {a.targetId}</Td></tr>)}</tbody>
           </DataTable>
           <Pager page={data.page} pages={data.pages} onPage={setPage} />
         </>

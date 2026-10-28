@@ -43,10 +43,16 @@ export default function App() {
         <Route path="blog" element={<Blog />} />
         <Route path="blog/:slug" element={<BlogPostPage />} />
         <Route path="contact" element={<Contact />} />
+        
+        {/* Dedicated Legal Routes */}
+        <Route path="privacy" element={<Legal kind="privacy" />} />
         <Route path="privacy-policy" element={<Legal kind="privacy" />} />
+        <Route path="terms" element={<Legal kind="terms" />} />
         <Route path="terms-of-service" element={<Legal kind="terms" />} />
+        <Route path="terms-and-conditions" element={<Legal kind="terms" />} />
         <Route path="cookie-policy" element={<Legal kind="cookies" />} />
         <Route path="refund-policy" element={<Legal kind="refund" />} />
+        
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route

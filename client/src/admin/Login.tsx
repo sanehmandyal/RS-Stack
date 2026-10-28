@@ -7,19 +7,9 @@ import { useAuth } from './auth';
 
 function Shell({ title, subtitle, children }: { title: string; subtitle?: string; children: ReactNode }) {
   return (
-    <div className="relative min-h-dvh flex flex-col justify-center items-center px-4 py-12 overflow-hidden bg-bg">
-      {/* Dynamic ambient lighting & reflective background mesh */}
+    <div className="relative min-h-dvh flex flex-col justify-center items-center px-4 py-12 overflow-hidden bg-slate-50">
+      {/* Background grid */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[32rem] w-[32rem] rounded-full bg-gradient-to-tr from-primary/15 via-secondary/15 to-blue-400/10 blur-[130px] animate-bubble-slow" />
-        <div className="absolute bottom-10 -right-20 h-72 w-72 rounded-full bg-secondary/15 blur-[100px] animate-bubble-float [animation-delay:-4s]" />
-        <div className="absolute -bottom-10 -left-20 h-72 w-72 rounded-full bg-primary/15 blur-[100px] animate-bubble-drift [animation-delay:-8s]" />
-        
-        {/* Floating background glass bubbles */}
-        <div className="absolute left-[15%] top-[12%] h-20 w-20 rounded-full glass-bubble animate-bubble-float opacity-75" />
-        <div className="absolute right-[12%] top-[25%] h-14 w-14 rounded-full glass-bubble animate-bubble-slow opacity-65 [animation-delay:-3s]" />
-        <div className="absolute left-[10%] bottom-[20%] h-24 w-24 rounded-full glass-bubble animate-bubble-drift opacity-70 [animation-delay:-6s]" />
-        <div className="absolute right-[18%] bottom-[15%] h-16 w-16 rounded-full glass-bubble animate-bubble-float opacity-60 [animation-delay:-9s]" />
-
         <div className="absolute inset-0 grid-bg opacity-30" />
       </div>
 
@@ -27,24 +17,21 @@ function Shell({ title, subtitle, children }: { title: string; subtitle?: string
       <div className="relative z-10 w-full max-w-md mb-4 flex items-center justify-between">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-slate-700 hover:text-ink px-3.5 py-2 rounded-full border border-slate-200 bg-white/90 hover:bg-white hover:border-slate-300 backdrop-blur-xl shadow-sm transition duration-200 group"
+          className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 bg-white shadow-xs transition duration-150 group"
           title="Return to the RS Stack homepage"
         >
-          <ArrowLeft className="h-3.5 w-3.5 text-primary transition-transform group-hover:-translate-x-1" />
+          <ArrowLeft className="h-3.5 w-3.5 text-blue-600 transition-transform group-hover:-translate-x-1" />
           <span>Back to site</span>
         </Link>
-        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-emerald-400/40 bg-emerald-50 text-emerald-800 text-[11px] font-semibold tracking-wide shadow-xs">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-emerald-300 bg-emerald-50 text-emerald-800 text-[11px] font-semibold tracking-wide shadow-xs">
+          <span className="h-1.5 w-1.5 rounded-sm bg-emerald-500" />
           Secure Admin
         </span>
       </div>
 
-      {/* Reflective Glossy Card */}
+      {/* Corporate Admin Card */}
       <div className="relative z-10 w-full max-w-md">
-        {/* Ambient aura glow behind card */}
-        <div className="absolute -inset-0.5 rounded-[2.2rem] bg-gradient-to-r from-primary/25 via-secondary/20 to-indigo-500/25 blur-xl opacity-75" />
-
-        <div className="relative overflow-hidden rounded-[2rem] border border-slate-200/90 bg-white/95 backdrop-blur-2xl p-7 sm:p-9 shadow-2xl ring-1 ring-slate-100">
+        <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-7 sm:p-9 shadow-sm">
           {/* Top specular highlight reflection line */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent" />
           {/* Subtle glossy glass reflection gradient */}
@@ -76,8 +63,8 @@ function Shell({ title, subtitle, children }: { title: string; subtitle?: string
 
 const Err = ({ msg }: { msg: string }) =>
   msg ? (
-    <div role="alert" className="flex items-center gap-2 rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-700">
-      <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+    <div role="alert" className="flex items-center gap-2 rounded-lg border border-red-300 bg-red-50 p-3 text-sm text-red-700">
+      <span className="h-1.5 w-1.5 rounded-xs bg-red-500" />
       <span>{msg}</span>
     </div>
   ) : null;
@@ -225,7 +212,7 @@ export function ForgotPassword() {
     <Shell title="Reset your password" subtitle="We will send a secure link to your email">
       {done ? (
         <div className="space-y-4 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
             <ShieldCheck className="h-6 w-6" />
           </div>
           <p className="text-sm text-muted leading-relaxed">
@@ -297,7 +284,7 @@ export function ResetPassword() {
     <Shell title="Choose new password" subtitle="Must be at least 12 characters long">
       {done ? (
         <div className="space-y-4 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
             <ShieldCheck className="h-6 w-6" />
           </div>
           <p className="text-sm text-muted">Your password has been successfully updated.</p>

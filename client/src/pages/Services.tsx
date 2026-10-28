@@ -39,8 +39,8 @@ export default function Services() {
           if (!items.length) return null;
           return (
             <div key={cat} className="mb-14">
-              <h2 className="mb-6 text-2xl font-bold flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-secondary" />
+              <h2 className="mb-6 text-2xl font-bold flex items-center gap-3 text-slate-900">
+                <span className="h-2 w-2 rounded-xs bg-blue-600" />
                 {label}
               </h2>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

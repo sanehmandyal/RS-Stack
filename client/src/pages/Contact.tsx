@@ -98,7 +98,7 @@ export default function Contact() {
                 <Clock className="h-5 w-5 shrink-0 text-secondary mt-0.5" />
                 <div>
                   <strong className="block text-white font-medium">Business Hours</strong>
-                  <span className="text-muted block mt-0.5">Monday – Saturday: 9:00 AM – 7:00 PM IST</span>
+                  <span className="text-muted block mt-0.5">Monday to Saturday: 9:00 AM to 7:00 PM IST</span>
                   <span className="text-xs text-muted/70 block mt-0.5">Sunday: By Appointment</span>
                 </div>
               </div>

@@ -14,7 +14,7 @@ export const originalServices = [
     deliverables: ['Custom responsive design across all screens', 'Clean semantic HTML and on-page SEO setup', 'Direct WhatsApp & phone integration', 'Lead capture inquiry form with instant email alerts', 'Full source code ownership upon completion'],
     benefits: ['Fast loading on mobile data', 'Credible online presence you fully own', 'Direct conversion routes for clients'],
     limitations: ['Content and photos are provided by client or coordinated as a separate content plan', 'Domain and hosting are separate third-party costs'],
-    timeline: 'Typically 1–3 weeks depending on number of pages and content readiness.',
+    timeline: 'Typically 1-3 weeks depending on number of pages and content readiness.',
     faqs: [
       ['Will I own my website and code?', 'Yes. You receive 100% ownership of your source code and design upon handover.'],
       ['Is the website mobile-friendly?', 'Yes, every layout is tested on mobile, tablet, and desktop viewports.']
@@ -33,7 +33,7 @@ export const originalServices = [
     deliverables: ['Technical requirements specification', 'React front end and Node/Express REST API', 'MongoDB database modeling', 'Role-based access & authentication', 'Deployment documentation'],
     benefits: ['Software tailored to your exact business workflow', 'No ongoing monthly per-seat licensing fees'],
     limitations: ['Scope and timeline depend on custom requirements agreed during discovery'],
-    timeline: 'Typically 3–8 weeks depending on agreed milestones.',
+    timeline: 'Typically 3-8 weeks depending on agreed milestones.',
     faqs: [
       ['How is custom development priced?', 'We provide a transparent, itemized written proposal and milestone roadmap after the initial discovery discussion.']
     ],
@@ -51,7 +51,7 @@ export const originalServices = [
     deliverables: ['Google Business Profile complete audit and setup', 'Local schema markup implementation (LocalBusiness/ProfessionalService)', 'NAP citation consistency checks', 'Service area page strategy', 'Review response guidance'],
     benefits: ['Easier for nearby customers searching on mobile to find and call you', 'Accurate hours, address, and contact details everywhere'],
     limitations: ['Google search algorithms change regularly; no ethical agency guarantees specific rank positions'],
-    timeline: 'Initial setup in 1–2 weeks, with indexing updates taking 3–6 weeks.',
+    timeline: 'Initial setup in 1-2 weeks, with indexing updates taking 3-6 weeks.',
     faqs: [
       ['Do you guarantee #1 ranking on Google?', 'No. Nobody can honestly guarantee a #1 Google ranking. We apply evidence-based technical and on-page best practices to maximize your visibility.']
     ],
@@ -69,7 +69,7 @@ export const originalServices = [
     deliverables: ['Target audience & keyword research', 'Ad copy drafting and creative banners', 'Conversion tracking and analytics integration', 'Transparent performance reporting'],
     benefits: ['Immediate targeted traffic', 'Full control over daily advertising budget'],
     limitations: ['Ad spend budget is paid directly to Google/Meta by the client'],
-    timeline: 'Campaign setup launched within 3–5 business days.',
+    timeline: 'Campaign setup launched within 3-5 business days.',
     faqs: [
       ['How much ad budget should I start with?', 'We recommend starting with a manageable test budget suited to your local market competition.']
     ],
@@ -87,7 +87,7 @@ export const originalServices = [
     deliverables: ['Core Web Vitals and page speed audit', 'Mobile layout friction analysis', 'Form streamlining and WhatsApp CTA placement', 'Metadata and canonical audit'],
     benefits: ['Better user retention and higher inquiry conversion rates without extra ad spend'],
     limitations: ['Requires access to website code and analytics'],
-    timeline: '1–2 weeks for audit and implementation.',
+    timeline: '1-2 weeks for audit and implementation.',
     faqs: [
       ['What tools do you use for speed testing?', 'We test using Google Lighthouse, PageSpeed Insights, and Web Vitals metrics.']
     ],
@@ -105,7 +105,7 @@ export const originalServices = [
     deliverables: ['Cloud server deployment', 'SSL certificate setup (HTTPS)', 'Automated backup schedules', 'Software dependency updates and security patches'],
     benefits: ['High uptime reliability', 'Protected business and client data'],
     limitations: ['Domain and cloud hosting provider fees are paid directly to providers'],
-    timeline: 'Configured in 1–2 business days.',
+    timeline: 'Configured in 1-2 business days.',
     faqs: [
       ['Do you provide ongoing support?', 'Yes, we offer ongoing maintenance and support plans to keep your platform updated.']
     ],

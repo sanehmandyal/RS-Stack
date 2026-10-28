@@ -13,9 +13,9 @@ export const BUSINESS_TYPES = [
 
 export const BUDGETS = [
   ['under_25k', 'Under ₹25,000'],
-  ['25k_50k', '₹25,000 – ₹50,000'],
-  ['50k_1l', '₹50,000 – ₹1,00,000'],
-  ['1l_3l', '₹1,00,000 – ₹3,00,000'],
+  ['25k_50k', '₹25,000 to ₹50,000'],
+  ['50k_1l', '₹50,000 to ₹1,00,000'],
+  ['1l_3l', '₹1,00,000 to ₹3,00,000'],
   ['above_3l', 'Above ₹3,00,000'],
   ['not_sure', 'Not sure yet'],
 ] as const;

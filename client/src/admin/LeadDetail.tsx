@@ -39,7 +39,7 @@ export default function LeadDetail() {
           <h2 id="inq" className="mb-4 text-lg">Original inquiry</h2>
           <dl className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
             {[['Email', lead.email], ['Phone', lead.phone], ['Business', lead.businessName], ['Business type', titleCase(lead.businessType)], ['Budget', lead.budgetRange], ['Preferred contact', lead.preferredContact], ['Services', lead.services?.join(', ')], ['Source', lead.source], ['Received', fmtDateTime(lead.createdAt)]].map(([k, v]) => (
-              <div key={k as string}><dt className="text-xs uppercase tracking-wide text-muted">{k}</dt><dd className="mt-0.5 break-words">{(v as string) || '—'}</dd></div>
+              <div key={k as string}><dt className="text-xs uppercase tracking-wide text-muted">{k}</dt><dd className="mt-0.5 break-words">{(v as string) || '-'}</dd></div>
             ))}
           </dl>
           {/* React escapes this text; no HTML is ever rendered from a lead. */}

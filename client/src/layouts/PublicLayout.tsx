@@ -1,5 +1,5 @@
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Lock, Menu, MessageCircle, Phone, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Lock, MapPin, Menu, MessageCircle, Phone, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { CookieConsent } from '../components/Consent';
@@ -21,7 +21,9 @@ function Header() {
     window.addEventListener('scroll', on, { passive: true });
     return () => window.removeEventListener('scroll', on);
   }, []);
+
   useEffect(() => setOpen(false), [pathname]);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
@@ -33,24 +35,28 @@ function Header() {
     };
   }, [open]);
 
-  const link = ({ isActive }: { isActive: boolean }) =>
-    `rounded-lg px-3 py-2 text-sm font-medium transition ${isActive ? 'text-ink' : 'text-muted hover:text-ink'}`;
-
   return (
-    <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? 'py-2' : 'py-3 sm:py-4'}`}>
-      <div className={`mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full px-4 py-2 sm:px-6 transition-all duration-300 ${scrolled ? 'glass-strong mx-3 sm:mx-auto border border-white/80 shadow-[0_10px_35px_-5px_rgba(15,23,42,0.08),inset_0_1px_1px_rgba(255,255,255,0.95)]' : 'bg-white/50 backdrop-blur-md border border-white/60 shadow-xs'}`}>
-        <Link to="/" aria-label="RS Stack home" className="hover:scale-105 transition-transform"><Logo /></Link>
-        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex bg-slate-100/70 p-1 rounded-full border border-white/80 backdrop-blur-md">
+    <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-200 ${scrolled ? 'py-2' : 'py-3'}`}>
+      <div className={`mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 py-2.5 rounded-xl transition-all duration-200 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm mx-3 sm:mx-auto'
+          : 'bg-white/80 backdrop-blur-sm border border-slate-200/60'
+      }`}>
+        <Link to="/" aria-label="RS Stack home" className="hover:opacity-90 transition">
+          <Logo />
+        </Link>
+
+        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex bg-slate-100 p-1 rounded-lg border border-slate-200/80">
           {NAV.map(([to, label]) => (
             <NavLink
               key={to}
               to={to}
               end={to === '/'}
               className={({ isActive }) =>
-                `rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-200 ${
+                `rounded-md px-3.5 py-1.5 text-xs font-semibold transition duration-150 ${
                   isActive
-                    ? 'bg-white text-primary shadow-sm border border-slate-200/80'
-                    : 'text-slate-600 hover:text-ink hover:bg-white/60'
+                    ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                    : 'text-slate-600 hover:text-slate-950 hover:bg-white/50'
                 }`
               }
             >
@@ -58,44 +64,80 @@ function Header() {
             </NavLink>
           ))}
         </nav>
+
         <div className="flex items-center gap-2">
           {wa && (
             <a
               href={wa}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-emerald-50/90 px-3.5 py-1.5 text-xs font-semibold text-emerald-700 hover:bg-emerald-100 transition shadow-xs backdrop-blur-md hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-800 hover:bg-emerald-100 transition shadow-xs"
               aria-label="Chat on WhatsApp"
             >
-              <MessageCircle className="h-4 w-4 text-emerald-600" />
+              <MessageCircle className="h-4 w-4 text-emerald-700" />
               <span className="hidden sm:inline">WhatsApp</span>
             </a>
           )}
-          <Link to="/contact" className="btn-primary btn-sm hidden md:inline-flex rounded-full shadow-sm hover:scale-105 active:scale-95 transition-transform">Get Free Consultation</Link>
-          <button className="btn-ghost btn-sm lg:hidden rounded-full" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((o) => !o)}>
+          <Link
+            to="/contact"
+            className="btn btn-sm btn-primary hidden md:inline-flex"
+          >
+            Schedule Consultation
+          </Link>
+          <button
+            className="btn btn-sm btn-ghost lg:hidden"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((o) => !o)}
+          >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
+
       <AnimatePresence>
         {open && (
-          <motion.div id="mobile-menu" role="dialog" aria-label="Menu" className="glass-strong fixed inset-x-3 top-[72px] max-h-[calc(100dvh-90px)] overflow-y-auto rounded-3xl p-5 lg:hidden border border-white/80 shadow-2xl"
-            initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.18 }}>
+          <motion.div
+            id="mobile-menu"
+            role="dialog"
+            aria-label="Menu"
+            className="fixed inset-x-3 top-[68px] max-h-[calc(100dvh-80px)] overflow-y-auto rounded-xl p-5 lg:hidden bg-white border border-slate-200 shadow-xl"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.15 }}
+          >
             <nav aria-label="Mobile" className="flex flex-col gap-1">
               {NAV.map(([to, label]) => (
-                <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `min-h-[48px] rounded-2xl px-4 py-3 font-semibold transition ${isActive ? 'bg-primary/10 text-primary border border-primary/20' : 'text-slate-700 hover:bg-slate-50'}`}>{label}</NavLink>
+                <NavLink
+                  key={to}
+                  to={to}
+                  end={to === '/'}
+                  className={({ isActive }) =>
+                    `min-h-[44px] rounded-lg px-4 py-2.5 text-sm font-semibold transition ${
+                      isActive
+                        ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                        : 'text-slate-700 hover:bg-slate-50'
+                    }`
+                  }
+                >
+                  {label}
+                </NavLink>
               ))}
               {wa && (
                 <a
                   href={wa}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 flex items-center justify-center gap-2 rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-md hover:bg-emerald-700 transition"
+                  className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-emerald-700 transition"
                 >
                   <MessageCircle className="h-4 w-4" /> Chat on WhatsApp (+91 98057 20962)
                 </a>
               )}
-              <Link to="/contact" className="btn-primary mt-2 rounded-2xl">Get Free Consultation</Link>
+              <Link to="/contact" className="btn btn-primary mt-2">
+                Schedule Consultation
+              </Link>
             </nav>
           </motion.div>
         )}
@@ -106,71 +148,97 @@ function Header() {
 
 function Footer() {
   const s = useSettings();
-  const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to get a quote for a website / SEO project.');
+  const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to get a quote for a website or SEO project.');
   return (
-    <footer className="border-t border-slate-200 bg-slate-50/90 px-4 py-14 sm:px-6">
+    <footer className="border-t border-slate-200 bg-white px-4 py-12 sm:px-6">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo />
-          <p className="mt-4 max-w-sm text-sm text-muted leading-relaxed">{s.tagline}</p>
-          <ul className="mt-4 space-y-2 text-sm text-slate-600">
-            {s.contactEmail && <li><a className="hover:text-primary transition" href={`mailto:${s.contactEmail}`}>{s.contactEmail}</a></li>}
-            {s.phone && (
+          <p className="mt-3.5 max-w-sm text-sm text-slate-600 leading-relaxed">
+            {s.tagline || 'Websites, Local SEO and Custom Web Applications for Growing Businesses.'}
+          </p>
+          <ul className="mt-4 space-y-2.5 text-sm text-slate-700">
+            {s.contactEmail && (
               <li>
-                <a className="hover:text-primary transition inline-flex items-center gap-1.5 font-medium" href={`tel:${s.phone.replace(/[^\d+]/g, '')}`}>
-                  <Phone className="h-3.5 w-3.5 text-primary" /> {s.phone}
+                <a className="hover:text-blue-700 transition font-medium" href={`mailto:${s.contactEmail}`}>
+                  {s.contactEmail}
                 </a>
               </li>
             )}
-            {s.address && <li className="text-slate-600 leading-relaxed font-medium">📍 {s.address}</li>}
+            {s.phone && (
+              <li>
+                <a className="hover:text-blue-700 transition inline-flex items-center gap-1.5 font-medium" href={`tel:${s.phone.replace(/[^\d+]/g, '')}`}>
+                  <Phone className="h-3.5 w-3.5 text-blue-600" /> {s.phone}
+                </a>
+              </li>
+            )}
+            {s.address && (
+              <li className="text-slate-700 leading-relaxed font-medium flex items-start gap-2">
+                <MapPin className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
+                <span>{s.address}</span>
+              </li>
+            )}
             {wa && (
-              <li className="pt-2">
+              <li className="pt-1">
                 <a
-                  className="inline-flex items-center gap-2 font-semibold text-emerald-600 hover:text-emerald-700 transition"
+                  className="inline-flex items-center gap-2 font-semibold text-emerald-700 hover:text-emerald-800 transition"
                   href={wa}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle className="h-4 w-4" /> Direct WhatsApp: +91 98057 20962
+                  <MessageCircle className="h-4 w-4" /> WhatsApp: +91 98057 20962
                 </a>
               </li>
             )}
           </ul>
           <ul className="mt-4 flex flex-wrap gap-3 text-sm">
             {Object.entries(s.social).filter(([, v]) => v).map(([k, v]) => (
-              <li key={k}><a className="capitalize text-primary hover:underline font-medium" href={v} target="_blank" rel="noopener noreferrer">{k}</a></li>
+              <li key={k}>
+                <a className="capitalize text-blue-600 hover:text-blue-800 hover:underline font-medium" href={v} target="_blank" rel="noopener noreferrer">
+                  {k}
+                </a>
+              </li>
             ))}
           </ul>
         </div>
+
         <nav aria-label="Company">
-          <h2 className="mb-3 text-sm font-bold text-ink">Services & Solutions</h2>
+          <h2 className="mb-3 text-sm font-bold text-slate-900">Services & Solutions</h2>
           <ul className="space-y-2 text-sm text-slate-600">
-            {NAV.map(([to, label]) => <li key={to}><Link className="hover:text-primary transition" to={to}>{label}</Link></li>)}
+            {NAV.map(([to, label]) => (
+              <li key={to}>
+                <Link className="hover:text-blue-700 transition" to={to}>
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
+
         <nav aria-label="Legal">
-          <h2 className="mb-3 text-sm font-bold text-ink">Legal & Policies</h2>
+          <h2 className="mb-3 text-sm font-bold text-slate-900">Legal & Policies</h2>
           <ul className="space-y-2 text-sm text-slate-600">
-            <li><Link className="hover:text-primary transition" to="/privacy-policy">Privacy Policy</Link></li>
-            <li><Link className="hover:text-primary transition" to="/terms-of-service">Terms of Service</Link></li>
-            <li><Link className="hover:text-primary transition" to="/cookie-policy">Cookie Policy</Link></li>
-            <li><Link className="hover:text-primary transition" to="/refund-policy">Refund & Cancellation</Link></li>
-            <li>
-              <Link className="hover:text-primary inline-flex items-center gap-1.5 text-primary font-semibold transition" to="/admin/login">
+            <li><Link className="hover:text-blue-700 transition" to="/privacy">Privacy Policy</Link></li>
+            <li><Link className="hover:text-blue-700 transition" to="/terms">Terms & Conditions</Link></li>
+            <li><Link className="hover:text-blue-700 transition" to="/cookie-policy">Cookie Policy</Link></li>
+            <li><Link className="hover:text-blue-700 transition" to="/refund-policy">Refund & Cancellation</Link></li>
+            <li className="pt-2">
+              <Link className="hover:text-blue-800 inline-flex items-center gap-1.5 text-blue-700 font-semibold transition" to="/admin/login">
                 <Lock className="h-3 w-3" /> Admin Portal
               </Link>
             </li>
           </ul>
         </nav>
       </div>
-      <div className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+
+      <div className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         <p>© {new Date().getFullYear()} {s.businessName}. All rights reserved. Phase 5, Mohali, SAS Nagar, Punjab 160059.</p>
         <div className="flex items-center gap-4">
-          <Link to="/admin/login" className="hover:text-primary text-slate-600 transition inline-flex items-center gap-1.5 font-medium">
-            <Lock className="h-3 w-3 text-primary" /> Admin Login
+          <Link to="/admin/login" className="hover:text-blue-700 text-slate-600 transition inline-flex items-center gap-1.5 font-medium">
+            <Lock className="h-3 w-3 text-blue-600" /> Admin Login
           </Link>
-          <span>•</span>
-          <p>Engineered for High-Performance Local & Global Digital Growth.</p>
+          <span>|</span>
+          <p>Phase 5, Mohali, Punjab, India</p>
         </div>
       </div>
     </footer>
@@ -178,28 +246,12 @@ function Footer() {
 }
 
 function Backdrop() {
-  const reduce = useReducedMotion();
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-bg">
-      {/* Ambient floating colorful glow bubbles */}
-      <div className={`absolute -left-32 -top-20 h-[34rem] w-[34rem] rounded-full bg-gradient-to-tr from-blue-400/20 via-sky-300/15 to-indigo-300/15 blur-[120px] ${reduce ? '' : 'animate-bubble-slow'}`} />
-      <div className={`absolute -right-24 top-1/4 h-[30rem] w-[30rem] rounded-full bg-gradient-to-br from-sky-400/20 via-teal-300/15 to-blue-500/15 blur-[120px] ${reduce ? '' : 'animate-bubble-float [animation-delay:-4s]'}`} />
-      <div className={`absolute left-1/3 top-2/3 h-[26rem] w-[26rem] rounded-full bg-gradient-to-tl from-indigo-400/15 via-blue-300/15 to-cyan-300/10 blur-[110px] ${reduce ? '' : 'animate-bubble-drift [animation-delay:-8s]'}`} />
-      <div className={`absolute -bottom-20 right-1/4 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-blue-500/15 to-emerald-300/10 blur-[120px] ${reduce ? '' : 'animate-bubble-slow [animation-delay:-12s]'}`} />
-
-      {/* Floating Translucent Liquid Glass Bubbles */}
-      {!reduce && (
-        <>
-          <div className="absolute left-[12%] top-[18%] h-24 w-24 rounded-full glass-bubble animate-bubble-float opacity-75" />
-          <div className="absolute right-[14%] top-[12%] h-16 w-16 rounded-full glass-bubble animate-bubble-slow opacity-65 [animation-delay:-3s]" />
-          <div className="absolute left-[7%] top-[55%] h-20 w-20 rounded-full glass-bubble animate-bubble-drift opacity-70 [animation-delay:-6s]" />
-          <div className="absolute right-[10%] top-[65%] h-28 w-28 rounded-full glass-bubble animate-bubble-float opacity-55 [animation-delay:-9s]" />
-          <div className="absolute left-[28%] top-[84%] h-14 w-14 rounded-full glass-bubble animate-bubble-slow opacity-65 [animation-delay:-12s]" />
-        </>
-      )}
-
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 grid-bg opacity-25" />
+      {/* Subtle clean grid pattern */}
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      {/* Clean high-clarity top highlight */}
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-50/50 to-transparent" />
     </div>
   );
 }
@@ -207,32 +259,30 @@ function Backdrop() {
 export default function PublicLayout() {
   const { pathname } = useLocation();
   const s = useSettings();
-  const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I found your website and want to enquire about website / SEO services.');
+  const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to enquire about website or SEO services.');
   useEffect(() => { window.scrollTo({ top: 0 }); }, [pathname]);
 
   return (
-    <div className="relative min-h-dvh">
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2">Skip to content</a>
+    <div className="relative min-h-dvh flex flex-col justify-between">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2">
+        Skip to content
+      </a>
       <Backdrop />
       <Header />
-      <main id="main"><Outlet /></main>
+      <main id="main" className="flex-1"><Outlet /></main>
       <Footer />
 
-      {/* Floating Sticky WhatsApp Button with Pulse Animation */}
+      {/* Floating Sticky WhatsApp Button */}
       {wa && (
         <a
           href={wa}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp (+91 98057 20962)"
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-3 text-white font-semibold shadow-2xl hover:bg-[#20ba5a] hover:scale-105 active:scale-95 transition duration-200 group"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-lg bg-emerald-600 px-3.5 py-2.5 text-white font-semibold shadow-md hover:bg-emerald-700 transition active:scale-95 duration-150"
         >
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
-          </span>
-          <MessageCircle className="h-5 w-5 fill-current" />
-          <span className="hidden sm:inline text-xs font-bold tracking-wide uppercase">WhatsApp Us</span>
+          <MessageCircle className="h-4 w-4" />
+          <span className="text-xs font-bold tracking-wide uppercase">WhatsApp</span>
         </a>
       )}
 

@@ -172,24 +172,24 @@ export default function LocalLanding({ slug = 'mohali' }: { slug?: string }) {
 
       <Section className="pt-4">
         {/* Location Visual Hero Banner */}
-        <div className="relative mb-12 overflow-hidden rounded-3xl border border-white/80 shadow-glass">
+        <div className="relative mb-12 overflow-hidden rounded-xl border border-slate-200 shadow-sm">
           <div className="relative aspect-[21/9] w-full min-h-[260px] sm:min-h-[340px] bg-slate-100">
             <img
               src={data.image}
               alt={`${data.city} digital growth and web engineering`}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
-              <div className="glass px-4 py-2 rounded-2xl border border-white/90">
-                <p className="text-sm sm:text-base font-bold text-ink">
-                  📍 Verified Local Growth Partner • {data.city}, {data.region}
+              <div className="bg-white/95 px-4 py-2.5 rounded-lg border border-slate-200 shadow-sm max-w-xl">
+                <p className="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-1.5">
+                  <MapPin className="h-4 w-4 text-blue-600 shrink-0" /> Verified Local Growth Partner - {data.city}, {data.region}
                 </p>
-                <p className="text-xs text-muted">
-                  Engineering bespoke websites & dominating Google Local Search across {data.areas.slice(0, 3).join(', ')}.
+                <p className="text-xs text-slate-600 mt-0.5">
+                  Engineering bespoke websites and optimizing Google Local Search across {data.areas.slice(0, 3).join(', ')}.
                 </p>
               </div>
-              <Link to="/contact" className="btn-primary shadow-glow">
+              <Link to="/contact" className="btn btn-primary">
                 Get Local Quote
               </Link>
             </div>
@@ -302,8 +302,8 @@ export default function LocalLanding({ slug = 'mohali' }: { slug?: string }) {
 
         {/* Explore Other Locations Navigation */}
         <div className="mb-14">
-          <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-secondary" />
+          <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-slate-900">
+            <span className="h-2 w-2 rounded-xs bg-blue-600" />
             Explore Other Service Regions
           </h3>
           <div className="flex flex-wrap gap-2.5">
