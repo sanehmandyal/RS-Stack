@@ -3,7 +3,10 @@
  * localStorage/sessionStorage. The CSRF token is kept in memory only and sent on state-changing requests.
  */
 const envUrl = import.meta.env.VITE_API_URL?.replace(/\/+$/, '');
-const BASE = envUrl
+// When hosted on Vercel or local dev, /api is reverse-proxied so requests are same-origin.
+// This prevents cross-site cookie rejections and CORS mismatches.
+const isDirectRender = envUrl?.includes('rs-stack-api.onrender.com');
+const BASE = (envUrl && !isDirectRender)
     ? (envUrl.endsWith('/api') ? envUrl : `${envUrl}/api`)
     : '/api';
 let csrfToken = '';

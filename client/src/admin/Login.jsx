@@ -77,11 +77,15 @@ export function Login() {
         }
         catch (err) {
             const a = err;
-            setError(a.status === 429
-                ? 'Too many login attempts. Please wait a moment and try again.'
-                : a.status === 401
-                    ? 'Invalid email or password.'
-                    : 'Could not sign in. Please verify your connection.');
+            if (a.status === 429) {
+                setError('Too many login attempts. Please wait a moment and try again.');
+            } else if (a.status === 401) {
+                setError('Invalid email or password.');
+            } else if (a.status === 0) {
+                setError('Could not connect to the server. If the backend is waking up, please wait a few seconds and try again.');
+            } else {
+                setError(a.message || 'Could not sign in. Please verify your connection.');
+            }
         }
         finally {
             setBusy(false);

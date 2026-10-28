@@ -72,7 +72,11 @@ export function isAllowedOrigin(origin) {
         return true;
     if (/^https:\/\/([a-z0-9-]+\.)*vercel\.app$/i.test(origin))
         return true;
+    if (/^https:\/\/([a-z0-9-]+\.)*onrender\.com$/i.test(origin))
+        return true;
     if (/^http:\/\/localhost(:\d+)?$/i.test(origin))
+        return true;
+    if (/^http:\/\/127\.0\.0\.1(:\d+)?$/i.test(origin))
         return true;
     return false;
 }
