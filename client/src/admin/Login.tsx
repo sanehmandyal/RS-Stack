@@ -10,10 +10,17 @@ function Shell({ title, subtitle, children }: { title: string; subtitle?: string
     <div className="relative min-h-dvh flex flex-col justify-center items-center px-4 py-12 overflow-hidden bg-bg">
       {/* Dynamic ambient lighting & reflective background mesh */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[32rem] w-[32rem] rounded-full bg-gradient-to-tr from-primary/15 via-secondary/15 to-blue-400/10 blur-[130px]" />
-        <div className="absolute bottom-10 -right-20 h-72 w-72 rounded-full bg-secondary/10 blur-[100px]" />
-        <div className="absolute -bottom-10 -left-20 h-72 w-72 rounded-full bg-primary/10 blur-[100px]" />
-        <div className="absolute inset-0 grid-bg opacity-40" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[32rem] w-[32rem] rounded-full bg-gradient-to-tr from-primary/15 via-secondary/15 to-blue-400/10 blur-[130px] animate-bubble-slow" />
+        <div className="absolute bottom-10 -right-20 h-72 w-72 rounded-full bg-secondary/15 blur-[100px] animate-bubble-float [animation-delay:-4s]" />
+        <div className="absolute -bottom-10 -left-20 h-72 w-72 rounded-full bg-primary/15 blur-[100px] animate-bubble-drift [animation-delay:-8s]" />
+        
+        {/* Floating background glass bubbles */}
+        <div className="absolute left-[15%] top-[12%] h-20 w-20 rounded-full glass-bubble animate-bubble-float opacity-75" />
+        <div className="absolute right-[12%] top-[25%] h-14 w-14 rounded-full glass-bubble animate-bubble-slow opacity-65 [animation-delay:-3s]" />
+        <div className="absolute left-[10%] bottom-[20%] h-24 w-24 rounded-full glass-bubble animate-bubble-drift opacity-70 [animation-delay:-6s]" />
+        <div className="absolute right-[18%] bottom-[15%] h-16 w-16 rounded-full glass-bubble animate-bubble-float opacity-60 [animation-delay:-9s]" />
+
+        <div className="absolute inset-0 grid-bg opacity-30" />
       </div>
 
       {/* Top Header Row with Back to Website Button */}

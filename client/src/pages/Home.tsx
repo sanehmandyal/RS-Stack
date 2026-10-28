@@ -46,8 +46,8 @@ export default function Home() {
         <div className="grid-bg pointer-events-none absolute inset-0 opacity-70" aria-hidden />
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
           <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-3.5 py-1.5 text-xs font-semibold text-secondary">
-              <Sparkles className="h-3.5 w-3.5" /> High-Performance Digital Agency
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/80 px-4 py-1.5 text-xs font-semibold text-primary shadow-xs backdrop-blur-md">
+              <Sparkles className="h-3.5 w-3.5 text-primary" /> High-Performance Digital Agency
             </div>
             <h1 className="text-4xl leading-[1.08] sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
               {home.heroHeadline ?? (
@@ -60,11 +60,11 @@ export default function Home() {
               {home.heroSubheadline ??
                 'We engineer conversion-optimized websites, dominate local Google search visibility, and scale digital campaigns that convert cold traffic into loyal clients.'}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact" className="btn-primary shadow-glow hover:scale-[1.02] transition">
+            <div className="mt-8 flex flex-col gap-3.5 sm:flex-row">
+              <Link to="/contact" className="btn-primary shadow-glow hover:scale-[1.02] transition rounded-full px-7 py-3 font-semibold">
                 {home.primaryCta ?? 'Get a Free Consultation'} <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
-              <Link to="/services" className="btn-ghost hover:scale-[1.02] transition">
+              <Link to="/services" className="btn-ghost hover:scale-[1.02] transition rounded-full px-7 py-3 font-semibold">
                 {home.secondaryCta ?? 'Explore Our Services'}
               </Link>
             </div>

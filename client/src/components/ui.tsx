@@ -32,9 +32,9 @@ export function Section({ children, className = '', id }: { children: ReactNode;
 export function SectionHead({ eyebrow, title, text, center = true }: { eyebrow?: string; title: string; text?: string; center?: boolean }) {
   return (
     <Reveal className={`mb-10 max-w-2xl sm:mb-14 ${center ? 'mx-auto text-center' : ''}`}>
-      {eyebrow && <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">{eyebrow}</p>}
-      <h2 className="text-3xl sm:text-4xl">{title}</h2>
-      {text && <p className="mt-4 text-muted">{text}</p>}
+      {eyebrow && <p className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-blue-200/80 bg-blue-50/80 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-primary shadow-xs backdrop-blur-md">{eyebrow}</p>}
+      <h2 className="text-3xl sm:text-4xl font-extrabold">{title}</h2>
+      {text && <p className="mt-4 text-muted leading-relaxed">{text}</p>}
     </Reveal>
   );
 }
@@ -42,11 +42,11 @@ export function SectionHead({ eyebrow, title, text, center = true }: { eyebrow?:
 export function PageHero({ title, text, eyebrow, children }: { title: string; text?: string; eyebrow?: string; children?: ReactNode }) {
   return (
     <header className="relative overflow-hidden px-4 pb-12 pt-32 sm:px-6 sm:pt-40">
-      <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" aria-hidden />
+      <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden />
       <div className="relative mx-auto max-w-6xl">
-        {eyebrow && <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">{eyebrow}</p>}
-        <h1 className="max-w-3xl text-4xl sm:text-5xl">{title}</h1>
-        {text && <p className="mt-5 max-w-2xl text-lg text-muted">{text}</p>}
+        {eyebrow && <p className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-blue-200/80 bg-blue-50/80 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-primary shadow-xs backdrop-blur-md">{eyebrow}</p>}
+        <h1 className="max-w-3xl text-4xl sm:text-5xl font-extrabold">{title}</h1>
+        {text && <p className="mt-5 max-w-2xl text-lg text-muted leading-relaxed">{text}</p>}
         {children}
       </div>
     </header>
@@ -108,12 +108,12 @@ export function FaqList({ items }: { items: { q?: string; a?: string; question?:
   return (
     <div className="space-y-3">
       {items.map((f, i) => (
-        <details key={i} className="card group p-0">
-          <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold">
+        <details key={i} className="card group p-0 hover:border-blue-300/80 transition-all duration-300">
+          <summary className="flex min-h-[52px] cursor-pointer list-none items-center justify-between gap-4 px-6 py-4.5 font-semibold text-ink">
             {f.q ?? f.question}
-            <span className="text-secondary transition group-open:rotate-45" aria-hidden>+</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-50/80 text-primary border border-blue-200/80 transition-transform duration-300 group-open:rotate-45 font-bold shadow-xs" aria-hidden>+</span>
           </summary>
-          <p className="px-5 pb-5 text-muted">{f.a ?? f.answer}</p>
+          <p className="px-6 pb-6 text-muted leading-relaxed">{f.a ?? f.answer}</p>
         </details>
       ))}
     </div>

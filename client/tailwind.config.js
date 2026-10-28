@@ -24,13 +24,41 @@ export default {
       boxShadow: {
         glow: '0 0 0 1px rgba(29,78,216,.2), 0 8px 30px -4px rgba(29,78,216,.25)',
         card: '0 1px 3px 0 rgba(0,0,0,.04), 0 10px 25px -5px rgba(15,23,42,.06)',
+        glass: '0 8px 32px 0 rgba(31,38,135,0.07), inset 0 1px 1px 0 rgba(255,255,255,0.85)',
+        'glass-hover': '0 20px 40px -15px rgba(29,78,216,0.12), inset 0 1px 2px 0 rgba(255,255,255,1)',
+        bubble: '0 10px 30px -5px rgba(37,99,235,0.2), inset 0 2px 4px 0 rgba(255,255,255,0.8), inset 0 -2px 4px 0 rgba(0,0,0,0.05)',
       },
       keyframes: {
         float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+        'bubble-float': {
+          '0%,100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
+          '33%': { transform: 'translate3d(15px, -24px, 0) scale(1.04) rotate(2deg)' },
+          '66%': { transform: 'translate3d(-18px, -12px, 0) scale(0.97) rotate(-2deg)' },
+        },
+        'bubble-float-slow': {
+          '0%,100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
+          '50%': { transform: 'translate3d(-25px, -35px, 0) scale(1.08)' },
+        },
+        'bubble-drift': {
+          '0%,100%': { transform: 'translate3d(0,0,0) scale(1)' },
+          '50%': { transform: 'translate3d(30px,-25px,0) scale(1.06)' },
+        },
         drift: { '0%,100%': { transform: 'translate3d(0,0,0) scale(1)' }, '50%': { transform: 'translate3d(24px,-18px,0) scale(1.08)' } },
         shimmer: { '100%': { transform: 'translateX(100%)' } },
+        pulseGlow: {
+          '0%,100%': { opacity: '0.4', transform: 'scale(1)' },
+          '50%': { opacity: '0.7', transform: 'scale(1.06)' },
+        },
       },
-      animation: { float: 'float 7s ease-in-out infinite', drift: 'drift 16s ease-in-out infinite', shimmer: 'shimmer 1.6s infinite' },
+      animation: {
+        float: 'float 7s ease-in-out infinite',
+        'bubble-float': 'bubble-float 9s ease-in-out infinite',
+        'bubble-slow': 'bubble-float-slow 15s ease-in-out infinite',
+        'bubble-drift': 'bubble-drift 18s ease-in-out infinite',
+        drift: 'drift 16s ease-in-out infinite',
+        shimmer: 'shimmer 1.6s infinite',
+        'pulse-glow': 'pulseGlow 8s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

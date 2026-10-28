@@ -18,20 +18,78 @@
 }
 
 @layer components {
-  .glass { @apply border border-slate-200/90 bg-white/90 shadow-card backdrop-blur-xl; }
-  .glass-strong { @apply border border-slate-200 bg-white shadow-card backdrop-blur-2xl; }
-  .card { @apply glass rounded-2xl p-6 transition duration-300; }
-  .card-hover { @apply hover:-translate-y-1 hover:border-primary/40 hover:bg-white hover:shadow-lg; }
-  .text-gradient { background: linear-gradient(135deg, #1D4ED8 0%, #0284C7 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60; }
-  .btn-primary { @apply btn bg-primary text-white shadow-glow hover:bg-primary-600 hover:shadow-lg; }
-  .btn-ghost { @apply btn border border-slate-200 bg-white text-ink hover:border-slate-300 hover:bg-slate-50 shadow-sm; }
-  .btn-danger { @apply btn border border-red-300 bg-red-50 text-red-700 hover:bg-red-100; }
-  .btn-sm { @apply min-h-[36px] px-3 py-1.5 text-xs; }
-  .input { @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm text-ink placeholder:text-slate-400 shadow-sm transition focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white; }
-  .label { @apply mb-1.5 block text-sm font-semibold text-ink; }
-  .field-error { @apply mt-1.5 text-xs text-red-600; }
-  .chip { @apply inline-flex items-center rounded-full border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700; }
+  .glass {
+    @apply border border-white/70 bg-white/70 shadow-glass backdrop-blur-2xl transition duration-300;
+  }
+  .glass-strong {
+    @apply border border-white/85 bg-white/85 shadow-glass backdrop-blur-3xl transition duration-300;
+  }
+  .glass-bubble {
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.4) 65%, rgba(186, 230, 253, 0.3) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.15), inset 0 2px 4px 0 rgba(255, 255, 255, 0.95), inset 0 -2px 4px 0 rgba(59, 130, 246, 0.1);
+  }
+  .card {
+    @apply glass rounded-3xl p-6 transition duration-300 relative overflow-hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+    pointer-events: none;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:scale-[1.01] hover:border-blue-300/80 hover:bg-white/90 hover:shadow-glass-hover;
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #1D4ED8 0%, #0284C7 50%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-semibold transition duration-200 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-60 relative overflow-hidden;
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    pointer-events: none;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-blue-600 via-primary to-sky-600 text-white shadow-glow hover:shadow-[0_10px_30px_rgba(29,78,216,0.35)] hover:scale-[1.02];
+  }
+  .btn-ghost {
+    @apply btn border border-white/80 bg-white/70 text-ink shadow-sm backdrop-blur-xl hover:border-blue-200 hover:bg-white hover:shadow-md;
+  }
+  .btn-danger {
+    @apply btn border border-red-200 bg-red-50 text-red-700 hover:bg-red-100;
+  }
+  .btn-sm {
+    @apply min-h-[36px] px-3.5 py-1.5 text-xs rounded-xl;
+  }
+  .input {
+    @apply w-full rounded-2xl border border-slate-300/80 bg-white/80 px-4 py-2.5 text-sm text-ink placeholder:text-slate-400 shadow-sm backdrop-blur-md transition focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+  .field-error {
+    @apply mt-1.5 text-xs text-red-600;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-blue-200/70 bg-blue-50/70 px-3 py-0.5 text-xs font-semibold text-primary backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)];
+  }
   .grid-bg {
     background-image: linear-gradient(rgba(15,23,42,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.035) 1px, transparent 1px);
     background-size: 40px 40px;
