@@ -49,6 +49,26 @@ export default {
           '0%,100%': { opacity: '0.4', transform: 'scale(1)' },
           '50%': { opacity: '0.7', transform: 'scale(1.06)' },
         },
+        'spin-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'spin-reverse': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(-360deg)' },
+        },
+        'marching-ants': {
+          '0%': { strokeDashoffset: '0' },
+          '100%': { strokeDashoffset: '24' },
+        },
+        'marching-ants-reverse': {
+          '0%': { strokeDashoffset: '24' },
+          '100%': { strokeDashoffset: '0' },
+        },
+        'radar-sweep': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
       animation: {
         float: 'float 7s ease-in-out infinite',
@@ -58,6 +78,13 @@ export default {
         drift: 'drift 16s ease-in-out infinite',
         shimmer: 'shimmer 1.6s infinite',
         'pulse-glow': 'pulseGlow 8s ease-in-out infinite',
+        'spin-slow': 'spin-slow 32s linear infinite',
+        'spin-reverse': 'spin-reverse 32s linear infinite',
+        'spin-medium': 'spin-slow 20s linear infinite',
+        'spin-medium-reverse': 'spin-reverse 20s linear infinite',
+        'marching-ants': 'marching-ants 1.2s linear infinite',
+        'marching-ants-reverse': 'marching-ants-reverse 1.2s linear infinite',
+        radar: 'radar-sweep 6s linear infinite',
       },
     },
   },

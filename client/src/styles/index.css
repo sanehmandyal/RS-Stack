@@ -112,6 +112,28 @@
 .skeleton { position: relative; overflow: hidden; @apply rounded-xl bg-slate-200; }
 .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent); @apply animate-shimmer; }
 
+/* Marching Ants moving stroke animation */
+@keyframes marchingAnts {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 32; }
+}
+@keyframes marchingAntsReverse {
+  from { stroke-dashoffset: 32; }
+  to { stroke-dashoffset: 0; }
+}
+.marching-ants {
+  stroke-dasharray: 6 6;
+  animation: marchingAnts 1.6s linear infinite;
+}
+.marching-ants-reverse {
+  stroke-dasharray: 6 6;
+  animation: marchingAntsReverse 1.6s linear infinite;
+}
+.marching-ants-fast {
+  stroke-dasharray: 4 4;
+  animation: marchingAnts 0.9s linear infinite;
+}
+
 /* Smooth light-mode adaptors for legacy opacity classes */
 .border-white\/5, .border-white\/10, .border-white\/15, .border-white\/20 {
   border-color: rgba(226, 232, 240, 0.9) !important;
