@@ -15,6 +15,8 @@ export const RESOURCES = {
             { name: 'title', label: 'Title', type: 'text', required: true },
             { name: 'slug', label: 'URL slug', type: 'text', required: true, slugFrom: 'title', help: 'Lowercase letters, numbers and hyphens.' },
             { name: 'category', label: 'Category', type: 'select', options: opt('development', 'seo', 'local', 'ads', 'infrastructure', 'content') },
+            { name: 'image', label: 'Cover image URL (upload in Media first or external URL)', type: 'text' },
+            { name: 'imageAlt', label: 'Cover image alt text', type: 'text' },
             { name: 'summary', label: 'Summary', type: 'textarea', required: true },
             { name: 'description', label: 'Description', type: 'textarea' },
             { name: 'delivery', label: 'Delivery', type: 'select', options: [['direct', 'Delivered directly by RS Stack'], ['mixed', 'RS Stack work + third-party accounts'], ['third_party_required', 'Requires third-party subscription']] },

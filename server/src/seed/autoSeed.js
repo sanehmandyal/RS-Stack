@@ -110,7 +110,14 @@ export async function autoSeedAndBootstrap() {
         for (const [i, [question, answer]] of faqs.entries()) {
             await upsert(FAQ, { scope: 'global', question }, { answer, order: (i + 1) * 10, published: true });
         }
-        await upsert(SiteSettings, { key: 'main' }, {});
+        await upsert(SiteSettings, { key: 'main' }, {
+            businessName: 'RS Stack',
+            tagline: 'We Build Digital. You Grow Business.',
+            contactEmail: 'contact@rs-stack.com',
+            phone: '+91 98057 20962',
+            whatsappNumber: '+91 98057 20962',
+            address: 'Phase 5, Mohali, SAS Nagar, Punjab 160059, India',
+        });
         await upsert(Redirect, { from: '/services/hosting-maintenance' }, { to: '/services/website-maintenance', statusCode: 301, active: true });
         logger.info('Auto-seed check completed successfully.');
     }

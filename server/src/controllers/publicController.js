@@ -3,7 +3,7 @@ import { BlogCategory, BlogPost, FAQ, PageSeo, Project, Service, SiteSettings, T
 import { notFound } from '../utils/errors.js';
 import { pageMeta, parsePagination, qs } from '../utils/misc.js';
 import { escapeRegex } from '../utils/security.js';
-const cache = (res, seconds = 60) => res.setHeader('Cache-Control', `public, max-age=${seconds}, stale-while-revalidate=300`);
+const cache = (res) => res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
 export async function getOrCreateSettings() {
     return SiteSettings.findOneAndUpdate({ key: 'main' }, { $setOnInsert: { key: 'main' } }, { upsert: true, new: true, setDefaultsOnInsert: true });
 }
@@ -26,7 +26,7 @@ export async function publicSettings(_req, res) {
 export async function listServices(_req, res) {
     const items = await Service.find({ published: true })
         .sort({ order: 1, title: 1 })
-        .select('slug title category summary delivery order')
+        .select('slug title category summary delivery order image imageAlt')
         .lean();
     cache(res);
     res.json({ items });
@@ -48,7 +48,7 @@ export async function listProjects(req, res) {
         filter.category = category;
     const items = await Project.find(filter)
         .sort({ order: 1, createdAt: -1 })
-        .select('slug title industry category thumbnail thumbnailAlt summary technologies services isDemo liveUrl')
+        .select('slug title industry category thumbnail thumbnailAlt summary technologies services results isDemo liveUrl')
         .lean();
     cache(res);
     res.json({ items });

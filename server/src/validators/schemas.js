@@ -57,6 +57,8 @@ export const serviceSchema = z
     slug,
     title: plain(150, 2),
     category: z.enum(['development', 'seo', 'local', 'ads', 'infrastructure', 'content']),
+    image: optPlain(400),
+    imageAlt: optPlain(200),
     summary: plain(300, 10),
     description: plain(5000),
     audience: stringList(),
@@ -74,7 +76,7 @@ export const serviceSchema = z
     published: z.boolean(),
     ...seoFields,
 })
-    .partial({ description: true, audience: true, problems: true, deliverables: true, benefits: true, limitations: true, process: true, timeline: true, delivery: true, thirdPartyNote: true, faqs: true, relatedSlugs: true, order: true, published: true, metaTitle: true, metaDescription: true, category: true })
+    .partial({ image: true, imageAlt: true, description: true, audience: true, problems: true, deliverables: true, benefits: true, limitations: true, process: true, timeline: true, delivery: true, thirdPartyNote: true, faqs: true, relatedSlugs: true, order: true, published: true, metaTitle: true, metaDescription: true, category: true })
     .strict();
 export const projectSchema = z
     .object({

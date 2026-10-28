@@ -38,9 +38,8 @@ export default function Contact() {
                 <MapPin className="h-5 w-5 shrink-0 text-secondary mt-0.5"/>
                 <div>
                   <strong className="block text-white font-medium">Office Address</strong>
-                  <span className="text-muted leading-relaxed block mt-0.5">
-                    Phase 5, Mohali, SAS Nagar,<br />
-                    Punjab 160059, India
+                  <span className="text-muted leading-relaxed block mt-0.5 whitespace-pre-line">
+                    {s.address || 'Phase 5, Mohali, SAS Nagar,\nPunjab 160059, India'}
                   </span>
                 </div>
               </div>
@@ -49,8 +48,8 @@ export default function Contact() {
                 <Phone className="h-5 w-5 shrink-0 text-secondary mt-0.5"/>
                 <div>
                   <strong className="block text-white font-medium">Direct Phone Line</strong>
-                  <a href="tel:+919805720962" className="text-secondary hover:underline block mt-0.5 font-semibold">
-                    +91 98057 20962
+                  <a href={`tel:${(s.phone || '+919805720962').replace(/[^\d+]/g, '')}`} className="text-secondary hover:underline block mt-0.5 font-semibold">
+                    {s.phone || '+91 98057 20962'}
                   </a>
                 </div>
               </div>
@@ -60,7 +59,7 @@ export default function Contact() {
                   <div>
                     <strong className="block text-white font-medium">Instant WhatsApp Support</strong>
                     <a href={wa} target="_blank" rel="noopener noreferrer" className="text-emerald-400 font-semibold hover:underline block mt-0.5">
-                      Chat on WhatsApp (+91 98057 20962)
+                      Chat on WhatsApp ({s.whatsappNumber || '+91 98057 20962'})
                     </a>
                   </div>
                 </div>)}

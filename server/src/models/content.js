@@ -4,6 +4,8 @@ const serviceSchema = new Schema({
     slug: { type: String, required: true, unique: true, lowercase: true, maxlength: 90 },
     title: { type: String, required: true, maxlength: 150 },
     category: { type: String, enum: ['development', 'seo', 'local', 'ads', 'infrastructure', 'content'], default: 'development' },
+    image: { type: String, maxlength: 400 },
+    imageAlt: { type: String, maxlength: 200 },
     summary: { type: String, required: true, maxlength: 300 },
     description: { type: String, maxlength: 5000 },
     audience: { type: [String], default: [] },

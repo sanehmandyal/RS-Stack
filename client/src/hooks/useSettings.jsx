@@ -6,6 +6,12 @@ const defaults = fallbackSettings;
 const Ctx = createContext(defaults);
 export function SettingsProvider({ children }) {
     const { data } = useFetch(() => publicApi.settings(), []);
-    return <Ctx.Provider value={{ ...defaults, ...(data ?? {}) }}>{children}</Ctx.Provider>;
+    const merged = {
+        ...defaults,
+        ...(data ?? {}),
+        home: { ...(defaults.home ?? {}), ...(data?.home ?? {}) },
+        social: { ...(defaults.social ?? {}), ...(data?.social ?? {}) },
+    };
+    return <Ctx.Provider value={merged}>{children}</Ctx.Provider>;
 }
 export const useSettings = () => useContext(Ctx);

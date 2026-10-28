@@ -107,7 +107,7 @@ function Footer() {
               </li>)}
             {wa && (<li className="pt-1">
                 <a className="inline-flex items-center gap-2 font-semibold text-emerald-700 hover:text-emerald-800 transition" href={wa} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="h-4 w-4"/> WhatsApp: +91 98057 20962
+                  <MessageCircle className="h-4 w-4"/> WhatsApp: {s.whatsappNumber || '+91 98057 20962'}
                 </a>
               </li>)}
           </ul>
@@ -182,7 +182,7 @@ export default function PublicLayout() {
       <Footer />
 
       {/* Floating Sticky WhatsApp Button */}
-      {wa && (<a href={wa} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp (+91 98057 20962)" className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-lg bg-emerald-600 px-3.5 py-2.5 text-white font-semibold shadow-md hover:bg-emerald-700 transition active:scale-95 duration-150">
+      {wa && (<a href={wa} target="_blank" rel="noopener noreferrer" aria-label={`Chat on WhatsApp (${s.whatsappNumber || '+91 98057 20962'})`} className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-lg bg-emerald-600 px-3.5 py-2.5 text-white font-semibold shadow-md hover:bg-emerald-700 transition active:scale-95 duration-150">
           <MessageCircle className="h-4 w-4"/>
           <span className="text-xs font-bold tracking-wide uppercase">WhatsApp</span>
         </a>)}
