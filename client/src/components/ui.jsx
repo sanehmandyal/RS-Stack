@@ -80,7 +80,7 @@ export function FaqList({ items }) {
 }
 export function Logo({ className = '' }) {
     return (<span className={`inline-flex items-center gap-2.5 font-extrabold tracking-tight ${className}`}>
-      <img src="/logo.png" alt="RS Stack" className="h-8 w-8 rounded-lg object-cover border border-slate-200 shadow-xs"/>
+      <img src="/logo.png" alt="RS Stack" className="h-8 w-8 rounded-full object-cover border border-slate-200 shadow-xs"/>
       <span className="text-lg">RS <span className="text-gradient font-black">STACK</span></span>
     </span>);
 }
