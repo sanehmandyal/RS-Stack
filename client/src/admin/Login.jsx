@@ -14,11 +14,11 @@ function Shell({ title, subtitle, children }) {
       {/* Top Header Row with Back to Website Button */}
       <div className="relative z-10 w-full max-w-md mb-4 flex items-center justify-between">
         <Link to="/" className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 bg-white shadow-xs transition duration-150 group" title="Return to the Growora homepage">
-          <ArrowLeft className="h-3.5 w-3.5 text-teal-700 transition-transform group-hover:-translate-x-1"/>
+          <ArrowLeft className="h-3.5 w-3.5 text-slate-700 transition-transform group-hover:-translate-x-1"/>
           <span>Back to site</span>
         </Link>
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-emerald-300 bg-emerald-50 text-emerald-800 text-[11px] font-semibold tracking-wide shadow-xs">
-          <span className="h-1.5 w-1.5 rounded-sm bg-emerald-500"/>
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-slate-300 bg-slate-100 text-slate-800 text-[11px] font-semibold tracking-wide shadow-xs">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#143D34]"/>
           Secure Admin
         </span>
       </div>
@@ -26,15 +26,10 @@ function Shell({ title, subtitle, children }) {
       {/* Corporate Admin Card */}
       <div className="relative z-10 w-full max-w-md">
         <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-7 sm:p-9 shadow-sm">
-          {/* Top specular highlight reflection line */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-400/40 to-transparent"/>
-          {/* Subtle glossy glass reflection gradient */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-teal-50/[0.3] via-transparent to-transparent"/>
-
           <div className="relative z-10">
             <div className="mb-6 flex items-center justify-between">
               <Logo />
-              <div className="rounded-xl border border-teal-100 bg-teal-50/80 p-2 text-primary shadow-xs">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-2 text-slate-900 shadow-xs">
                 <ShieldCheck className="h-5 w-5"/>
               </div>
             </div>

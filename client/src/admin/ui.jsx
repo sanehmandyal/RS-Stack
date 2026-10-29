@@ -37,11 +37,11 @@ export function DataTable({ label, children }) {
 export const Th = ({ children }) => <th scope="col" className="whitespace-nowrap border-b border-slate-200 bg-slate-50/80 px-4 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-700">{children}</th>;
 export const Td = ({ children, className = '' }) => <td className={`border-b border-slate-100 px-4 py-3 align-top text-slate-800 ${className}`}>{children}</td>;
 export const STATUS_COLORS = {
-    new: 'bg-teal-50 text-teal-800 border border-teal-200',
+    new: 'bg-slate-100 text-slate-800 border border-slate-300',
     contacted: 'bg-slate-100 text-slate-700 border border-slate-200',
     qualified: 'bg-amber-50 text-amber-800 border border-amber-200',
-    proposal_sent: 'bg-emerald-50 text-emerald-800 border border-emerald-200',
-    won: 'bg-emerald-100 text-emerald-900 border border-emerald-300',
+    proposal_sent: 'bg-stone-100 text-stone-800 border border-stone-300',
+    won: 'bg-[#143D34]/10 text-[#143D34] border border-[#143D34]/30',
     lost: 'bg-slate-100 text-slate-600 border border-slate-200',
 };
 export const Badge = ({ value }) => <span className={`inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold capitalize ${STATUS_COLORS[value] ?? 'bg-slate-100 text-slate-700 border border-slate-200'}`}>{value.replace(/_/g, ' ')}</span>;

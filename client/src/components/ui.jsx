@@ -17,7 +17,7 @@ export function Section({ children, className = '', id }) {
 }
 export function SectionHead({ eyebrow, title, text, center = true }) {
     return (<Reveal className={`mb-10 max-w-2xl sm:mb-14 ${center ? 'mx-auto text-center' : ''}`}>
-      {eyebrow && <p className="mb-3 inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-emerald-50/80 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-800 shadow-xs">{eyebrow}</p>}
+      {eyebrow && <p className="mb-3 inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-100/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-xs">{eyebrow}</p>}
       <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">{title}</h2>
       {text && <p className="mt-4 text-muted leading-relaxed text-base sm:text-lg">{text}</p>}
     </Reveal>);
@@ -26,7 +26,7 @@ export function PageHero({ title, text, eyebrow, children }) {
     return (<header className="relative overflow-hidden px-4 pb-12 pt-32 sm:px-6 sm:pt-40">
       <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden/>
       <div className="relative mx-auto max-w-6xl">
-        {eyebrow && <p className="mb-3 inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-emerald-50/80 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-800 shadow-xs">{eyebrow}</p>}
+        {eyebrow && <p className="mb-3 inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-100/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-xs">{eyebrow}</p>}
         <h1 className="max-w-3xl text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">{title}</h1>
         {text && <p className="mt-5 max-w-2xl text-lg text-muted leading-relaxed">{text}</p>}
         {children}
@@ -81,6 +81,6 @@ export function FaqList({ items }) {
 export function Logo({ className = '' }) {
     return (<span className={`inline-flex items-center gap-2.5 font-extrabold tracking-tight ${className}`}>
       <img src="/logo.png" alt="Growora" className="h-8 w-8 rounded-full object-cover border border-slate-200 shadow-xs"/>
-      <span className="text-lg">Grow<span className="text-gradient font-black">ora</span></span>
+      <span className="text-lg text-slate-900 tracking-tight">Grow<span className="font-black text-[#143D34]">ora</span></span>
     </span>);
 }

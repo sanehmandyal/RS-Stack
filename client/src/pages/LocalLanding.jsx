@@ -148,7 +148,7 @@ export default function LocalLanding({ slug = 'mohali' }) {
             <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
               <div className="bg-white/95 px-4 py-2.5 rounded-lg border border-slate-200 shadow-sm max-w-xl">
                 <p className="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-1.5">
-                  <MapPin className="h-4 w-4 text-teal-700 shrink-0"/> Verified Local Growth Partner - {data.city}, {data.region}
+                  <MapPin className="h-4 w-4 text-[#143D34] shrink-0"/> Verified Local Growth Partner - {data.city}, {data.region}
                 </p>
                 <p className="text-xs text-slate-600 mt-0.5">
                   Engineering bespoke websites and optimizing Google Local Search across {data.areas.slice(0, 3).join(', ')}.
@@ -247,7 +247,7 @@ export default function LocalLanding({ slug = 'mohali' }) {
         {/* Explore Other Locations Navigation */}
         <div className="mb-14">
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-slate-900">
-            <span className="h-2 w-2 rounded-xs bg-teal-700"/>
+            <span className="h-2 w-2 rounded-xs bg-[#143D34]"/>
             Explore Other Service Regions
           </h3>
           <div className="flex flex-wrap gap-2.5">

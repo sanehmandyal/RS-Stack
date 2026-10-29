@@ -42,15 +42,12 @@ export default function Home() {
 
         {/* Hero Section */}
         <header className="relative overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36">
-          <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden/>
+          <div className="grid-bg pointer-events-none absolute inset-0 opacity-30" aria-hidden/>
           <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
             <div>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50/90 px-3.5 py-1.5 text-xs font-semibold text-emerald-900 backdrop-blur-xs shadow-xs">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-                </span>
-                <span>Agency • Phase 5, Mohali • Accepting Projects</span>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 shadow-xs">
+                <span className="h-2 w-2 rounded-full bg-[#143D34]"/>
+                <span>Phase 5, Mohali HQ • Direct Engineering Team</span>
               </div>
 
               <h1 className="text-3xl leading-tight sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
@@ -58,7 +55,7 @@ export default function Home() {
                   home.heroHeadline
                 ) : (
                   <>
-                    Engineering Fast Websites, Local SEO & <span className="text-gradient">Custom Web Apps</span>
+                    High-Performance Websites, Local SEO & <span className="text-[#143D34]">Custom Web Applications</span>
                   </>
                 )}
               </h1>
@@ -69,25 +66,25 @@ export default function Home() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/contact" className="btn btn-primary rounded-lg px-6 py-3 font-semibold shadow-glow">
+                <Link to="/contact" className="btn btn-primary rounded-lg px-6 py-3 font-semibold shadow-xs hover:shadow-sm">
                   {home.primaryCta ?? 'Schedule Consultation'} <ArrowRight className="h-4 w-4" aria-hidden/>
                 </Link>
                 <Link to="/services" className="btn btn-ghost rounded-lg px-6 py-3 font-semibold">
-                  {home.secondaryCta ?? 'Explore Services'}
+                  {home.secondaryCta ?? 'Explore Capabilities'}
                 </Link>
               </div>
 
               {/* Verified Trust Metric Badges */}
               <div className="mt-8 grid grid-cols-3 gap-3 border-t border-slate-200 pt-6">
-                <div className="rounded-xl border border-slate-200/80 bg-white/70 p-3 shadow-xs">
+                <div className="rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs">
                   <p className="text-xl sm:text-2xl font-black text-slate-900">100%</p>
-                  <p className="text-xs text-slate-600 font-medium mt-0.5">Source Ownership</p>
+                  <p className="text-xs text-slate-600 font-medium mt-0.5">Code Ownership</p>
                 </div>
-                <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/50 p-3 shadow-xs">
-                  <p className="text-xl sm:text-2xl font-black text-emerald-700">98+</p>
-                  <p className="text-xs text-emerald-800 font-medium mt-0.5">PageSpeed Target</p>
+                <div className="rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs">
+                  <p className="text-xl sm:text-2xl font-black text-[#143D34]">React 18</p>
+                  <p className="text-xs text-slate-600 font-medium mt-0.5">Clean Architecture</p>
                 </div>
-                <div className="rounded-xl border border-slate-200/80 bg-white/70 p-3 shadow-xs">
+                <div className="rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs">
                   <p className="text-xl sm:text-2xl font-black text-slate-900">Phase 5</p>
                   <p className="text-xs text-slate-600 font-medium mt-0.5">Mohali Team</p>
                 </div>
@@ -182,15 +179,15 @@ export default function Home() {
         </Section>
 
         {/* The Growora Standard Comparison */}
-        <Section className="border-t border-slate-200 bg-gradient-to-b from-slate-50/70 to-emerald-50/20">
+        <Section className="border-t border-slate-200 bg-slate-50/70">
           <SectionHead
-            eyebrow="The Growora Difference"
+            eyebrow="The Growora Standard"
             title="Why Growing Brands Partner With Growora"
             text="Compare the Growora engineering standard against traditional freelancers and bloated slow agencies."
           />
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Generic Freelancers</span>
+            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Generic Freelancers</span>
               <h3 className="mt-2 text-lg font-bold text-slate-800">Uncertain Quality</h3>
               <ul className="mt-4 space-y-3 text-xs sm:text-sm text-slate-600">
                 <li className="flex items-start gap-2 text-slate-500">
@@ -208,24 +205,24 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border-2 border-emerald-500 bg-white p-6 shadow-glow relative">
-              <div className="absolute -top-3 left-6 inline-flex items-center gap-1 rounded-md bg-emerald-600 px-3 py-0.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-xs">
-                <Sparkles className="h-3 w-3"/> The Growora Standard
+            <div className="rounded-xl border-2 border-[#143D34] bg-white p-6 shadow-sm relative">
+              <div className="absolute -top-3 left-6 inline-flex items-center gap-1 rounded-md bg-[#143D34] px-3 py-0.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-xs">
+                Growora Standard
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Dedicated Engineering</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#143D34]">Dedicated Engineering</span>
               <h3 className="mt-2 text-lg font-bold text-slate-900">Engineered For Growth</h3>
               <ul className="mt-4 space-y-3 text-xs sm:text-sm text-slate-800 font-medium">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"/> 100% Full Source Code & Asset Ownership
+                  <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0 mt-0.5"/> 100% Full Source Code & Asset Ownership
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"/> 98+ PageSpeed & Sub-Second Loading Times
+                  <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0 mt-0.5"/> Sub-Second Mobile Loading Performance
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"/> Direct Senior Engineers on WhatsApp
+                  <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0 mt-0.5"/> Direct Senior Engineers on WhatsApp
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"/> Clean REST API, MERN Architecture & Secure RBAC
+                  <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0 mt-0.5"/> Clean REST API, MERN Architecture & Secure RBAC
                 </li>
               </ul>
               <Link to="/contact" className="mt-6 w-full btn btn-primary">
@@ -233,8 +230,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Bloated Big Agencies</span>
+            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Bloated Big Agencies</span>
               <h3 className="mt-2 text-lg font-bold text-slate-800">Expensive Overheads</h3>
               <ul className="mt-4 space-y-3 text-xs sm:text-sm text-slate-600">
                 <li className="flex items-start gap-2 text-slate-500">
@@ -435,9 +432,9 @@ export default function Home() {
 
         {/* High-Impact CTA Banner */}
         <Section>
-          <div className="rounded-2xl border border-emerald-200/80 bg-gradient-to-br from-white via-white to-emerald-50/40 p-6 sm:p-10 lg:grid lg:grid-cols-2 lg:gap-12 items-center shadow-sm">
+          <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-10 lg:grid lg:grid-cols-2 lg:gap-12 items-center shadow-xs">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-800 mb-2">Get In Touch</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#143D34] mb-2">Direct Consultation</p>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
                 {home.finalCtaTitle ?? 'Ready to Discuss Your Project?'}
               </h2>
@@ -453,7 +450,7 @@ export default function Home() {
                   'Direct communication with local Mohali development team',
                 ].map((x) => (
                   <li key={x} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" aria-hidden/> {x}
+                    <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0" aria-hidden/> {x}
                   </li>
                 ))}
               </ul>
