@@ -5,8 +5,8 @@ import { PageHero, Reveal, Section } from '../components/ui';
 import { LOCAL_DATA } from './LocalLanding';
 export default function Locations() {
     return (<>
-      <Seo title="Service Areas & Regional Hubs | RS Stack" description="Explore RS Stack service areas across Punjab, Himachal Pradesh, and Haryana including Mohali, Chandigarh, Panchkula, Zirakpur, Una, Amb, Amb Andaura, Nangal, and Anandpur Sahib." path="/locations" keywords={[
-            'RS Stack locations',
+      <Seo title="Service Areas & Regional Hubs | Growora" description="Explore Growora service areas across Punjab, Himachal Pradesh, and Haryana including Mohali, Chandigarh, Panchkula, Zirakpur, Una, Amb, Amb Andaura, Nangal, and Anandpur Sahib." path="/locations" keywords={[
+            'Growora locations',
             'website development Himachal',
             'website design Una HP',
             'local SEO Nangal',

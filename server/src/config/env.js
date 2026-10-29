@@ -21,7 +21,7 @@ const schema = z
     SMTP_SECURE: bool,
     SMTP_USER: z.string().optional(),
     SMTP_PASS: z.string().optional(),
-    MAIL_FROM: z.string().default('RS Stack <no-reply@localhost>'),
+    MAIL_FROM: z.string().default('Growora <no-reply@localhost>'),
     LEAD_NOTIFY_EMAIL: z.string().optional(),
     UPLOAD_DIR: z.string().default('uploads'),
     MAX_UPLOAD_MB: z.coerce.number().positive().default(5),

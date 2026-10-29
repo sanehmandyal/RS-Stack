@@ -50,7 +50,7 @@ const clientSchema = new Schema({
     address: { type: String, trim: true, maxlength: 300 },
     hours: { type: String, trim: true, maxlength: 500 },
     serviceAreas: { type: [String], default: [] },
-    // Records that the client authorised RS Stack to act. NEVER store passwords here.
+    // Records that the client authorised Growora to act. NEVER store passwords here.
     authorizationStatus: { type: String, enum: ['none', 'requested', 'granted', 'revoked'], default: 'none' },
     authorizationNote: { type: String, maxlength: 500 },
     notes: { type: String, maxlength: 2000 },

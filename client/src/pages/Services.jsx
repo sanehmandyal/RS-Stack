@@ -18,7 +18,7 @@ export default function Services() {
     const { data, loading } = useFetch(() => publicApi.services(), []);
     const allServices = (data?.items && data.items.length > 0) ? data.items : fallbackServices;
     return (<>
-      <Seo title="Services | RS Stack" description="High-performance web development, local SEO, Google Business Profile management, Google & Meta Ads, and enterprise cloud maintenance." path="/services"/>
+      <Seo title="Services | Growora" description="High-performance web development, local SEO, Google Business Profile management, Google & Meta Ads, and enterprise cloud maintenance." path="/services"/>
       <PageHero eyebrow="Capabilities" title="Engineered Web Development & Digital Marketing Under One Roof" text="From bespoke single-page web experiences to full-stack applications and local search domination, explore our end-to-end digital services."/>
       <Section className="pt-4">
         {loading && !allServices.length && <CardSkeletons />}

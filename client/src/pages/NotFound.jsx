@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 export default function NotFound() {
     return (<section className="grid min-h-[70dvh] place-items-center px-4 pt-32 text-center">
-      <Helmet><title>Page not found | RS Stack</title><meta name="robots" content="noindex"/></Helmet>
+      <Helmet><title>Page not found | Growora</title><meta name="robots" content="noindex"/></Helmet>
       <div>
         <p className="text-sm font-semibold text-secondary">404</p>
         <h1 className="mt-2 text-4xl">Page not found</h1>

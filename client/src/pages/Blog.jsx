@@ -25,7 +25,7 @@ export default function Blog() {
     const rawItems = posts.data?.items;
     const postsList = rawItems && rawItems.length > 0 ? rawItems : fallbackBlogPosts;
     return (<>
-      <Seo title="Blog & Practical Digital Growth Guides | RS Stack" description="Actionable insights on website engineering, Google Business Profile ranking, local SEO, and digital marketing for growing businesses." path="/blog" noindex={page > 1 || !!q}/>
+      <Seo title="Blog & Practical Digital Growth Guides | Growora" description="Actionable insights on website engineering, Google Business Profile ranking, local SEO, and digital marketing for growing businesses." path="/blog" noindex={page > 1 || !!q}/>
       <PageHero eyebrow="Knowledge & Insights" title="Evidence-Based Guides for Growing Businesses" text="Actionable blueprints on search visibility, modern web engineering, and client acquisition."/>
       <Section className="pt-4">
         <form role="search" onSubmit={(e) => {

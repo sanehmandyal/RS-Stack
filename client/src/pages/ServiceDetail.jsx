@@ -30,13 +30,13 @@ export default function ServiceDetail() {
     }
     const path = `/services/${s.slug}`;
     return (<>
-      <Seo title={s.metaTitle || `${s.title} | RS Stack`} description={s.metaDescription || s.summary} path={path} jsonLd={[
+      <Seo title={s.metaTitle || `${s.title} | Growora`} description={s.metaDescription || s.summary} path={path} jsonLd={[
             {
                 '@context': 'https://schema.org',
                 '@type': 'Service',
                 name: s.title,
                 description: s.summary,
-                provider: { '@type': 'Organization', name: 'RS Stack' },
+                provider: { '@type': 'Organization', name: 'Growora' },
             },
             breadcrumbLd([['Home', '/'], ['Services', '/services'], [s.title, path]]),
         ]}/>

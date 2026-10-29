@@ -42,7 +42,7 @@ function RequirePerm({ perm, children }) {
 export default function AdminApp() {
     return (<AuthProvider>
       <ToastProvider>
-        <Helmet><title>Admin | RS Stack</title><meta name="robots" content="noindex, nofollow"/></Helmet>
+        <Helmet><title>Admin | Growora</title><meta name="robots" content="noindex, nofollow"/></Helmet>
         <Routes>
           <Route path="login" element={<Login />}/>
           <Route path="forgot-password" element={<ForgotPassword />}/>

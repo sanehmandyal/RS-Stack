@@ -48,11 +48,11 @@ export async function sendLeadNotification(lead) {
     const html = `<table cellpadding="6">${rows
         .map(([k, v]) => `<tr><td><strong>${escapeHtml(k)}</strong></td><td>${escapeHtml(v)}</td></tr>`)
         .join('')}</table>`;
-    return send(env.LEAD_NOTIFY_EMAIL, `New RS Stack inquiry from ${lead.name}`, text, html);
+    return send(env.LEAD_NOTIFY_EMAIL, `New Growora inquiry from ${lead.name}`, text, html);
 }
 export async function sendPasswordReset(to, token) {
     const link = `${env.siteUrl}/admin/reset-password?token=${encodeURIComponent(token)}`;
-    const text = `A password reset was requested for your RS Stack admin account.\n\nReset link (valid for 30 minutes, single use):\n${link}\n\nIf you did not request this, you can ignore this email.`;
-    const html = `<p>A password reset was requested for your RS Stack admin account.</p><p><a href="${escapeHtml(link)}">Reset your password</a> (valid for 30 minutes, single use).</p><p>If you did not request this, you can ignore this email.</p>`;
-    return send(to, 'Reset your RS Stack admin password', text, html);
+    const text = `A password reset was requested for your Growora admin account.\n\nReset link (valid for 30 minutes, single use):\n${link}\n\nIf you did not request this, you can ignore this email.`;
+    const html = `<p>A password reset was requested for your Growora admin account.</p><p><a href="${escapeHtml(link)}">Reset your password</a> (valid for 30 minutes, single use).</p><p>If you did not request this, you can ignore this email.</p>`;
+    return send(to, 'Reset your Growora admin password', text, html);
 }

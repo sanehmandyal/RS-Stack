@@ -6,13 +6,13 @@ import { useSettings } from '../hooks/useSettings';
 import { whatsappLink } from '../utils/format';
 export default function Contact() {
     const s = useSettings();
-    const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to schedule a free consultation for website development / SEO.');
+    const wa = whatsappLink(s.whatsappNumber, 'Hi Growora, I would like to schedule a free consultation for website development / SEO.');
     return (<>
-      <Seo title="Contact RS Stack | Website Development & Local SEO Agency in Mohali" description="Get in touch with RS Stack in Phase 5 Mohali SAS Nagar Punjab 160059. Call/WhatsApp +91 98057 20962 for custom websites, Google Ads, and local SEO services." path="/contact" keywords={[
-            'contact RS Stack Mohali',
+      <Seo title="Contact Growora | Website Development & Local SEO Agency in Mohali" description="Get in touch with Growora in Phase 5 Mohali SAS Nagar Punjab 160059. Call/WhatsApp +91 98057 20962 for custom websites, Google Ads, and local SEO services." path="/contact" keywords={[
+            'contact Growora Mohali',
             'website developer phone number Mohali',
             'SEO agency Phase 5 Mohali',
-            'WhatsApp RS Stack 9805720962',
+            'WhatsApp Growora 9805720962',
             'hire website designer SAS Nagar',
         ]}/>
       <PageHero eyebrow="Get In Touch" title="Schedule Your Free 30-Minute Growth Strategy Session" text="Share your business objectives with our technical engineers. We will analyze your search competition, existing website, and deliver an itemized roadmap and quote."/>
@@ -68,8 +68,8 @@ export default function Contact() {
                 <Mail className="h-5 w-5 shrink-0 text-secondary mt-0.5"/>
                 <div>
                   <strong className="block text-white font-medium">Email Inquiries</strong>
-                  <a href={`mailto:${s.contactEmail || 'contact@rs-stack.com'}`} className="text-muted hover:text-white block mt-0.5">
-                    {s.contactEmail || 'contact@rs-stack.com'}
+                  <a href={`mailto:${s.contactEmail || 'contact@growora.com'}`} className="text-muted hover:text-white block mt-0.5">
+                    {s.contactEmail || 'contact@growora.com'}
                   </a>
                 </div>
               </div>
@@ -93,7 +93,7 @@ export default function Contact() {
 
             {/* Embedded Google Map Card */}
             <div className="card overflow-hidden p-0 border border-white/10">
-              <iframe title="RS Stack Phase 5 Mohali SAS Nagar Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13719.648118029517!2d76.71239846665798!3d30.718712316499834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee0091ff1a77%3A0x6b107e3251c27891!2sPhase%205%2C%20Sector%2059%2C%20Sahibzada%20Ajit%20Singh%20Nagar%2C%20Punjab%20160059!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="240" style={{ border: 0 }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"/>
+              <iframe title="Growora Phase 5 Mohali SAS Nagar Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13719.648118029517!2d76.71239846665798!3d30.718712316499834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee0091ff1a77%3A0x6b107e3251c27891!2sPhase%205%2C%20Sector%2059%2C%20Sahibzada%20Ajit%20Singh%20Nagar%2C%20Punjab%20160059!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="240" style={{ border: 0 }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"/>
               <div className="p-4 bg-surface/80 flex items-center justify-between text-xs text-muted">
                 <span>Phase 5, Mohali (SAS Nagar) 160059</span>
                 <a href="https://maps.google.com/?q=Phase+5+Mohali+SAS+Nagar+160059" target="_blank" rel="noopener noreferrer" className="text-secondary font-semibold hover:underline inline-flex items-center gap-1">

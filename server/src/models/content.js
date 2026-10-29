@@ -63,7 +63,7 @@ const postSchema = new Schema({
     featured: { type: Boolean, default: false },
     status: { type: String, enum: ['draft', 'published'], default: 'draft', index: true },
     publishedAt: Date,
-    authorName: { type: String, default: 'RS Stack', maxlength: 100 },
+    authorName: { type: String, default: 'Growora', maxlength: 100 },
     coverImage: { type: String, maxlength: 400 },
     coverImageAlt: { type: String, maxlength: 200 },
     readingMinutes: { type: Number, default: 1 },
@@ -107,7 +107,7 @@ export const FAQ = model('FAQ', faqSchema);
 const social = { type: String, maxlength: 300 };
 const settingsSchema = new Schema({
     key: { type: String, default: 'main', unique: true },
-    businessName: { type: String, default: 'RS Stack', maxlength: 100 },
+    businessName: { type: String, default: 'Growora', maxlength: 100 },
     tagline: { type: String, default: 'We Build Digital. You Grow Business.', maxlength: 150 },
     contactEmail: { type: String, maxlength: 254 },
     phone: { type: String, maxlength: 30 },

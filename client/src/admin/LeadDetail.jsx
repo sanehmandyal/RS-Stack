@@ -42,7 +42,7 @@ export default function LeadDetail() {
             toast('err', err.message);
         }
     };
-    const wa = lead.preferredContact === 'whatsapp' && lead.phone ? whatsappLink(lead.phone, `Hello ${lead.name}, this is RS Stack following up on your enquiry.`) : null;
+    const wa = lead.preferredContact === 'whatsapp' && lead.phone ? whatsappLink(lead.phone, `Hello ${lead.name}, this is Growora following up on your enquiry.`) : null;
     return (<>
       <PageTitle title={lead.name}><Link to="/admin/leads" className="btn-ghost btn-sm">Back to leads</Link></PageTitle>
       <div className="grid gap-6 lg:grid-cols-3">

@@ -13,7 +13,7 @@ function Shell({ title, subtitle, children }) {
 
       {/* Top Header Row with Back to Website Button */}
       <div className="relative z-10 w-full max-w-md mb-4 flex items-center justify-between">
-        <Link to="/" className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 bg-white shadow-xs transition duration-150 group" title="Return to the RS Stack homepage">
+        <Link to="/" className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 bg-white shadow-xs transition duration-150 group" title="Return to the Growora homepage">
           <ArrowLeft className="h-3.5 w-3.5 text-teal-700 transition-transform group-hover:-translate-x-1"/>
           <span>Back to site</span>
         </Link>
@@ -49,7 +49,7 @@ function Shell({ title, subtitle, children }) {
 
       {/* Subtle footer label */}
       <p className="relative z-10 mt-8 text-center text-xs text-muted">
-        RS Stack Management Portal • Phase 5, Mohali
+        Growora Management Portal • Phase 5, Mohali
       </p>
     </div>);
 }
@@ -97,7 +97,7 @@ export function Login() {
           <label className="label text-xs font-semibold uppercase tracking-wider text-slate-700" htmlFor="email">
             Email address
           </label>
-          <input id="email" type="email" required autoComplete="username" placeholder="admin@rs-stack.com" className="input text-ink bg-slate-50/70 border-slate-300 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60 transition" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input id="email" type="email" required autoComplete="username" placeholder="admin@growora.com" className="input text-ink bg-slate-50/70 border-slate-300 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60 transition" value={email} onChange={(e) => setEmail(e.target.value)}/>
         </div>
 
         <div>
@@ -174,7 +174,7 @@ export function ForgotPassword() {
             <label className="label text-xs font-semibold uppercase tracking-wider text-slate-700" htmlFor="fe">
               Registered email
             </label>
-            <input id="fe" type="email" required placeholder="admin@rs-stack.com" className="input text-ink bg-slate-50/70 border-slate-300 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60 transition" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input id="fe" type="email" required placeholder="admin@growora.com" className="input text-ink bg-slate-50/70 border-slate-300 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60 transition" value={email} onChange={(e) => setEmail(e.target.value)}/>
           </div>
 
           <Err msg={error}/>

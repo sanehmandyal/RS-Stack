@@ -12,7 +12,7 @@ function Header() {
     const [open, setOpen] = useState(false);
     const { pathname } = useLocation();
     const s = useSettings();
-    const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to discuss a project.');
+    const wa = whatsappLink(s.whatsappNumber, 'Hi Growora, I would like to discuss a project.');
     useEffect(() => {
         const on = () => setScrolled(window.scrollY > 16);
         on();
@@ -35,7 +35,7 @@ function Header() {
       <div className={`mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 py-2.5 rounded-xl transition-all duration-200 ${scrolled
             ? 'bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm mx-3 sm:mx-auto'
             : 'bg-white/80 backdrop-blur-sm border border-slate-200/60'}`}>
-        <Link to="/" aria-label="RS Stack home" className="hover:opacity-90 transition">
+        <Link to="/" aria-label="Growora home" className="hover:opacity-90 transition">
           <Logo />
         </Link>
 
@@ -82,7 +82,7 @@ function Header() {
 }
 function Footer() {
     const s = useSettings();
-    const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to get a quote for a website or SEO project.');
+    const wa = whatsappLink(s.whatsappNumber, 'Hi Growora, I would like to get a quote for a website or SEO project.');
     return (<footer className="border-t border-slate-200 bg-white px-4 py-12 sm:px-6">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
@@ -170,7 +170,7 @@ function Backdrop() {
 export default function PublicLayout() {
     const { pathname } = useLocation();
     const s = useSettings();
-    const wa = whatsappLink(s.whatsappNumber, 'Hi RS Stack, I would like to enquire about website or SEO services.');
+    const wa = whatsappLink(s.whatsappNumber, 'Hi Growora, I would like to enquire about website or SEO services.');
     useEffect(() => { window.scrollTo({ top: 0 }); }, [pathname]);
     return (<div className="relative min-h-dvh flex flex-col justify-between">
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-teal-700 focus:text-white focus:px-4 focus:py-2">

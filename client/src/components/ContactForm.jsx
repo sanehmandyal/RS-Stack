@@ -102,7 +102,7 @@ export function ContactForm({ serviceSlug, source = 'contact-page', compact }) {
       <div>
         <label className="flex items-start gap-3 text-sm text-muted">
           <input type="checkbox" className="mt-0.5 h-4 w-4 shrink-0 accent-primary" {...field('consent')} {...register('consent')}/>
-          <span>I agree to RS Stack storing my details to respond to this enquiry, as described in the <Link to="/privacy-policy" className="text-secondary underline">Privacy Policy</Link>. *</span>
+          <span>I agree to Growora storing my details to respond to this enquiry, as described in the <Link to="/privacy-policy" className="text-secondary underline">Privacy Policy</Link>. *</span>
         </label><Err n="consent"/>
       </div>
 

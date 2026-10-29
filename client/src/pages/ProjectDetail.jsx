@@ -19,7 +19,7 @@ export default function ProjectDetail() {
     }
     const path = `/portfolio/${p.slug}`;
     return (<>
-      <Seo title={p.metaTitle || `${p.title} | Case Study | RS Stack`} description={p.metaDescription || p.summary || 'RS Stack case study'} path={path} image={p.thumbnail || undefined} jsonLd={[breadcrumbLd([['Home', '/'], ['Portfolio', '/portfolio'], [p.title, path]])]}/>
+      <Seo title={p.metaTitle || `${p.title} | Case Study | Growora`} description={p.metaDescription || p.summary || 'Growora case study'} path={path} image={p.thumbnail || undefined} jsonLd={[breadcrumbLd([['Home', '/'], ['Portfolio', '/portfolio'], [p.title, path]])]}/>
       <PageHero eyebrow={p.industry} title={p.title} text={p.summary}>
         {p.isDemo && <span className="chip mt-4">Demonstration project</span>}
       </PageHero>

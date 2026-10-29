@@ -1,4 +1,4 @@
-// Re-export services, real services offered by RS Stack with zero fabricated claims
+// Re-export services, real services offered by Growora with zero fabricated claims
 export const originalServices = [
     {
         slug: 'business-website-development',
@@ -207,13 +207,13 @@ export const originalProjects = [
 export const originalFaqs = [
     {
         _id: '1',
-        question: 'Where is RS Stack located?',
+        question: 'Where is Growora located?',
         answer: 'Our registered headquarters is located at Phase 5, Mohali, SAS Nagar, Punjab 160059, India. We serve clients locally across Mohali, Chandigarh, Panchkula, Himachal Pradesh, Haryana, and globally.'
     },
     {
         _id: '2',
-        question: 'How can I contact RS Stack directly?',
-        answer: 'You can call or WhatsApp us directly at +91 98057 20962, email contact@rs-stack.com, or submit the consultation form on our website.'
+        question: 'How can I contact Growora directly?',
+        answer: 'You can call or WhatsApp us directly at +91 98057 20962, email contact@growora.com, or submit the consultation form on our website.'
     },
     {
         _id: '3',

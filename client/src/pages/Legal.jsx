@@ -5,13 +5,13 @@ const POLICIES = {
     privacy: {
         title: 'Privacy Policy',
         path: '/privacy',
-        desc: 'How RS Stack collects, uses, protects, and handles your information in compliance with Indian IT and Data Protection laws.',
+        desc: 'How Growora collects, uses, protects, and handles your information in compliance with Indian IT and Data Protection laws.',
         lastUpdated: 'October 2026',
         sections: [
             {
                 heading: '1. Information We Collect',
                 body: [
-                    'When you contact RS Stack via our consultation form, email, or WhatsApp, we collect information including your name, email address, phone number, business name, and details of your requested project.',
+                    'When you contact Growora via our consultation form, email, or WhatsApp, we collect information including your name, email address, phone number, business name, and details of your requested project.',
                     'To ensure cybersecurity and prevent automated spam, our servers log standard technical information including an anonymized one-way hash of your IP address, browser user-agent, and submission timestamp.',
                     'We do not collect sensitive personal data or financial payment card details through our public website.',
                 ],
@@ -46,7 +46,7 @@ const POLICIES = {
                 heading: '6. Your Rights',
                 body: [
                     'Under the Digital Personal Data Protection Act (DPDP Act) and applicable international privacy regulations, you have the right to request a copy of your personal data, request correction of inaccurate records, or request deletion of your information.',
-                    'To exercise any of these rights, contact our data privacy officer at contact@rs-stack.com.',
+                    'To exercise any of these rights, contact our data privacy officer at contact@growora.com.',
                 ],
             },
         ],
@@ -54,20 +54,20 @@ const POLICIES = {
     terms: {
         title: 'Terms and Conditions',
         path: '/terms',
-        desc: 'Terms and conditions governing the use of the RS Stack website and professional digital services.',
+        desc: 'Terms and conditions governing the use of the Growora website and professional digital services.',
         lastUpdated: 'October 2026',
         sections: [
             {
                 heading: '1. Agreement to Terms',
                 body: [
-                    'By accessing this website or engaging RS Stack for web development, search engine optimization, or digital consulting, you agree to be bound by these Terms and Conditions.',
-                    'Specific client projects are governed by individual written proposals, Statements of Work (SOW), or contracts signed between RS Stack and the client. In the event of a conflict between these general terms and an executed contract, the terms of the signed contract shall prevail.',
+                    'By accessing this website or engaging Growora for web development, search engine optimization, or digital consulting, you agree to be bound by these Terms and Conditions.',
+                    'Specific client projects are governed by individual written proposals, Statements of Work (SOW), or contracts signed between Growora and the client. In the event of a conflict between these general terms and an executed contract, the terms of the signed contract shall prevail.',
                 ],
             },
             {
                 heading: '2. Scope of Services and Project Milestones',
                 body: [
-                    'RS Stack provides bespoke website development, search engine optimization, Google Business Profile optimization, and custom web application engineering.',
+                    'Growora provides bespoke website development, search engine optimization, Google Business Profile optimization, and custom web application engineering.',
                     'Project deliverables, timelines, technical specifications, and fee schedules are agreed in writing prior to project kickoff. Milestones require formal client review and sign-off.',
                 ],
             },
@@ -75,21 +75,21 @@ const POLICIES = {
                 heading: '3. Intellectual Property and Code Ownership',
                 body: [
                     'Unless otherwise specified in a custom agreement, upon receipt of full and final payment for an agreed project, 100% of the custom source code, design assets, and content created specifically for the client are assigned to the client.',
-                    'RS Stack retains the right to use non-confidential screenshots and summaries of the completed project in its portfolio and marketing case studies, unless a non-disclosure agreement (NDA) has been agreed.',
+                    'Growora retains the right to use non-confidential screenshots and summaries of the completed project in its portfolio and marketing case studies, unless a non-disclosure agreement (NDA) has been agreed.',
                 ],
             },
             {
                 heading: '4. Third-Party Services and Subscriptions',
                 body: [
                     'Third-party services required for website operation (including domain registration, DNS management, cloud hosting, ad platform budgets, and external API licenses) are billed directly by their respective providers or passed through at actual cost.',
-                    'RS Stack is not responsible for service interruptions, terms modifications, or price adjustments instituted by third-party hosting or API providers.',
+                    'Growora is not responsible for service interruptions, terms modifications, or price adjustments instituted by third-party hosting or API providers.',
                 ],
             },
             {
                 heading: '5. Limitation of Liability',
                 body: [
-                    'While we implement industry standard security practices and test deliverables rigorously across modern browsers, RS Stack shall not be liable for indirect, incidental, or consequential damages resulting from business disruption or third-party outages.',
-                    'Our total cumulative liability for any claim arising from our services shall not exceed the total fees paid by the client to RS Stack under the applicable agreement during the three months preceding the claim.',
+                    'While we implement industry standard security practices and test deliverables rigorously across modern browsers, Growora shall not be liable for indirect, incidental, or consequential damages resulting from business disruption or third-party outages.',
+                    'Our total cumulative liability for any claim arising from our services shall not exceed the total fees paid by the client to Growora under the applicable agreement during the three months preceding the claim.',
                 ],
             },
             {
@@ -104,7 +104,7 @@ const POLICIES = {
     cookies: {
         title: 'Cookie Policy',
         path: '/cookie-policy',
-        desc: 'How RS Stack uses essential session storage and respects user cookie preferences.',
+        desc: 'How Growora uses essential session storage and respects user cookie preferences.',
         lastUpdated: 'October 2026',
         sections: [
             {
@@ -136,7 +136,7 @@ const POLICIES = {
     refund: {
         title: 'Refund and Cancellation Policy',
         path: '/refund-policy',
-        desc: 'Refund terms, milestone payments, and cancellation conditions for RS Stack services.',
+        desc: 'Refund terms, milestone payments, and cancellation conditions for Growora services.',
         lastUpdated: 'October 2026',
         sections: [
             {
@@ -165,13 +165,13 @@ export default function Legal({ kind }) {
     const policy = POLICIES[kind] || POLICIES.privacy;
     const { contactEmail, address } = useSettings();
     return (<>
-      <Seo title={`${policy.title} | RS Stack`} description={policy.desc} path={policy.path}/>
+      <Seo title={`${policy.title} | Growora`} description={policy.desc} path={policy.path}/>
       <PageHero title={policy.title}/>
       <Section className="pt-0">
         <div className="mx-auto max-w-3xl">
           <div className="mb-6 flex items-center justify-between border-b border-slate-200 pb-3 text-xs text-slate-500">
             <span>Last Updated: {policy.lastUpdated}</span>
-            <span>RS Stack • Phase 5, Mohali</span>
+            <span>Growora • Phase 5, Mohali</span>
           </div>
 
           <div className="prose-rs space-y-8">
@@ -190,7 +190,7 @@ export default function Legal({ kind }) {
                 For questions regarding these terms, privacy compliance, or project agreements, please contact our team directly:
               </p>
               <ul className="text-xs sm:text-sm text-slate-700 space-y-1">
-                <li><strong>Email:</strong> <a href={`mailto:${contactEmail || 'contact@rs-stack.com'}`} className="text-teal-700 underline">{contactEmail || 'contact@rs-stack.com'}</a></li>
+                <li><strong>Email:</strong> <a href={`mailto:${contactEmail || 'contact@growora.com'}`} className="text-teal-700 underline">{contactEmail || 'contact@growora.com'}</a></li>
                 <li><strong>Office:</strong> {address || 'Phase 5, Mohali, SAS Nagar, Punjab 160059, India'}</li>
                 <li><strong>Phone:</strong> +91 98057 20962</li>
               </ul>

@@ -14,9 +14,9 @@ export async function autoSeedAndBootstrap() {
         // 1. Auto-bootstrap super admin if none exists
         const superAdminExists = await User.exists({ role: 'super_admin' });
         if (!superAdminExists) {
-            const email = env.BOOTSTRAP_ADMIN_EMAIL || process.env.ADMIN_EMAIL || 'admin@rs-stack.com';
+            const email = env.BOOTSTRAP_ADMIN_EMAIL || process.env.ADMIN_EMAIL || 'admin@growora.com';
             const password = env.BOOTSTRAP_ADMIN_PASSWORD || process.env.ADMIN_PASSWORD || 'RsStackAdmin@2026!#Secure';
-            const name = env.BOOTSTRAP_ADMIN_NAME || process.env.ADMIN_NAME || 'RS Stack Admin';
+            const name = env.BOOTSTRAP_ADMIN_NAME || process.env.ADMIN_NAME || 'Growora Admin';
             await User.create({
                 email: email.trim().toLowerCase(),
                 name: name.trim(),
@@ -99,7 +99,7 @@ export async function autoSeedAndBootstrap() {
         ];
         for (const p of posts) {
             const bodyHtml = sanitizeRichText(p.bodyHtml);
-            await upsert(BlogPost, { slug: p.slug }, { ...p, bodyHtml, readingMinutes: readingTimeMinutes(bodyHtml), status: 'published', publishedAt: new Date(), authorName: 'RS Stack' });
+            await upsert(BlogPost, { slug: p.slug }, { ...p, bodyHtml, readingMinutes: readingTimeMinutes(bodyHtml), status: 'published', publishedAt: new Date(), authorName: 'Growora' });
         }
         const faqs = [
             ['Do you guarantee search rankings or leads?', 'No. Nobody can honestly guarantee rankings, leads or ad results. We focus on doing the work properly and reporting transparently.'],
@@ -111,9 +111,9 @@ export async function autoSeedAndBootstrap() {
             await upsert(FAQ, { scope: 'global', question }, { answer, order: (i + 1) * 10, published: true });
         }
         await upsert(SiteSettings, { key: 'main' }, {
-            businessName: 'RS Stack',
+            businessName: 'Growora',
             tagline: 'We Build Digital. You Grow Business.',
-            contactEmail: 'contact@rs-stack.com',
+            contactEmail: 'contact@growora.com',
             phone: '+91 98057 20962',
             whatsappNumber: '+91 98057 20962',
             address: 'Phase 5, Mohali, SAS Nagar, Punjab 160059, India',

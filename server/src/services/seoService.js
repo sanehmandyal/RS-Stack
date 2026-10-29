@@ -2,7 +2,7 @@ import { env } from '../config/env.js';
 import { INDUSTRY_SLUGS, STATIC_PUBLIC_ROUTES } from '../config/permissions.js';
 import { BlogPost, PageSeo, Project, Redirect, Service, SiteSettings } from '../models/content.js';
 import { escapeHtml, stripHtml } from '../utils/security.js';
-const SITE = 'RS Stack';
+const SITE = 'Growora';
 export const INDUSTRY_NAMES = {
     'cleaning-services': 'Cleaning Services',
     'travel-agencies': 'Travel Agencies & Tour Operators',
@@ -14,19 +14,19 @@ export const INDUSTRY_NAMES = {
 };
 const STATIC_META = {
     '/': {
-        title: 'RS Stack | Websites, Local SEO & Digital Marketing for Small Businesses',
-        description: 'RS Stack builds websites, improves local visibility, manages digital advertising and sets up the digital infrastructure small and medium-sized businesses need to grow.',
+        title: 'Growora | Websites, Local SEO & Digital Marketing for Small Businesses',
+        description: 'Growora builds websites, improves local visibility, manages digital advertising and sets up the digital infrastructure small and medium-sized businesses need to grow.',
     },
-    '/services': { title: 'Services | RS Stack', description: 'Web development, SEO, Google Business Profile, Google & Meta Ads, hosting and maintenance for small and medium-sized businesses.' },
-    '/industries': { title: 'Industries We Serve | RS Stack', description: 'Digital solutions tailored to cleaning services, travel agencies, cafes, hotels, salons, local shops and professional services.' },
-    '/portfolio': { title: 'Portfolio | RS Stack', description: 'Selected projects and case studies from RS Stack.' },
-    '/about': { title: 'About RS Stack', description: 'Our mission, approach and how we help small businesses establish and grow their online presence.' },
-    '/blog': { title: 'Blog & Resources | RS Stack', description: 'Practical guides on websites, local SEO and digital marketing for small business owners.' },
-    '/contact': { title: 'Contact RS Stack | Free Consultation', description: 'Tell us about your business and goals. Request a free consultation with RS Stack.' },
-    '/privacy-policy': { title: 'Privacy Policy | RS Stack', description: 'How RS Stack collects, uses and protects your personal information.' },
-    '/terms-of-service': { title: 'Terms of Service | RS Stack', description: 'The terms that apply when you use the RS Stack website and services.' },
-    '/cookie-policy': { title: 'Cookie Policy | RS Stack', description: 'How RS Stack uses cookies and similar technologies.' },
-    '/refund-policy': { title: 'Refund & Cancellation Policy | RS Stack', description: 'Refund and cancellation terms for RS Stack services.' },
+    '/services': { title: 'Services | Growora', description: 'Web development, SEO, Google Business Profile, Google & Meta Ads, hosting and maintenance for small and medium-sized businesses.' },
+    '/industries': { title: 'Industries We Serve | Growora', description: 'Digital solutions tailored to cleaning services, travel agencies, cafes, hotels, salons, local shops and professional services.' },
+    '/portfolio': { title: 'Portfolio | Growora', description: 'Selected projects and case studies from Growora.' },
+    '/about': { title: 'About Growora', description: 'Our mission, approach and how we help small businesses establish and grow their online presence.' },
+    '/blog': { title: 'Blog & Resources | Growora', description: 'Practical guides on websites, local SEO and digital marketing for small business owners.' },
+    '/contact': { title: 'Contact Growora | Free Consultation', description: 'Tell us about your business and goals. Request a free consultation with Growora.' },
+    '/privacy-policy': { title: 'Privacy Policy | Growora', description: 'How Growora collects, uses and protects your personal information.' },
+    '/terms-of-service': { title: 'Terms of Service | Growora', description: 'The terms that apply when you use the Growora website and services.' },
+    '/cookie-policy': { title: 'Cookie Policy | Growora', description: 'How Growora uses cookies and similar technologies.' },
+    '/refund-policy': { title: 'Refund & Cancellation Policy | Growora', description: 'Refund and cancellation terms for Growora services.' },
 };
 export function normalizePath(p) {
     const path = (p.split('?')[0] ?? '/').split('#')[0] || '/';
@@ -50,7 +50,7 @@ export async function resolveRoute(rawPath) {
         jsonLd: [],
     };
     if (path === '/admin' || path.startsWith('/admin/')) {
-        return { ...base, title: 'Admin | RS Stack', description: 'RS Stack administration', noindex: true };
+        return { ...base, title: 'Admin | Growora', description: 'Growora administration', noindex: true };
     }
     const seg = path.split('/').filter(Boolean);
     let meta = base;
@@ -70,26 +70,26 @@ export async function resolveRoute(rawPath) {
     else if (seg[0] === 'services' && seg.length === 2) {
         const s = await Service.findOne({ slug: seg[1], published: true }).lean();
         if (!s)
-            return { ...base, status: 404, title: 'Page not found | RS Stack', description: 'This page could not be found.', noindex: true };
+            return { ...base, status: 404, title: 'Page not found | Growora', description: 'This page could not be found.', noindex: true };
         meta = { ...base, title: s.metaTitle || `${s.title} | ${SITE}`, description: s.metaDescription || s.summary };
         meta.jsonLd.push({ '@context': 'https://schema.org', '@type': 'Service', name: s.title, description: s.summary, provider: { '@type': 'Organization', name: SITE, url: env.siteUrl } }, breadcrumb([['Home', '/'], ['Services', '/services'], [s.title, path]]));
     }
     else if (seg[0] === 'industries' && seg.length === 2 && INDUSTRY_SLUGS.includes(seg[1])) {
         const name = INDUSTRY_NAMES[seg[1]];
-        meta = { ...base, title: `Websites & Digital Marketing for ${name} | ${SITE}`, description: `How ${name.toLowerCase()} can attract more customers with a professional website, local visibility and digital marketing from RS Stack.` };
+        meta = { ...base, title: `Websites & Digital Marketing for ${name} | ${SITE}`, description: `How ${name.toLowerCase()} can attract more customers with a professional website, local visibility and digital marketing from Growora.` };
         meta.jsonLd.push(breadcrumb([['Home', '/'], ['Industries', '/industries'], [name, path]]));
     }
     else if (seg[0] === 'portfolio' && seg.length === 2) {
         const p = await Project.findOne({ slug: seg[1], published: true }).lean();
         if (!p)
-            return { ...base, status: 404, title: 'Page not found | RS Stack', description: 'This page could not be found.', noindex: true };
+            return { ...base, status: 404, title: 'Page not found | Growora', description: 'This page could not be found.', noindex: true };
         meta = { ...base, title: p.metaTitle || `${p.title} | Case Study | ${SITE}`, description: p.metaDescription || p.summary || STATIC_META['/portfolio'].description, ogImage: p.thumbnail ? abs(p.thumbnail) : undefined };
         meta.jsonLd.push(breadcrumb([['Home', '/'], ['Portfolio', '/portfolio'], [p.title, path]]));
     }
     else if (seg[0] === 'blog' && seg.length === 2) {
         const post = await BlogPost.findOne({ slug: seg[1], status: 'published', publishedAt: { $lte: new Date() } }).lean();
         if (!post)
-            return { ...base, status: 404, title: 'Page not found | RS Stack', description: 'This page could not be found.', noindex: true };
+            return { ...base, status: 404, title: 'Page not found | Growora', description: 'This page could not be found.', noindex: true };
         meta = {
             ...base,
             title: post.metaTitle || `${post.title} | ${SITE}`,
@@ -112,7 +112,7 @@ export async function resolveRoute(rawPath) {
         }, breadcrumb([['Home', '/'], ['Blog', '/blog'], [post.title, path]]));
     }
     else {
-        return { ...base, status: 404, title: 'Page not found | RS Stack', description: 'This page could not be found.', noindex: true };
+        return { ...base, status: 404, title: 'Page not found | Growora', description: 'This page could not be found.', noindex: true };
     }
     // Admin-managed overrides (SEO administration).
     const override = await PageSeo.findOne({ path }).lean();

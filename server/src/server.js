@@ -12,7 +12,7 @@ async function main() {
         logger.error({ err }, 'Database connection failed. Server continuing to listen so health checks respond.');
     }
     const app = createApp();
-    const server = app.listen(env.PORT, () => logger.info(`RS Stack API listening on :${env.PORT} (${env.NODE_ENV})`));
+    const server = app.listen(env.PORT, () => logger.info(`Growora API listening on :${env.PORT} (${env.NODE_ENV})`));
     const shutdown = async (signal) => {
         logger.info(`${signal} received, shutting down`);
         server.close(async () => {

@@ -5,7 +5,7 @@ import { PageHero, Reveal, Section } from '../components/ui';
 import { INDUSTRIES } from '../utils/content';
 export default function Industries() {
     return (<>
-      <Seo title="Industries We Serve | RS Stack" description="High-converting digital solutions tailored to cleaning services, travel agencies, restaurants, hotels, aesthetics salons, retail boutiques, and corporate firms." path="/industries"/>
+      <Seo title="Industries We Serve | Growora" description="High-converting digital solutions tailored to cleaning services, travel agencies, restaurants, hotels, aesthetics salons, retail boutiques, and corporate firms." path="/industries"/>
       <PageHero eyebrow="Targeted Market Solutions" title="Digital Blueprints Tailored Around How Your Industry Operates" text="Every sector has distinct customer buying habits, lead triggers, and local search dynamics. Explore our tailored frameworks."/>
       <Section className="pt-4">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -110,9 +110,9 @@ export default function LocalLanding({ slug = 'mohali' }) {
     const normalizedSlug = slug.toLowerCase();
     const data = LOCAL_DATA[normalizedSlug] || LOCAL_DATA.mohali;
     const s = useSettings();
-    const wa = whatsappLink(s.whatsappNumber, `Hi RS Stack, I need website development / SEO services in ${data.city}.`);
+    const wa = whatsappLink(s.whatsappNumber, `Hi Growora, I need website development / SEO services in ${data.city}.`);
     return (<>
-      <Seo title={`${data.headline} | RS Stack`} description={`Professional website development, Google Business Profile ranking, and local SEO in ${data.city}, ${data.region}. Direct WhatsApp consultation with RS Stack (HQ: Phase 5 Mohali) at +91 98057 20962.`} path={`/locations/${normalizedSlug}`} keywords={[
+      <Seo title={`${data.headline} | Growora`} description={`Professional website development, Google Business Profile ranking, and local SEO in ${data.city}, ${data.region}. Direct WhatsApp consultation with Growora (HQ: Phase 5 Mohali) at +91 98057 20962.`} path={`/locations/${normalizedSlug}`} keywords={[
             `website development company in ${data.city}`,
             `website designer in ${data.city}`,
             `local SEO services ${data.city}`,

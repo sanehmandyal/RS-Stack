@@ -4,14 +4,14 @@ import { Seo } from '../components/Seo';
 import { PageHero, Section, SectionHead } from '../components/ui';
 export default function About() {
     return (<>
-      <Seo title="About RS Stack | Elite Web & Digital Growth Agency" description="Learn about RS Stack's engineering standards, mission, transparent pricing ethos, and how we help businesses grow with confidence." path="/about"/>
-      <PageHero eyebrow="Our Mission & DNA" title="We Build High-Converting Digital Systems. You Grow Your Business." text="RS Stack is an engineering-first digital growth agency. We bridge the gap between complex web development, high-intent local SEO, and measurable customer acquisition for ambitious enterprises."/>
+      <Seo title="About Growora | Elite Web & Digital Growth Agency" description="Learn about Growora's engineering standards, mission, transparent pricing ethos, and how we help businesses grow with confidence." path="/about"/>
+      <PageHero eyebrow="Our Mission & DNA" title="We Build High-Converting Digital Systems. You Grow Your Business." text="Growora is an engineering-first digital growth agency. We bridge the gap between complex web development, high-intent local SEO, and measurable customer acquisition for ambitious enterprises."/>
 
       <Section className="pt-4">
         {/* Visual Agency Banner */}
         <div className="relative mb-14 overflow-hidden rounded-3xl border border-white/10">
           <div className="relative aspect-[21/9] w-full min-h-[300px]">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80" alt="RS Stack Engineering and Growth Team" className="h-full w-full object-cover"/>
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80" alt="Growora Engineering and Growth Team" className="h-full w-full object-cover"/>
             <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent"/>
             <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
               <div>
@@ -68,7 +68,7 @@ export default function About() {
 
         {/* Guiding Principles */}
         <div className="mt-14 glass-strong rounded-3xl p-8 sm:p-12">
-          <SectionHead eyebrow="Our Commitments" title="What Sets RS Stack Apart" center={false}/>
+          <SectionHead eyebrow="Our Commitments" title="What Sets Growora Apart" center={false}/>
           <div className="grid gap-6 sm:grid-cols-3 mt-8">
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-secondary font-bold">

@@ -85,7 +85,7 @@ export const NAV = [
     ['/contact', 'Contact'],
 ];
 export const DELIVERY_LABEL = {
-    direct: 'Delivered directly by RS Stack',
-    mixed: 'RS Stack work + third-party accounts',
+    direct: 'Delivered directly by Growora',
+    mixed: 'Growora work + third-party accounts',
     third_party_required: 'Requires third-party subscription',
 };

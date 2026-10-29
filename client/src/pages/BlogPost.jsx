@@ -30,7 +30,7 @@ export default function BlogPostPage() {
     ];
     const bodyHtml = p.bodyHtml ||
         `<p class="lead">${p.excerpt}</p>
-    <p>In modern digital acquisition, every fraction of a second and every search touchpoint directly impacts your customer acquisition costs. At RS Stack, we architect high-performance websites and dominate local search rankings across Mohali, Chandigarh, and worldwide.</p>
+    <p>In modern digital acquisition, every fraction of a second and every search touchpoint directly impacts your customer acquisition costs. At Growora, we architect high-performance websites and dominate local search rankings across Mohali, Chandigarh, and worldwide.</p>
     <h2>Strategic Implementation Framework</h2>
     <p>Deploying evidence-based technical SEO and clean code ensures your business captures high-intent customers at the exact moment they are looking for your services.</p>
     <ul>
@@ -42,7 +42,7 @@ export default function BlogPostPage() {
         ? data.related
         : fallbackBlogPosts.filter((x) => x.slug !== p.slug);
     return (<>
-      <Seo title={p.metaTitle || `${p.title} | RS Stack`} description={p.metaDescription || p.excerpt || p.title} path={path} type="article" image={p.coverImage || undefined} jsonLd={[{ '@context': 'https://schema.org', '@type': 'Article', headline: p.title, datePublished: p.publishedAt, dateModified: p.updatedAt, author: { '@type': 'Organization', name: p.authorName || 'RS Stack' }, publisher: { '@type': 'Organization', name: 'RS Stack' } }, breadcrumbLd([['Home', '/'], ['Blog', '/blog'], [p.title, path]])]}/>
+      <Seo title={p.metaTitle || `${p.title} | Growora`} description={p.metaDescription || p.excerpt || p.title} path={path} type="article" image={p.coverImage || undefined} jsonLd={[{ '@context': 'https://schema.org', '@type': 'Article', headline: p.title, datePublished: p.publishedAt, dateModified: p.updatedAt, author: { '@type': 'Organization', name: p.authorName || 'Growora' }, publisher: { '@type': 'Organization', name: 'Growora' } }, breadcrumbLd([['Home', '/'], ['Blog', '/blog'], [p.title, path]])]}/>
       <Section className="pt-32 sm:pt-40">
         <article className="mx-auto max-w-3xl">
           <Breadcrumbs items={[['Home', '/'], ['Blog', '/blog'], [p.title]]}/>

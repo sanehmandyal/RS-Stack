@@ -7,7 +7,7 @@ export const fallbackTestimonials = [
         authorName: 'Rajat Sharma',
         authorRole: 'Founder',
         businessName: 'Tricity Cleaners & Property Care',
-        quote: 'RS Stack rebuilt our service platform and optimized our Google Business Profile in Phase 5 Mohali. Within two months, our incoming phone call volume increased by over 300% and we consistently rank in the top 3 Map Pack across the Tricity.',
+        quote: 'Growora rebuilt our service platform and optimized our Google Business Profile in Phase 5 Mohali. Within two months, our incoming phone call volume increased by over 300% and we consistently rank in the top 3 Map Pack across the Tricity.',
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
         verified: true,
     },
@@ -64,9 +64,9 @@ export const fallbackBlogPosts = [
 ];
 export const fallbackFaqs = originalFaqs;
 export const fallbackSettings = {
-    businessName: 'RS Stack',
+    businessName: 'Growora',
     tagline: 'Websites, Local SEO & Digital Growth for Businesses.',
-    contactEmail: 'contact@rs-stack.com',
+    contactEmail: 'contact@growora.com',
     phone: '+91 98057 20962',
     whatsappNumber: '919805720962',
     address: 'Phase 5, Mohali, SAS Nagar, Punjab 160059, India',

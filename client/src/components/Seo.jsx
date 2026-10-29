@@ -11,7 +11,7 @@ export function Seo({ title, description, path = '/', noindex = false, type = 'w
     'affordable business websites',
 ], }) {
     const settings = useSettings();
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://rs-stack.com';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://growora.com';
     const canonical = path !== undefined ? `${origin}${path === '/' ? '' : path}` : origin;
     const fullImage = image.startsWith('http') ? image : `${origin}${image}`;
     // Schema for LocalBusiness + ProfessionalService with NAP in Mohali SAS Nagar
@@ -19,13 +19,13 @@ export function Seo({ title, description, path = '/', noindex = false, type = 'w
         '@context': 'https://schema.org',
         '@type': 'ProfessionalService',
         '@id': `${origin}/#organization`,
-        name: settings.businessName || 'RS Stack',
+        name: settings.businessName || 'Growora',
         url: origin,
         logo: `${origin}/logo.png`,
         image: fullImage,
         description: description,
         telephone: '+919805720962',
-        email: settings.contactEmail || 'contact@rs-stack.com',
+        email: settings.contactEmail || 'contact@growora.com',
         priceRange: '$$',
         address: {
             '@type': 'PostalAddress',
@@ -66,7 +66,7 @@ export function Seo({ title, description, path = '/', noindex = false, type = 'w
         '@type': 'WebSite',
         '@id': `${origin}/#website`,
         url: origin,
-        name: settings.businessName || 'RS Stack',
+        name: settings.businessName || 'Growora',
         description: 'Bespoke Website Development, Local SEO & Digital Growth Agency in Mohali, Punjab and Global.',
         publisher: { '@id': `${origin}/#organization` },
     };
@@ -77,7 +77,7 @@ export function Seo({ title, description, path = '/', noindex = false, type = 'w
       <meta name="title" content={title}/>
       <meta name="description" content={description}/>
       <meta name="keywords" content={keywords.join(', ')}/>
-      <meta name="author" content="RS Stack"/>
+      <meta name="author" content="Growora"/>
       <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'}/>
       {canonical && <link rel="canonical" href={canonical}/>}
 
@@ -93,7 +93,7 @@ export function Seo({ title, description, path = '/', noindex = false, type = 'w
       <meta property="og:title" content={title}/>
       <meta property="og:description" content={description}/>
       <meta property="og:image" content={fullImage}/>
-      <meta property="og:site_name" content="RS Stack"/>
+      <meta property="og:site_name" content="Growora"/>
       <meta property="og:locale" content="en_IN"/>
 
       {/* Twitter Cards */}
@@ -110,7 +110,7 @@ export function Seo({ title, description, path = '/', noindex = false, type = 'w
     </Helmet>);
 }
 export const breadcrumbLd = (items) => {
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://rs-stack.com';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://growora.com';
     return {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',

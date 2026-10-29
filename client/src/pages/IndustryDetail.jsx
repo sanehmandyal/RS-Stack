@@ -12,7 +12,7 @@ export default function IndustryDetail() {
         return <NotFound />;
     const path = `/industries/${ind.slug}`;
     return (<>
-      <Seo title={`Websites & Digital Marketing for ${ind.name} | RS Stack`} description={`How ${ind.name.toLowerCase()} attract more high-value clients with modern web design, local SEO, and digital infrastructure from RS Stack.`} path={path} jsonLd={[breadcrumbLd([['Home', '/'], ['Industries', '/industries'], [ind.name, path]])]}/>
+      <Seo title={`Websites & Digital Marketing for ${ind.name} | Growora`} description={`How ${ind.name.toLowerCase()} attract more high-value clients with modern web design, local SEO, and digital infrastructure from Growora.`} path={path} jsonLd={[breadcrumbLd([['Home', '/'], ['Industries', '/industries'], [ind.name, path]])]}/>
       <PageHero eyebrow="Industry Focus" title={`Digital Growth Framework for ${ind.name}`} text={ind.intro}/>
       <Section className="pt-4">
         <Breadcrumbs items={[['Home', '/'], ['Industries', '/industries'], [ind.name]]}/>

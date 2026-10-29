@@ -13,7 +13,7 @@ export default function Portfolio() {
     const rawList = (data?.items && data.items.length > 0) ? data.items : fallbackProjects;
     const filteredProjects = cat ? rawList.filter((p) => p.category === cat) : rawList;
     return (<>
-      <Seo title="Portfolio & Case Studies | RS Stack" description="Explore selected high-performance websites, local search rank growth campaigns, and custom applications delivered by RS Stack." path="/portfolio"/>
+      <Seo title="Portfolio & Case Studies | Growora" description="Explore selected high-performance websites, local search rank growth campaigns, and custom applications delivered by Growora." path="/portfolio"/>
       <PageHero eyebrow="Case Studies" title="Engineered for Performance & High Conversion" text="Discover how we help businesses transform their digital presence, capture high-value customer inquiries, and establish category authority."/>
       <Section className="pt-4">
         <div role="group" aria-label="Filter projects" className="mb-10 flex flex-wrap gap-2.5">

@@ -9,7 +9,7 @@ import { forbidden, notFound, badRequest } from '../utils/errors.js';
 import { pageMeta, parseDate, parseObjectId, parsePagination, qs } from '../utils/misc.js';
 import { escapeRegex, hashIp } from '../utils/security.js';
 import { leadCreateSchema, leadUpdateSchema, noteSchema } from '../validators/schemas.js';
-const CONSENT_TEXT = 'I agree to RS Stack contacting me about my enquiry and storing my details as described in the Privacy Policy.';
+const CONSENT_TEXT = 'I agree to Growora contacting me about my enquiry and storing my details as described in the Privacy Policy.';
 const MIN_FILL_MS = 2500;
 /** PUBLIC: contact / service inquiry form. */
 export async function createLead(req, res) {
@@ -169,7 +169,7 @@ export async function exportLeads(req, res) {
     ]);
     await audit(req, 'lead.exported', { type: 'Lead' }, { count: leads.length });
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-    res.setHeader('Content-Disposition', 'attachment; filename="rs-stack-leads.csv"');
+    res.setHeader('Content-Disposition', 'attachment; filename="growora-leads.csv"');
     res.setHeader('Cache-Control', 'no-store');
     res.send('﻿' + toCsv(headers, rows));
 }

@@ -67,7 +67,7 @@ async function main() {
     ];
     for (const p of posts) {
         const bodyHtml = sanitizeRichText(p.bodyHtml);
-        if (await upsert(BlogPost, { slug: p.slug }, { ...p, bodyHtml, readingMinutes: readingTimeMinutes(bodyHtml), status: 'published', publishedAt: new Date(), authorName: 'RS Stack' }))
+        if (await upsert(BlogPost, { slug: p.slug }, { ...p, bodyHtml, readingMinutes: readingTimeMinutes(bodyHtml), status: 'published', publishedAt: new Date(), authorName: 'Growora' }))
             created++;
     }
     const faqs = [

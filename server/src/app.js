@@ -72,7 +72,7 @@ export function createApp() {
     app.use(sanitizeInput);
     app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));
     app.get('/readyz', (_req, res) => (dbReady() ? res.json({ status: 'ready' }) : res.status(503).json({ status: 'database_unavailable' })));
-    app.get('/', (_req, res) => res.json({ status: 'ok', name: 'RS Stack API', documentation: '/api/public/settings' }));
+    app.get('/', (_req, res) => res.json({ status: 'ok', name: 'Growora API', documentation: '/api/public/settings' }));
     // Uploaded images: static, never executable, never sniffed.
     app.use('/uploads', express.static(uploadDir, {
         index: false,

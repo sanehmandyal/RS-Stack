@@ -22,7 +22,7 @@ export default function Home() {
     const verifiedReviews = (testimonials.data?.items && testimonials.data.items.length > 0) ? testimonials.data.items : [];
     const faqsList = (faqs.data?.items && faqs.data.items.length > 0) ? faqs.data.items : fallbackFaqs;
     return (<>
-      <Seo title="RS Stack | Website Development & Local SEO Company in Mohali & Global" description="RS Stack is an engineering and digital agency based in Phase 5 Mohali SAS Nagar Punjab 160059. We build responsive websites, optimize Google Business Profiles for local search, and develop custom web applications." path="/" keywords={[
+      <Seo title="Growora | Website Development & Local SEO Company in Mohali & Global" description="Growora is an engineering and digital agency based in Phase 5 Mohali SAS Nagar Punjab 160059. We build responsive websites, optimize Google Business Profiles for local search, and develop custom web applications." path="/" keywords={[
             'website development company in Mohali',
             'website designer SAS Nagar Punjab',
             'local SEO services Mohali Chandigarh',
