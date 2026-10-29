@@ -22,7 +22,7 @@ const getFallbackItems = (endpoint) => {
         return fallbackBlogPosts.map((b, idx) => ({ ...b, _id: `cat_b_${idx}`, status: 'published' }));
     }
     if (endpoint === 'testimonials') {
-        return fallbackTestimonials.map((t, idx) => ({ ...t, _id: `cat_t_${idx}`, published: true, consentReference: 'Written consent on file' }));
+        return [];
     }
     if (endpoint === 'faqs') {
         return originalFaqs.map((f, idx) => ({ question: f[0], answer: f[1], scope: 'global', order: (idx + 1) * 10, published: true, _id: `cat_f_${idx}` }));

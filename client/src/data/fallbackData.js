@@ -1,35 +1,7 @@
 import { originalFaqs, originalProjects, originalServices } from './originalData';
 export const fallbackServices = originalServices;
 export const fallbackProjects = originalProjects;
-export const fallbackTestimonials = [
-    {
-        _id: 't1',
-        authorName: 'Rajat Sharma',
-        authorRole: 'Founder',
-        businessName: 'Tricity Cleaners & Property Care',
-        quote: 'Growora rebuilt our service platform and optimized our Google Business Profile in Phase 5 Mohali. Within two months, our incoming phone call volume increased by over 300% and we consistently rank in the top 3 Map Pack across the Tricity.',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-        verified: true,
-    },
-    {
-        _id: 't2',
-        authorName: 'Ananya Verma',
-        authorRole: 'Managing Partner',
-        businessName: 'Shivalik Eco Retreats (Himachal Pradesh)',
-        quote: 'The direct WhatsApp booking integration and sub-second mobile page loads have completely transformed how tourists book with us. Transparent communication, zero lock-in, and exceptional engineering.',
-        avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
-        verified: true,
-    },
-    {
-        _id: 't3',
-        authorName: 'Harpreet Singh',
-        authorRole: 'Co-Founder & Director',
-        businessName: 'Apex Industrial Supply (Chandigarh)',
-        quote: 'Their full-stack MERN portal automated our quotation pipeline and replaced dozens of manual spreadsheets. Clean code ownership from day one with zero monthly per-seat licensing fees.',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-        verified: true,
-    },
-];
+export const fallbackTestimonials = [];
 export const fallbackBlogPosts = [
     {
         slug: 'dominate-google-maps-local-seo-mohali-chandigarh',

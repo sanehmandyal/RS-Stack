@@ -403,14 +403,7 @@ export async function autoSeedAndBootstrap() {
             );
         }
 
-        // 4. Ensure verified testimonials exist in MongoDB
-        for (const t of starterTestimonials) {
-            await Testimonial.findOneAndUpdate(
-                { authorName: t.authorName },
-                { $setOnInsert: t },
-                { upsert: true, new: true, setDefaultsOnInsert: true }
-            );
-        }
+        // 4. Testimonials are strictly user-managed (no synthetic reviews auto-seeded)
 
         // 5. Ensure global FAQs exist in MongoDB
         for (const f of starterFaqs) {

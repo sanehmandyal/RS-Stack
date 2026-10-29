@@ -391,36 +391,51 @@ export default function Home() {
           </ol>
         </Section>
 
-        {/* Verified Client Testimonials - ONLY rendered if verified real reviews exist in database */}
-        {verifiedReviews.length > 0 && (
-          <Section>
-            <SectionHead
-              eyebrow="Client Reviews"
-              title="Verified Client Feedback"
-              text="Reviews from businesses we have worked with on web development and search visibility."
-            />
-            <div className="grid gap-6 md:grid-cols-3">
-              {verifiedReviews.map((t) => (
-                <figure key={t._id} className="card flex flex-col justify-between p-6 border border-slate-200/90 shadow-xs">
-                  <blockquote className="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
-                    "{t.quote}"
-                  </blockquote>
-                  <figcaption className="mt-5 flex items-center gap-3 pt-4 border-t border-slate-100">
-                    {t.avatar && (
-                      <img src={t.avatar} alt={t.authorName} className="h-9 w-9 rounded-md object-cover border border-slate-200"/>
-                    )}
-                    <div>
-                      <span className="block text-xs sm:text-sm font-semibold text-slate-900">{t.authorName}</span>
-                      <span className="block text-xs text-slate-500">
-                        {[t.authorRole, t.businessName].filter(Boolean).join(', ')}
-                      </span>
-                    </div>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </Section>
-        )}
+        {/* Authentic Business Commitments & Guarantees */}
+        <Section className="border-t border-slate-200/60 bg-gradient-to-b from-white to-slate-50/70">
+          <SectionHead
+            eyebrow="Why Choose Growora"
+            title="Engineered for Measurable Business Growth"
+            text="We reject proprietary lock-in, inflated retainer contracts, and fabricated claims. Every project is built on transparent engineering standards."
+          />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: '100% Code Ownership',
+                desc: 'You receive complete source code, repository access, and production builds upon project completion with zero vendor lock-in.',
+                badge: 'Full Handover',
+              },
+              {
+                title: 'Sub-Second Speed',
+                desc: 'Built with React 18, Vite, and edge caching for sub-second mobile loads that pass Google Core Web Vitals with 90+ scores.',
+                badge: 'Performance',
+              },
+              {
+                title: 'Transparent Milestones',
+                desc: 'Itemized written scopes and staging preview links at each milestone before any deployment or final sign-off.',
+                badge: 'Predictable',
+              },
+              {
+                title: 'Direct WhatsApp Support',
+                desc: 'Direct communication with the Mohali Phase 5 engineering and marketing team without frustrating support ticket queues.',
+                badge: 'Responsive',
+              },
+            ].map((pillar) => (
+              <div
+                key={pillar.title}
+                className="rounded-xl border border-slate-200/90 bg-white p-6 shadow-xs flex flex-col justify-between hover:border-orange-300 transition duration-200"
+              >
+                <div>
+                  <span className="chip text-[10px] font-bold uppercase tracking-wider text-orange-700 bg-orange-50 border border-orange-200/60 mb-3 inline-block">
+                    {pillar.badge}
+                  </span>
+                  <h3 className="text-base font-bold text-slate-900 mb-2">{pillar.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{pillar.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
 
         {/* FAQs */}
         <Section className="border-t border-slate-200 bg-slate-50/50">

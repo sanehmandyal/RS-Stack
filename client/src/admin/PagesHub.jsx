@@ -24,7 +24,7 @@ import {
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { originalFaqs, originalProjects, originalServices } from '../data/originalData';
-import { fallbackBlogPosts, fallbackSettings, fallbackTestimonials } from '../data/fallbackData';
+import { fallbackBlogPosts, fallbackSettings } from '../data/fallbackData';
 import { api } from '../services/api';
 import { useToast } from './toast';
 import { PageTitle } from './ui';
