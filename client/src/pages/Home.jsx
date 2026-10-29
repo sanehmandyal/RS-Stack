@@ -41,9 +41,9 @@ export default function Home() {
         />
 
         {/* Hero Section */}
-        <header className="relative overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36">
-          <div className="grid-bg pointer-events-none absolute inset-0 opacity-30" aria-hidden/>
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
+        <header className="relative overflow-hidden px-4 pb-12 pt-24 sm:px-6 sm:pb-16 sm:pt-28">
+          <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden/>
+          <div className="relative mx-auto grid max-w-6xl items-center gap-8 lg:gap-12 lg:grid-cols-2">
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 shadow-xs">
                 <span className="h-2 w-2 rounded-full bg-[#143D34]"/>

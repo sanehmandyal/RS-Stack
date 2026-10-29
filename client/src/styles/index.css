@@ -70,8 +70,10 @@
     @apply inline-flex items-center rounded-md border border-[#C3DBD2] bg-[#F2F7F5] px-2.5 py-1 text-xs font-semibold text-[#143D34];
   }
   .grid-bg {
-    background-image: linear-gradient(rgba(15,23,42,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.03) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background-image: linear-gradient(rgba(15,23,42,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.035) 1px, transparent 1px);
+    background-size: 36px 36px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, #000 40%, transparent 100%);
   }
   .prose-rs { @apply text-muted leading-relaxed; }
   .prose-rs h2 { @apply mt-8 mb-3 text-2xl text-ink font-bold; }
