@@ -1,111 +1,131 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
-  Briefcase,
+  Building2,
   CheckCircle2,
-  Coins,
-  Flame,
   Globe2,
+  HardDrive,
+  Link2,
   MapPin,
-  MessageCircle,
-  RotateCw,
-  ShoppingBag,
+  Search,
+  Server,
+  Share2,
   Sparkles,
+  Target,
   Zap,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const ORBIT_NODES = [
+const ORBIT_SERVICES = [
+  {
+    id: 'website-creation',
+    angle: 0,
+    icon: Globe2,
+    title: 'Website Creation',
+    shortLabel: 'Websites',
+    subtitle: 'Responsive modern business sites',
+    badge: 'Design & Code',
+    metric: 'Sub-0.5s Speed',
+    description: 'Custom, mobile-responsive business websites built with React 18, high-speed architecture, and direct WhatsApp inquiry buttons.',
+    deliverable: 'Custom Web Design + Mobile-First Code Ownership',
+    ctaTopic: 'Website Creation Services',
+  },
   {
     id: 'local-seo',
-    angle: 0,
+    angle: 51.4,
     icon: MapPin,
-    title: 'Local SEO & Maps',
-    subtitle: 'Rank #1 on Google Map Pack',
-    badge: 'Hyperlocal Growth',
+    title: 'Local Page SEO',
+    shortLabel: 'Local SEO',
+    subtitle: 'Google Map Pack rankings',
+    badge: 'Nearby Search',
     metric: '#1 Map Pack',
-    color: 'from-red-600 to-orange-500',
-    description: 'Direct customer calls from ready-to-buy local searchers across Mohali, Chandigarh & Tricity.',
-    deliverable: 'Google Profile Optimization + Local Citation Network',
+    description: 'Geo-targeted landing pages and Google Business Profile optimization to capture ready-to-buy customers in your area.',
+    deliverable: 'Google Map Pack Dominance + Geo Landing Pages',
+    ctaTopic: 'Local Page SEO Services',
   },
   {
-    id: 'fast-web',
-    angle: 60,
-    icon: Zap,
-    title: '0.4s Fast Platforms',
-    subtitle: 'Sub-second mobile speed',
-    badge: 'Core Web Vitals',
-    metric: '0.4s Speed',
-    color: 'from-orange-500 to-amber-500',
-    description: 'Engineered with React 18 for instantaneous mobile loads that slash bounce rates by over 50%.',
-    deliverable: 'Clean MERN Architecture + Zero CMS Bloat',
+    id: 'on-page-seo',
+    angle: 102.9,
+    icon: Search,
+    title: 'On-Page SEO',
+    shortLabel: 'On-Page',
+    subtitle: 'Technical tags & speed architecture',
+    badge: 'Search Engine Tuning',
+    metric: '100% SEO Score',
+    description: 'Complete optimization of title tags, meta descriptions, LocalBusiness schema markup, heading structure, and Core Web Vitals.',
+    deliverable: 'Schema Markup + Speed Optimization + Meta Tags',
+    ctaTopic: 'On-Page SEO Optimization',
   },
   {
-    id: 'whatsapp-engine',
-    angle: 120,
-    icon: MessageCircle,
-    title: 'WhatsApp Engine',
-    subtitle: 'Instant lead routing',
-    badge: 'Conversion Magnet',
-    metric: '3x Fast Leads',
-    color: 'from-red-500 to-rose-600',
-    description: 'Route high-intent inquiries straight into WhatsApp so you close customers before competitors reply.',
-    deliverable: '1-Click Direct WhatsApp Booking Concierge',
+    id: 'off-page-seo',
+    angle: 154.3,
+    icon: Link2,
+    title: 'Off-Page SEO',
+    shortLabel: 'Off-Page',
+    subtitle: 'Authority backlinks & citations',
+    badge: 'Domain Authority',
+    metric: 'High DA Links',
+    description: 'Ethical, high-authority backlink outreach, relevant guest citations, and digital brand mentions that push your rankings to the top.',
+    deliverable: 'Authoritative Backlinks + Digital PR Mentions',
+    ctaTopic: 'Off-Page SEO & Backlinks',
   },
   {
-    id: 'b2b-rfq',
-    angle: 180,
-    icon: Briefcase,
-    title: 'B2B Wholesale Hub',
-    subtitle: 'Self-serve quotation engine',
-    badge: 'Industrial Pipeline',
-    metric: 'Auto RFQ Quotes',
-    color: 'from-orange-600 to-red-600',
-    description: 'Replace manual PDF quoting with automated dealer pricing tiers, GST quotation PDFs, and ERP order sync.',
-    deliverable: 'Role-Based Access + Instant GST Quotes',
+    id: 'google-ads',
+    angle: 205.7,
+    icon: Target,
+    title: 'Google Ads Handle',
+    shortLabel: 'Google Ads',
+    subtitle: 'PPC & high-ROI search campaigns',
+    badge: 'Immediate Inbound',
+    metric: 'Direct Calls Today',
+    description: 'Targeted Google Search & Call Ads campaigns that put your business in front of customers searching with high buying intent right now.',
+    deliverable: 'Campaign Setup + Negative Keywords + Conversion Tracking',
+    ctaTopic: 'Google Ads Management',
   },
   {
-    id: 'direct-stays',
-    angle: 240,
-    icon: Coins,
-    title: 'Zero-OTA Booking',
-    subtitle: 'Direct guest reservation',
-    badge: 'Boutique Stays',
-    metric: 'Save 18% Fees',
-    color: 'from-amber-500 to-orange-600',
-    description: 'Bypass hefty 18% commissions to MakeMyTrip & Booking.com with direct guest reservation software.',
-    deliverable: 'Live Calendar Sync + Advance Payments',
+    id: 'domain-hosting',
+    angle: 257.1,
+    icon: Server,
+    title: 'Domain & Hosting',
+    shortLabel: 'Domain & Hosting',
+    subtitle: 'Fast cloud servers & free SSL',
+    badge: 'Cloud Infrastructure',
+    metric: '99.9% Uptime',
+    description: 'Domain registration, lightning-fast secure cloud hosting, free SSL security certificates, DNS configuration, and corporate email setup.',
+    deliverable: 'High-Speed Cloud Hosting + Free SSL & DNS Setup',
+    ctaTopic: 'Domain Registration & Cloud Hosting',
   },
   {
-    id: 'd2c-subscription',
-    angle: 300,
-    icon: ShoppingBag,
-    title: 'D2C Subscription',
-    subtitle: 'Recurring revenue engine',
-    badge: 'Quick-Commerce',
-    metric: '74% Repeat Sales',
-    color: 'from-red-600 via-orange-500 to-amber-500',
-    description: 'Automated recurring UPI payments and hyperlocal dispatch routes for specialized regional brands.',
-    deliverable: 'UPI Autopay + Real-time Route Tracking',
+    id: 'business-listing',
+    angle: 308.6,
+    icon: Building2,
+    title: 'Directory & Maps Listing',
+    shortLabel: 'Listings',
+    subtitle: 'All major local directories',
+    badge: 'Citations & Maps',
+    metric: '50+ Verified Portals',
+    description: 'Complete business verification and listing on Google Maps, Apple Maps, Bing Places, Justdial, and top local business directories.',
+    deliverable: 'Google & Apple Maps Listing + Citation Sync',
+    ctaTopic: 'Business Directory & Maps Listing',
   },
 ];
 
 export function HeroVisual() {
-  const [activeId, setActiveId] = useState('local-seo');
+  const [activeId, setActiveId] = useState('website-creation');
   const [isPaused, setIsPaused] = useState(false);
 
-  const active = ORBIT_NODES.find((n) => n.id === activeId) || ORBIT_NODES[0];
+  const active = ORBIT_SERVICES.find((n) => n.id === activeId) || ORBIT_SERVICES[0];
   const ActiveIcon = active.icon;
 
-  // Auto-cycle through nodes every 4.5 seconds if not paused by hover
+  // Auto-cycle through the 7 services every 4.5 seconds if not paused by hover
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       setActiveId((currentId) => {
-        const currentIndex = ORBIT_NODES.findIndex((n) => n.id === currentId);
-        const nextIndex = (currentIndex + 1) % ORBIT_NODES.length;
-        return ORBIT_NODES[nextIndex].id;
+        const currentIndex = ORBIT_SERVICES.findIndex((n) => n.id === currentId);
+        const nextIndex = (currentIndex + 1) % ORBIT_SERVICES.length;
+        return ORBIT_SERVICES[nextIndex].id;
       });
     }, 4500);
 
@@ -123,7 +143,7 @@ export function HeroVisual() {
         {/* Soft Ambient Radial Heatmap */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-red-600/10 via-orange-500/15 to-amber-500/10 blur-2xl pointer-events-none" />
 
-        {/* Outer Pulsing Wave Ring 1 */}
+        {/* Outer Pulsing Wave Ring */}
         <motion.div
           animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.65, 0.35] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -139,19 +159,17 @@ export function HeroVisual() {
           transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
           className="absolute inset-16 sm:inset-20 rounded-full border border-red-200/60 pointer-events-none"
         >
-          {/* Subtle radar beacon pip */}
+          {/* Radar beacon pip */}
           <span className="absolute -top-1 left-1/2 -translate-x-1/2 h-2.5 w-2.5 rounded-full bg-gradient-to-r from-red-600 to-orange-500 shadow-sm" />
         </motion.div>
 
-        {/* Rotating Circular Orbit System containing the 6 Business Nodes */}
+        {/* Rotating Circular Orbit System containing the 7 Services */}
         <motion.div
           animate={{ rotate: isPaused ? undefined : 360 }}
-          transition={{ duration: 42, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 46, repeat: Infinity, ease: 'linear' }}
           className="absolute inset-6 sm:inset-8 flex items-center justify-center"
         >
-          {ORBIT_NODES.map((node) => {
-            const rad = (node.angle * Math.PI) / 180;
-            // Radius ~ 150px on standard desktop, 125px on mobile
+          {ORBIT_SERVICES.map((node) => {
             const NodeIcon = node.icon;
             const isSelected = node.id === activeId;
 
@@ -163,32 +181,32 @@ export function HeroVisual() {
                   transform: `rotate(${node.angle}deg) translate(clamp(115px, 28vw, 158px)) rotate(-${node.angle}deg)`,
                 }}
               >
-                {/* Counter-rotation on node so icon stays upright */}
+                {/* Counter-rotation so node icon stays upright */}
                 <motion.div
                   animate={{ rotate: isPaused ? undefined : -360 }}
-                  transition={{ duration: 42, repeat: Infinity, ease: 'linear' }}
+                  transition={{ duration: 46, repeat: Infinity, ease: 'linear' }}
                 >
                   <button
                     type="button"
                     onClick={() => setActiveId(node.id)}
-                    aria-label={`Explore business idea: ${node.title}`}
+                    aria-label={`Explore service: ${node.title}`}
                     className={`group relative flex items-center justify-center rounded-full transition-all duration-300 cursor-pointer ${
                       isSelected
-                        ? 'h-13 w-13 sm:h-14 sm:w-14 bg-gradient-to-tr from-red-600 to-orange-500 text-white shadow-lg ring-4 ring-orange-200 scale-110 z-20'
-                        : 'h-10 w-10 sm:h-11 sm:w-11 bg-white/95 text-slate-700 border-2 border-orange-200/90 shadow-sm hover:border-orange-400 hover:scale-105 z-10'
+                        ? 'h-12 w-12 sm:h-13 sm:w-13 bg-gradient-to-tr from-red-600 to-orange-500 text-white shadow-lg ring-4 ring-orange-200 scale-110 z-20'
+                        : 'h-9 w-9 sm:h-10 sm:w-10 bg-white/95 text-slate-700 border-2 border-orange-200/90 shadow-sm hover:border-orange-400 hover:scale-105 z-10'
                     }`}
                   >
                     <NodeIcon className={`transition duration-200 ${isSelected ? 'h-5 w-5 sm:h-6 sm:w-6' : 'h-4 w-4 text-slate-700 group-hover:text-orange-600'}`} />
 
                     {/* Compact Node Label Tag */}
                     <span
-                      className={`absolute -bottom-5 sm:-bottom-5.5 whitespace-nowrap text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 rounded-md transition-all duration-200 pointer-events-none ${
+                      className={`absolute -bottom-5 sm:-bottom-5.5 whitespace-nowrap text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-md transition-all duration-200 pointer-events-none ${
                         isSelected
                           ? 'bg-slate-900 text-white shadow-xs'
                           : 'bg-white/90 text-slate-600 border border-slate-200/80 group-hover:text-slate-900 group-hover:border-orange-300'
                       }`}
                     >
-                      {node.title.split(' ')[0]}
+                      {node.shortLabel}
                     </span>
                   </button>
                 </motion.div>
@@ -197,7 +215,7 @@ export function HeroVisual() {
           })}
         </motion.div>
 
-        {/* Central Core Circle (Active Business Idea Showcase) */}
+        {/* Central Core Circle (Active Service Showcase) */}
         <div className="relative z-10 h-32 w-32 sm:h-36 sm:w-36 rounded-full bg-white/95 backdrop-blur-md border-2 border-orange-300/80 shadow-md flex flex-col items-center justify-center p-2.5 text-center">
           {/* Animated Core Glow Ring */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-red-500/10 to-orange-500/10 animate-pulse pointer-events-none" />
@@ -230,15 +248,15 @@ export function HeroVisual() {
           </AnimatePresence>
         </div>
 
-        {/* Floating Verified Trust Pills */}
+        {/* Floating Badges */}
         <div className="absolute top-2 left-2 hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-orange-200 bg-white/95 px-2.5 py-1 text-[11px] font-bold text-slate-800 shadow-xs backdrop-blur-sm">
           <span className="h-2 w-2 rounded-full bg-red-600 ring-2 ring-orange-200 animate-pulse" />
-          <span>Continuous Orbit Engine</span>
+          <span>7 Core Offerings</span>
         </div>
 
         <div className="absolute bottom-2 right-2 hidden sm:inline-flex items-center gap-1 rounded-lg border border-orange-200 bg-white/95 px-2.5 py-1 text-[11px] font-semibold text-slate-700 shadow-xs backdrop-blur-sm">
           <Sparkles className="h-3 w-3 text-orange-500" />
-          <span>Interactive Node System</span>
+          <span>Tap Node to Inspect</span>
         </div>
       </div>
 
@@ -260,10 +278,10 @@ export function HeroVisual() {
           </div>
 
           <Link
-            to={`/contact?blueprint=${encodeURIComponent(active.title)}`}
+            to={`/contact?service=${encodeURIComponent(active.title)}`}
             className="btn btn-sm btn-primary whitespace-nowrap shrink-0 self-end sm:self-center shadow-xs"
           >
-            Launch This Idea <ArrowRight className="h-3.5 w-3.5" />
+            Get a Quote <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
       </div>

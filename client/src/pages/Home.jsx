@@ -55,14 +55,14 @@ export default function Home() {
                   home.heroHeadline
                 ) : (
                   <>
-                    High-Performance Websites, Local SEO & <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-600 to-amber-600">Custom Web Applications</span>
+                    Website Creation, Full SEO & <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-600 to-amber-600">Google Ads Management</span>
                   </>
                 )}
               </h1>
 
               <p className="mt-5 max-w-xl text-base sm:text-lg text-slate-600 leading-relaxed">
                 {home.heroSubheadline ??
-                  'Based in Phase 5, Mohali. We build fast, responsive websites, optimize Google Business Profiles for local search, and engineer scalable MERN stack web applications for growing businesses.'}
+                  'Based in Phase 5, Mohali. We specialize exclusively in custom website creation, Local Page SEO, On-Page & Off-Page SEO, Google Ads management, domain & cloud hosting, and business directory listings.'}
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -77,12 +77,12 @@ export default function Home() {
               {/* Verified Trust Metric Badges */}
               <div className="mt-8 grid grid-cols-3 gap-3 border-t border-slate-200 pt-6">
                 <div className="rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs">
-                  <p className="text-xl sm:text-2xl font-black text-slate-900">100%</p>
-                  <p className="text-xs text-slate-600 font-medium mt-0.5">Code Ownership</p>
+                  <p className="text-xl sm:text-2xl font-black text-slate-900">7-in-1</p>
+                  <p className="text-xs text-slate-600 font-medium mt-0.5">Core Growth Suite</p>
                 </div>
                 <div className="rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs">
-                  <p className="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">React 18</p>
-                  <p className="text-xs text-slate-600 font-medium mt-0.5">Clean Architecture</p>
+                  <p className="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">Full SEO</p>
+                  <p className="text-xs text-slate-600 font-medium mt-0.5">Local, On & Off Page</p>
                 </div>
                 <div className="rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs">
                   <p className="text-xl sm:text-2xl font-black text-orange-600">Phase 5</p>
