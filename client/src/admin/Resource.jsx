@@ -1,4 +1,4 @@
-import { Plus } from 'lucide-react';
+import { Copy, ExternalLink, Plus, Share2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { EmptyState, ErrorState, Skeleton } from '../components/ui';
 import { useFetch } from '../hooks/useFetch';
@@ -8,6 +8,16 @@ import { toDateInput } from '../utils/format';
 import { useAuth } from './auth';
 import { useToast } from './toast';
 import { Confirm, DataTable, Pager, PageTitle, Td, Th } from './ui';
+
+const getLiveUrl = (endpoint, row) => {
+    if (endpoint === 'services' && row.slug) return `/services/${row.slug}`;
+    if (endpoint === 'projects' && row.slug) return `/portfolio/${row.slug}`;
+    if (endpoint === 'blog-posts' && row.slug) return `/blog/${row.slug}`;
+    if (endpoint === 'clients' && row.slug) return `/locations/${row.slug}`;
+    if (endpoint === 'directory-listings' && row.listingUrl) return row.listingUrl;
+    if (endpoint === 'campaigns' && row.landingPage) return row.landingPage;
+    return null;
+};
 const getPath = (o, p) => p.split('.').reduce((a, k) => (a == null ? undefined : a[k]), o);
 const setPath = (o, p, v) => {
     const ks = p.split('.');
@@ -200,10 +210,58 @@ export default function Resource({ cfg }) {
           <DataTable label={cfg.title}>
             <thead><tr>{cfg.columns.map((c) => <Th key={c.key}>{c.label}</Th>)}<Th><span className="sr-only">Actions</span></Th></tr></thead>
             <tbody>
-              {data.items.map((row) => (<tr key={row._id}>
-                  {cfg.columns.map((c) => <Td key={c.key}>{c.render ? c.render(row) : String(row[c.key] ?? '')}</Td>)}
-                  <Td className="whitespace-nowrap text-right"><button className="btn-ghost btn-sm" onClick={() => open(row)}>Edit</button> <button className="btn-danger btn-sm" onClick={() => setDel(row)}>Delete</button></Td>
-                </tr>))}
+              {data.items.map((row) => {
+                const liveUrl = getLiveUrl(cfg.endpoint, row);
+                const itemName = row.title || row.name || row.businessName || cfg.singular;
+                return (
+                  <tr key={row._id}>
+                    {cfg.columns.map((c) => <Td key={c.key}>{c.render ? c.render(row) : String(row[c.key] ?? '')}</Td>)}
+                    <Td className="whitespace-nowrap text-right">
+                      <div className="inline-flex items-center gap-1.5">
+                        {liveUrl && (
+                          <>
+                            <a
+                              href={liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn-ghost btn-sm px-2 text-slate-700"
+                              title="Open live public page"
+                            >
+                              <ExternalLink className="h-3.5 w-3.5" />
+                            </a>
+                            <button
+                              type="button"
+                              className="btn-ghost btn-sm px-2 text-slate-700"
+                              title="Copy shareable link"
+                              onClick={() => {
+                                const fullUrl = liveUrl.startsWith('http') ? liveUrl : `${window.location.origin}${liveUrl}`;
+                                navigator.clipboard.writeText(fullUrl);
+                                toast('ok', `Copied link: ${fullUrl}`);
+                              }}
+                            >
+                              <Copy className="h-3.5 w-3.5" />
+                            </button>
+                            <button
+                              type="button"
+                              className="btn-ghost btn-sm px-2 text-slate-700 hover:text-emerald-700"
+                              title="Share on WhatsApp"
+                              onClick={() => {
+                                const fullUrl = liveUrl.startsWith('http') ? liveUrl : `${window.location.origin}${liveUrl}`;
+                                const text = encodeURIComponent(`Growora ${itemName}: ${fullUrl}`);
+                                window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+                              }}
+                            >
+                              <Share2 className="h-3.5 w-3.5" />
+                            </button>
+                          </>
+                        )}
+                        <button className="btn-ghost btn-sm" onClick={() => open(row)}>Edit</button>
+                        <button className="btn-danger btn-sm" onClick={() => setDel(row)}>Delete</button>
+                      </div>
+                    </Td>
+                  </tr>
+                );
+              })}
             </tbody>
           </DataTable>
           <Pager page={data.page} pages={data.pages} onPage={setPage}/>

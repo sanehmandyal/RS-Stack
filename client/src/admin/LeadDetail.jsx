@@ -55,8 +55,29 @@ export default function LeadDetail() {
           <p className="mt-5 whitespace-pre-wrap rounded-xl border border-white/10 bg-white/5 p-4 text-sm">{lead.message}</p>
           <p className="mt-4 text-xs text-muted">Consent: {consent ? `given ${fmtDateTime(consent.givenAt)} (policy v${consent.policyVersion})` : 'no record'}</p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <a className="btn-ghost btn-sm" href={`mailto:${lead.email}`}>Email</a>
-            {wa && <a className="btn-ghost btn-sm" href={wa} target="_blank" rel="noopener noreferrer">WhatsApp</a>}
+            <a className="btn-ghost btn-sm" href={`mailto:${lead.email}`}>Email Client</a>
+            {wa && <a className="btn-ghost btn-sm text-emerald-700" href={wa} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>}
+            <button
+              type="button"
+              className="btn-ghost btn-sm"
+              onClick={() => {
+                const fullBrief = `*Growora Lead Brief*\n• Name: ${lead.name}\n• Phone: ${lead.phone || 'N/A'}\n• Email: ${lead.email}\n• Business: ${lead.businessName || 'N/A'}\n• Services: ${lead.services?.join(', ') || 'N/A'}\n• Budget: ${lead.budgetRange || 'N/A'}\n• Message: ${lead.message || 'N/A'}\n• Received: ${fmtDateTime(lead.createdAt)}`;
+                navigator.clipboard.writeText(fullBrief);
+                toast('ok', 'Full lead brief copied to clipboard');
+              }}
+            >
+              Copy Full Brief
+            </button>
+            <button
+              type="button"
+              className="btn-ghost btn-sm text-emerald-700"
+              onClick={() => {
+                const fullBrief = `*Growora Lead Brief*\n• Name: ${lead.name}\n• Phone: ${lead.phone || 'N/A'}\n• Email: ${lead.email}\n• Business: ${lead.businessName || 'N/A'}\n• Services: ${lead.services?.join(', ') || 'N/A'}\n• Budget: ${lead.budgetRange || 'N/A'}\n• Message: ${lead.message || 'N/A'}`;
+                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(fullBrief)}`, '_blank');
+              }}
+            >
+              Share Brief on WhatsApp
+            </button>
           </div>
         </section>
 

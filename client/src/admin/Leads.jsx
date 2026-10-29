@@ -1,4 +1,4 @@
-import { Download } from 'lucide-react';
+import { Copy, Download, Share2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { EmptyState, ErrorState, Skeleton } from '../components/ui';
@@ -27,7 +27,7 @@ export default function Leads() {
             const url = URL.createObjectURL(await res.blob());
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'rs-stack-leads.csv';
+            a.download = 'growora-leads.csv';
             a.click();
             URL.revokeObjectURL(url);
         }
@@ -52,16 +52,47 @@ export default function Leads() {
       {data && data.items.length === 0 && <EmptyState title="No leads match" text="Adjust the filters, or wait for new inquiries."/>}
       {data && data.items.length > 0 && (<>
           <DataTable label="Leads">
-            <thead><tr><Th>Received</Th><Th>Name</Th><Th>Business</Th><Th>Services</Th><Th>Status</Th><Th>Assigned</Th><Th>Follow-up</Th></tr></thead>
-            <tbody>{data.items.map((l) => (<tr key={l._id} className="hover:bg-white/5">
-                <Td className="whitespace-nowrap">{fmtDate(l.createdAt)}</Td>
-                <Td><Link to={`/admin/leads/${l._id}`} className="font-semibold text-secondary hover:underline">{l.name}</Link><span className="block text-xs text-muted">{l.email}</span></Td>
-                <Td>{l.businessName}</Td>
-                <Td className="max-w-[220px] truncate text-muted">{l.services?.join(', ')}</Td>
-                <Td><Badge value={l.status}/></Td>
-                <Td>{l.assignedTo?.name ?? <span className="text-muted">Unassigned</span>}</Td>
-                <Td>{fmtDate(l.followUpAt)}</Td>
-              </tr>))}</tbody>
+            <thead><tr><Th>Received</Th><Th>Name</Th><Th>Business</Th><Th>Services</Th><Th>Status</Th><Th>Assigned</Th><Th>Follow-up</Th><Th className="text-right">Share</Th></tr></thead>
+            <tbody>{data.items.map((l) => {
+              const summaryText = `Lead: ${l.name} | Phone: ${l.phone || 'N/A'} | Email: ${l.email} | Business: ${l.businessName || 'N/A'} | Services: ${l.services?.join(', ') || 'General'}`;
+              return (
+                <tr key={l._id} className="hover:bg-white/5">
+                  <Td className="whitespace-nowrap">{fmtDate(l.createdAt)}</Td>
+                  <Td><Link to={`/admin/leads/${l._id}`} className="font-semibold text-secondary hover:underline">{l.name}</Link><span className="block text-xs text-muted">{l.email}</span></Td>
+                  <Td>{l.businessName}</Td>
+                  <Td className="max-w-[220px] truncate text-muted">{l.services?.join(', ')}</Td>
+                  <Td><Badge value={l.status}/></Td>
+                  <Td>{l.assignedTo?.name ?? <span className="text-muted">Unassigned</span>}</Td>
+                  <Td>{fmtDate(l.followUpAt)}</Td>
+                  <Td className="whitespace-nowrap text-right">
+                    <div className="inline-flex items-center gap-1">
+                      <button
+                        type="button"
+                        className="btn-ghost btn-sm px-2 text-slate-700"
+                        title="Copy lead details to clipboard"
+                        onClick={() => {
+                          navigator.clipboard.writeText(summaryText);
+                          toast('ok', `Copied lead summary: ${l.name}`);
+                        }}
+                      >
+                        <Copy className="h-3.5 w-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        className="btn-ghost btn-sm px-2 text-slate-700 hover:text-emerald-700"
+                        title="Share lead details on WhatsApp"
+                        onClick={() => {
+                          const msg = encodeURIComponent(`*New Lead Enquiry - Growora*\n• Name: ${l.name}\n• Phone: ${l.phone || 'N/A'}\n• Email: ${l.email}\n• Business: ${l.businessName || 'N/A'}\n• Services: ${l.services?.join(', ') || 'General'}`);
+                          window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+                        }}
+                      >
+                        <Share2 className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
+                  </Td>
+                </tr>
+              );
+            })}</tbody>
           </DataTable>
           <Pager page={data.page} pages={data.pages} onPage={(p) => set({ page: String(p) })}/>
           <p className="mt-2 text-xs text-muted">{data.total} lead(s)</p>

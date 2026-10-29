@@ -6,6 +6,7 @@ import { ToastProvider } from './toast';
 import { Login, ForgotPassword, ResetPassword } from './Login';
 import ChangePassword from './ChangePassword';
 import Dashboard from './Dashboard';
+import PagesHub from './PagesHub';
 import Leads from './Leads';
 import LeadDetail from './LeadDetail';
 import Resource from './Resource';
@@ -50,6 +51,7 @@ export default function AdminApp() {
           <Route element={<Guard />}>
             <Route index element={<Navigate to="dashboard" replace/>}/>
             <Route path="dashboard" element={<RequirePerm perm="dashboard:view"><Dashboard /></RequirePerm>}/>
+            <Route path="pages" element={<RequirePerm perm="content:manage"><PagesHub /></RequirePerm>}/>
             <Route path="leads" element={<RequirePerm perm="leads:read_all"><Leads /></RequirePerm>}/>
             <Route path="leads/:id" element={<RequirePerm perm="leads:read_all"><LeadDetail /></RequirePerm>}/>
             {Object.entries(RESOURCES).map(([path, cfg]) => <Route key={path} path={path} element={<Resource key={path} cfg={cfg}/>}/>)}

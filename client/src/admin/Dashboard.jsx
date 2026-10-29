@@ -1,4 +1,4 @@
-import { RefreshCw } from 'lucide-react';
+import { ExternalLink, Globe, RefreshCw, Share2 } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EmptyState, ErrorState, Skeleton } from '../components/ui';
@@ -50,10 +50,20 @@ export default function Dashboard() {
     const l = data.leads;
     return (<>
       <PageTitle title="Dashboard">
-        <button type="button" className="btn-ghost btn-sm inline-flex items-center gap-1.5" onClick={handleSync} disabled={syncing}>
-          <RefreshCw className={`h-3.5 w-3.5 text-emerald-700 ${syncing ? 'animate-spin' : ''}`} />
-          <span>{syncing ? 'Syncing...' : 'Sync Site Catalog'}</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <Link to="/admin/pages" className="btn-ghost btn-sm inline-flex items-center gap-1.5" title="Access all website pages and shareable links">
+            <Globe className="h-3.5 w-3.5 text-orange-600"/>
+            <span>Website Pages</span>
+          </Link>
+          <a href="/" target="_blank" rel="noopener noreferrer" className="btn-ghost btn-sm inline-flex items-center gap-1.5" title="Open live public website">
+            <ExternalLink className="h-3.5 w-3.5 text-orange-600"/>
+            <span>View Live Site</span>
+          </a>
+          <button type="button" className="btn-primary btn-sm inline-flex items-center gap-1.5 shadow-xs" onClick={handleSync} disabled={syncing}>
+            <RefreshCw className={`h-3.5 w-3.5 ${syncing ? 'animate-spin' : ''}`} />
+            <span>{syncing ? 'Syncing...' : 'Sync Site Catalog'}</span>
+          </button>
+        </div>
       </PageTitle>
       <p className="mb-4 text-xs text-muted">All figures come from your live database. Nothing here is estimated or sample data.</p>
       {l && (<>
@@ -65,6 +75,55 @@ export default function Dashboard() {
             <Stat label="Converted" value={l.converted} to="/admin/leads?status=won"/>
             <Stat label="Lost" value={l.lost}/>
           </div>
+
+          {/* Quick-Access Website Pages & Sharing Strip */}
+          <div className="mt-6 rounded-xl border border-slate-200 bg-white p-4 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+              <div>
+                <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+                  <Globe className="h-4 w-4 text-orange-600"/>
+                  Connected Website Pages
+                </h3>
+                <p className="text-xs text-muted mt-0.5">Directly access and share any live page with clients or team members.</p>
+              </div>
+              <Link to="/admin/pages" className="btn-ghost btn-sm text-xs font-semibold text-orange-700">
+                View All Pages Hub →
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                { name: 'Home Page', path: '/' },
+                { name: 'Services Catalog', path: '/services' },
+                { name: 'Portfolio & Work', path: '/portfolio' },
+                { name: 'Industries', path: '/industries' },
+                { name: 'About Growora', path: '/about' },
+                { name: 'Locations & Local SEO', path: '/locations' },
+                { name: 'Blog & Articles', path: '/blog' },
+                { name: 'Contact & Quotes', path: '/contact' },
+              ].map((p) => (
+                <div key={p.path} className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs">
+                  <a href={p.path} target="_blank" rel="noopener noreferrer" className="font-semibold text-slate-800 hover:text-orange-600 flex items-center gap-1">
+                    <span>{p.name}</span>
+                    <ExternalLink className="h-3 w-3 text-slate-400"/>
+                  </a>
+                  <button
+                    type="button"
+                    className="text-slate-400 hover:text-emerald-700 ml-1"
+                    title="Share link on WhatsApp"
+                    onClick={() => {
+                      const fullUrl = `${window.location.origin}${p.path}`;
+                      const msg = encodeURIComponent(`Growora ${p.name}: ${fullUrl}`);
+                      window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+                    }}
+                  >
+                    <Share2 className="h-3 w-3"/>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             <section className="card lg:col-span-2" aria-labelledby="trend"><h2 id="trend" className="mb-4 text-lg">Inquiries, last 30 days</h2>{l.total === 0 ? <EmptyState title="No inquiries yet" text="They will appear here once someone submits the contact form."/> : <TrendChart data={l.trend}/>}</section>
             <section className="card" aria-labelledby="src"><h2 id="src" className="mb-4 text-lg">Lead sources</h2>

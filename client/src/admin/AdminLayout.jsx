@@ -1,10 +1,11 @@
-import { BarChart3, BookOpen, Briefcase, FileText, Globe, HelpCircle, Inbox, KeyRound, LayoutDashboard, LogOut, Map, Megaphone, Menu, MessageSquareQuote, Plug, Search, Server, Settings, ShieldCheck, Users, X, Image as ImageIcon, Wrench } from 'lucide-react';
+import { BarChart3, BookOpen, Briefcase, ExternalLink, FileText, Globe, HelpCircle, Inbox, KeyRound, LayoutDashboard, LogOut, Map, Megaphone, Menu, MessageSquareQuote, Plug, Search, Server, Settings, ShieldCheck, Users, X, Image as ImageIcon, Wrench } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from '../components/ui';
 import { useAuth } from './auth';
 const ITEMS = [
     ['dashboard', 'Dashboard', LayoutDashboard, ['dashboard:view']],
+    ['pages', 'Website Pages', Globe, ['content:manage']],
     ['leads', 'Leads', Inbox, ['leads:read_all', 'leads:read_assigned']],
     ['services', 'Services', Wrench, ['content:manage']],
     ['projects', 'Projects', Briefcase, ['content:manage']],
@@ -53,7 +54,15 @@ export default function AdminLayout() {
             <nav aria-label="Breadcrumb" className="truncate text-sm text-muted"><Link to="/admin/dashboard" className="hover:text-primary transition">Admin</Link>{crumbs.map((c) => <span key={c}> / <span className="capitalize text-ink font-medium">{c.replace(/-/g, ' ').slice(0, 24)}</span></span>)}</nav>
           </div>
           <div className="flex items-center gap-2">
-            <span className="hidden text-right text-xs sm:block">
+            <Link to="/admin/pages" className="btn-ghost btn-sm inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800" title="Access all website pages and shareable links">
+              <Globe className="h-3.5 w-3.5 text-orange-600"/>
+              <span className="hidden md:inline">Website Pages</span>
+            </Link>
+            <a href="/" target="_blank" rel="noopener noreferrer" className="btn-primary btn-sm inline-flex items-center gap-1.5 text-xs font-semibold shadow-xs" title="Open live public website in new tab">
+              <ExternalLink className="h-3.5 w-3.5"/>
+              <span className="hidden sm:inline">Live Website</span>
+            </a>
+            <span className="hidden text-right text-xs sm:block pl-2 border-l border-slate-200">
               <span className="block font-semibold text-ink">
                 {user.name === 'RS Stack Admin' ? 'Growora Admin' : (user.name || 'Growora Admin')}
               </span>
