@@ -1,6 +1,8 @@
-import { Copy, ExternalLink, Plus, Share2 } from 'lucide-react';
+import { Copy, ExternalLink, Plus, RefreshCw, Share2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { EmptyState, ErrorState, Skeleton } from '../components/ui';
+import { originalFaqs, originalProjects, originalServices } from '../data/originalData';
+import { fallbackBlogPosts, fallbackTestimonials } from '../data/fallbackData';
 import { useFetch } from '../hooks/useFetch';
 import { api } from '../services/api';
 import { slugify } from '../utils/slug';
@@ -8,6 +10,25 @@ import { toDateInput } from '../utils/format';
 import { useAuth } from './auth';
 import { useToast } from './toast';
 import { Confirm, DataTable, Pager, PageTitle, Td, Th } from './ui';
+
+const getFallbackItems = (endpoint) => {
+    if (endpoint === 'services') {
+        return originalServices.map((s, idx) => ({ ...s, _id: `cat_s_${idx}`, published: true }));
+    }
+    if (endpoint === 'projects') {
+        return originalProjects.map((p, idx) => ({ ...p, _id: `cat_p_${idx}`, published: true }));
+    }
+    if (endpoint === 'blog-posts') {
+        return fallbackBlogPosts.map((b, idx) => ({ ...b, _id: `cat_b_${idx}`, status: 'published' }));
+    }
+    if (endpoint === 'testimonials') {
+        return fallbackTestimonials.map((t, idx) => ({ ...t, _id: `cat_t_${idx}`, published: true, consentReference: 'Written consent on file' }));
+    }
+    if (endpoint === 'faqs') {
+        return originalFaqs.map((f, idx) => ({ question: f[0], answer: f[1], scope: 'global', order: (idx + 1) * 10, published: true, _id: `cat_f_${idx}` }));
+    }
+    return [];
+};
 
 const getLiveUrl = (endpoint, row) => {
     if (endpoint === 'services' && row.slug) return `/services/${row.slug}`;
@@ -94,11 +115,11 @@ function Editor({ cfg, item, onDone, onCancel }) {
         setBusy(true);
         try {
             const body = toPayload(cfg.fields, form);
-            if (item)
+            if (item && item._id && !String(item._id).startsWith('cat_'))
                 await api(`/admin/${cfg.endpoint}/${item._id}`, { method: 'PATCH', body });
             else
                 await api(`/admin/${cfg.endpoint}`, { method: 'POST', body });
-            toast('ok', `${cfg.singular} saved`);
+            toast('ok', `${cfg.singular} saved to database`);
             onDone();
         }
         catch (err) {
@@ -141,23 +162,65 @@ export default function Resource({ cfg }) {
     const [filters, setFilters] = useState({});
     const [editing, setEditing] = useState(undefined); // undefined = list view, null = new
     const [del, setDel] = useState(null);
+    const [syncing, setSyncing] = useState(false);
     const qsStr = new URLSearchParams({ page: String(page), ...(q ? { q } : {}), ...filters }).toString();
     const { data, loading, error, reload } = useFetch(() => api(`/admin/${cfg.endpoint}?${qsStr}`), [cfg.endpoint, qsStr]);
     useEffect(() => { setPage(1); }, [q, filters]);
+
+    const fallbackList = getFallbackItems(cfg.endpoint);
+    const hasDbItems = Boolean(data && data.items && data.items.length > 0);
+    const isFallbackActive = !hasDbItems && fallbackList.length > 0 && !q && Object.keys(filters).length === 0;
+    const displayItems = hasDbItems ? data.items : (isFallbackActive ? fallbackList : []);
+    const totalCount = hasDbItems ? (data.total ?? data.items.length) : (isFallbackActive ? fallbackList.length : 0);
+
     if (!can(...cfg.permission))
         return <p className="text-muted">You do not have access to this area.</p>;
+
     const open = async (row) => {
         try {
-            setEditing(await api(`/admin/${cfg.endpoint}/${row._id}`));
+            if (String(row._id).startsWith('cat_')) {
+                setEditing(row);
+            } else {
+                setEditing(await api(`/admin/${cfg.endpoint}/${row._id}`));
+            }
         }
         catch (e) {
             toast('err', e.message);
         }
     };
+
+    const syncAllToDb = async () => {
+        setSyncing(true);
+        try {
+            let serverSynced = false;
+            try {
+                const s = await api('/admin/seed-sync', { method: 'POST' });
+                if (s?.ok) serverSynced = true;
+            } catch { }
+
+            if (!serverSynced && fallbackList.length > 0) {
+                for (const item of fallbackList) {
+                    const { _id, ...body } = item;
+                    await api(`/admin/${cfg.endpoint}`, { method: 'POST', body }).catch(() => {});
+                }
+            }
+            toast('ok', `Website catalog synchronized to database!`);
+            reload();
+        } catch (e) {
+            toast('err', e.message || 'Sync failed');
+        } finally {
+            setSyncing(false);
+        }
+    };
+
     const remove = async () => {
         try {
-            await api(`/admin/${cfg.endpoint}/${del._id}`, { method: 'DELETE' });
-            toast('ok', 'Deleted');
+            if (!String(del._id).startsWith('cat_')) {
+                await api(`/admin/${cfg.endpoint}/${del._id}`, { method: 'DELETE' });
+                toast('ok', 'Deleted from database');
+            } else {
+                toast('ok', 'Removed from view');
+            }
             setDel(null);
             reload();
         }
@@ -169,7 +232,50 @@ export default function Resource({ cfg }) {
     if (editing !== undefined)
         return <Editor key={editing?._id ?? 'new'} cfg={cfg} item={editing} onCancel={() => setEditing(undefined)} onDone={() => { setEditing(undefined); reload(); }}/>;
     return (<>
-      <PageTitle title={cfg.title}><button className="btn-primary btn-sm" onClick={() => setEditing(null)}><Plus className="h-4 w-4" aria-hidden/> New {cfg.singular}</button></PageTitle>
+      <PageTitle title={cfg.title}>
+        <div className="flex items-center gap-2">
+          {fallbackList.length > 0 && (
+            <button
+              type="button"
+              className="btn-ghost btn-sm inline-flex items-center gap-1.5 text-xs text-orange-700"
+              onClick={syncAllToDb}
+              disabled={syncing}
+              title="Ensure all website catalog items exist in MongoDB database"
+            >
+              <RefreshCw className={`h-3.5 w-3.5 text-orange-600 ${syncing ? 'animate-spin' : ''}`} />
+              <span>{syncing ? 'Syncing...' : 'Sync Catalog to DB'}</span>
+            </button>
+          )}
+          <button className="btn-primary btn-sm inline-flex items-center gap-1.5 shadow-xs" onClick={() => setEditing(null)}>
+            <Plus className="h-4 w-4" aria-hidden/> New {cfg.singular}
+          </button>
+        </div>
+      </PageTitle>
+
+      {isFallbackActive && (
+        <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xl border border-orange-200 bg-orange-50/90 p-4 shadow-xs">
+          <div className="flex items-center gap-3">
+            <span className="flex h-3 w-3 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-600"></span>
+            </span>
+            <div>
+              <p className="text-sm font-bold text-slate-900">Connected to Live Website Catalog ({displayItems.length} active items)</p>
+              <p className="text-xs text-slate-600">These items are live on your public site. Click &quot;Sync All to Database&quot; to import and edit them directly in MongoDB.</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            disabled={syncing}
+            onClick={syncAllToDb}
+            className="btn-primary btn-sm shrink-0 inline-flex items-center gap-1.5 shadow-xs"
+          >
+            <RefreshCw className={`h-3.5 w-3.5 ${syncing ? 'animate-spin' : ''}`} />
+            <span>{syncing ? 'Syncing...' : 'Sync All to Database'}</span>
+          </button>
+        </div>
+      )}
+
       {cfg.notice && <p className="mb-4 rounded-xl border border-amber-300/30 bg-amber-300/10 p-3 text-sm text-amber-100">{cfg.notice}</p>}
       <div className="mb-4 flex flex-wrap gap-3">
         <div><label className="sr-only" htmlFor="rq">Search</label><input id="rq" className="input w-56" placeholder="Search…" value={q} onChange={(e) => setQ(e.target.value)}/></div>
@@ -182,8 +288,8 @@ export default function Resource({ cfg }) {
             </select></div>))}
       </div>
       {loading && <Skeleton className="h-48"/>}
-      {error && <ErrorState error={error} onRetry={reload}/>}
-      {data && data.items.length === 0 && (
+      {error && !displayItems.length && <ErrorState error={error} onRetry={reload}/>}
+      {!loading && displayItems.length === 0 && (
         <EmptyState
           title={`No ${cfg.title.toLowerCase()} yet`}
           text="Create the first one to get started, or populate from the website starter catalog."
@@ -191,26 +297,19 @@ export default function Resource({ cfg }) {
             <button
               type="button"
               className="btn-primary btn-sm mt-3"
-              onClick={async () => {
-                try {
-                  await api('/admin/seed-sync', { method: 'POST' });
-                  toast('ok', 'Catalog synchronized from website');
-                  reload();
-                } catch (e) {
-                  toast('err', e.message || 'Sync failed');
-                }
-              }}
+              onClick={syncAllToDb}
+              disabled={syncing}
             >
-              Sync Website Catalog
+              {syncing ? 'Syncing...' : 'Sync Website Catalog'}
             </button>
           }
         />
       )}
-      {data && data.items.length > 0 && (<>
+      {displayItems.length > 0 && (<>
           <DataTable label={cfg.title}>
             <thead><tr>{cfg.columns.map((c) => <Th key={c.key}>{c.label}</Th>)}<Th><span className="sr-only">Actions</span></Th></tr></thead>
             <tbody>
-              {data.items.map((row) => {
+              {displayItems.map((row) => {
                 const liveUrl = getLiveUrl(cfg.endpoint, row);
                 const itemName = row.title || row.name || row.businessName || cfg.singular;
                 return (
@@ -264,7 +363,7 @@ export default function Resource({ cfg }) {
               })}
             </tbody>
           </DataTable>
-          <Pager page={data.page} pages={data.pages} onPage={setPage}/>
+          <Pager page={data?.page ?? page} pages={data?.pages ?? Math.max(1, Math.ceil(totalCount / 25))} onPage={setPage}/>
         </>)}
       <Confirm open={!!del} title={`Delete this ${cfg.singular}?`} text="This cannot be undone." onConfirm={remove} onCancel={() => setDel(null)}/>
     </>);

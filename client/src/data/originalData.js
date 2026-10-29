@@ -2,9 +2,11 @@
 export const originalServices = [
     {
         slug: 'business-website-development',
-        title: 'Business Website Development',
+        title: 'Website Creation & Development',
         category: 'development',
         delivery: 'direct',
+        order: 10,
+        published: true,
         summary: 'Custom responsive, mobile-first websites designed to clearly present your services and turn visitors into enquiries.',
         image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
         description: 'We design and engineer bespoke business websites built with modern technologies (React, Vite, Tailwind CSS). Every site is built around clean navigation, speed, accessibility, and clear inquiry routes (forms, WhatsApp, phone).',
@@ -20,28 +22,12 @@ export const originalServices = [
         related: ['local-seo-optimization', 'google-meta-advertising']
     },
     {
-        slug: 'custom-mern-applications',
-        title: 'Custom MERN Stack Web Applications',
-        category: 'development',
-        delivery: 'direct',
-        summary: 'Tailor-made web applications, admin portals, and internal workflows built with MongoDB, Express, React, and Node.js.',
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-        description: 'When off-the-shelf website templates fall short, we build custom full-stack web applications with secure authentication, database schemas, role-based access control, and API integrations.',
-        audience: ['Businesses outgrowing spreadsheets', 'Startups needing MVP web products', 'Enterprises requiring internal portals'],
-        deliverables: ['Technical requirements specification', 'React front end and Node/Express REST API', 'MongoDB database modeling', 'Role-based access & authentication', 'Deployment documentation'],
-        benefits: ['Software tailored to your exact business workflow', 'No ongoing monthly per-seat licensing fees'],
-        limitations: ['Scope and timeline depend on custom requirements agreed during discovery'],
-        timeline: 'Typically 3-8 weeks depending on agreed milestones.',
-        faqs: [
-            ['How is custom development priced?', 'We provide a transparent, itemized written proposal and milestone roadmap after the initial discovery discussion.']
-        ],
-        related: ['business-website-development', 'cloud-hosting-devops']
-    },
-    {
         slug: 'local-seo-optimization',
-        title: 'Local SEO & Google Business Profile Optimization',
+        title: 'Local Page SEO & Google Business Profile',
         category: 'local',
         delivery: 'direct',
+        order: 20,
+        published: true,
         summary: 'Improve your local visibility on Google Search and Maps across your target service areas.',
         image: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80',
         description: 'We audit and optimize your local search presence: Google Business Profile configuration, NAP (Name, Address, Phone) citation consistency, local schema markup, and geo-targeted service area pages.',
@@ -56,11 +42,53 @@ export const originalServices = [
         related: ['business-website-development', 'google-meta-advertising']
     },
     {
+        slug: 'on-page-seo-optimization',
+        title: 'On-Page SEO & Content Architecture',
+        category: 'seo',
+        delivery: 'direct',
+        order: 30,
+        published: true,
+        summary: 'Structured heading hierarchies, semantic HTML5, Core Web Vitals speed tuning, and high-intent keyword optimization.',
+        image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
+        description: 'We engineer your site pages so Google and search engines crawl, index, and understand your content effortlessly, boosting organic discovery.',
+        audience: ['Businesses needing higher organic search traffic', 'E-commerce and professional service pages'],
+        deliverables: ['Semantic HTML5 structure audit', 'Meta titles, descriptions & OpenGraph tags', 'Core Web Vitals sub-second speed optimization', 'Structured schema markup (JSON-LD)'],
+        benefits: ['Higher organic rankings on Google', 'Better click-through rates from search results'],
+        limitations: ['Ranking reflects domain history and competitive landscape over time'],
+        timeline: '1-2 weeks for full technical optimization.',
+        faqs: [
+            ['What is On-Page SEO?', 'It includes optimizing your code, headings, meta tags, and internal link structure directly on your website pages.']
+        ],
+        related: ['off-page-seo-backlinks', 'business-website-development']
+    },
+    {
+        slug: 'off-page-seo-backlinks',
+        title: 'Off-Page SEO & Authority Link Building',
+        category: 'seo',
+        delivery: 'direct',
+        order: 40,
+        published: true,
+        summary: 'Reputable directory listings, industry citations, and white-hat digital PR to boost domain authority.',
+        image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
+        description: 'Ethical off-page SEO strategies to build genuine domain credibility, high-authority backlink profiles, and trust signals across web indexes.',
+        audience: ['Growing companies looking to outperform established competitors', 'Regional brands aiming for regional authority'],
+        deliverables: ['High-authority citation development', 'Local business directory inclusion', 'Brand mention monitoring', 'Competitor backlink gap analysis'],
+        benefits: ['Strengthened domain rating (DR)', 'Sustainable organic ranking defense against algorithm updates'],
+        limitations: ['Strictly zero black-hat or spam links; all outreach is quality-screened'],
+        timeline: 'Ongoing monthly strategy with quarterly milestone reports.',
+        faqs: [
+            ['Do you use spam link networks?', 'Never. We only pursue legitimate citations and high-trust business directories.']
+        ],
+        related: ['on-page-seo-optimization', 'local-seo-optimization']
+    },
+    {
         slug: 'google-meta-advertising',
-        title: 'Google Ads & Meta Advertising Management',
+        title: 'Google Ads & PPC Campaign Management',
         category: 'ads',
         delivery: 'mixed',
-        summary: 'Targeted pay-per-click (PPC) and social advertising campaigns to reach prospective clients actively searching for your services.',
+        order: 50,
+        published: true,
+        summary: 'Targeted pay-per-click (PPC) and search advertising campaigns to reach prospective clients actively searching for your services.',
         image: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80',
         description: 'We set up and manage search and social ad campaigns with targeted keyword intent, ad copy, dedicated landing pages, and conversion tracking.',
         audience: ['Businesses seeking immediate inbound inquiries', 'Brands launching new services or locations'],
@@ -71,43 +99,47 @@ export const originalServices = [
         faqs: [
             ['How much ad budget should I start with?', 'We recommend starting with a manageable test budget suited to your local market competition.']
         ],
-        related: ['local-seo-optimization', 'conversion-rate-optimization']
-    },
-    {
-        slug: 'conversion-rate-optimization',
-        title: 'Technical SEO & Conversion Optimization',
-        category: 'seo',
-        delivery: 'direct',
-        summary: 'Speed audits, Core Web Vitals optimization, and user-experience improvements to maximize inquiry conversion.',
-        image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
-        description: 'We audit technical health, page load speeds, accessibility, meta tags, and call-to-action placement so more of your existing visitors reach out.',
-        audience: ['Websites with existing traffic wanting higher inquiry rates'],
-        deliverables: ['Core Web Vitals and page speed audit', 'Mobile layout friction analysis', 'Form streamlining and WhatsApp CTA placement', 'Metadata and canonical audit'],
-        benefits: ['Better user retention and higher inquiry conversion rates without extra ad spend'],
-        limitations: ['Requires access to website code and analytics'],
-        timeline: '1-2 weeks for audit and implementation.',
-        faqs: [
-            ['What tools do you use for speed testing?', 'We test using Google Lighthouse, PageSpeed Insights, and Web Vitals metrics.']
-        ],
-        related: ['business-website-development', 'cloud-hosting-devops']
+        related: ['local-seo-optimization', 'business-website-development']
     },
     {
         slug: 'cloud-hosting-devops',
-        title: 'Website Hosting, Security & Maintenance',
+        title: 'Domain, Cloud Hosting & SSL Setup',
         category: 'infrastructure',
         delivery: 'direct',
-        summary: 'Reliable cloud hosting setup, SSL encryption, daily backups, and ongoing technical support.',
+        order: 60,
+        published: true,
+        summary: 'Domain DNS configuration, fast edge cloud hosting, automated daily backups, and SSL HTTPS security certificates.',
         image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-        description: 'We configure fast cloud infrastructure, SSL certificates, automated backups, and provide technical upkeep so your website remains online and secure.',
-        audience: ['Businesses wanting peace of mind regarding uptime and website security'],
-        deliverables: ['Cloud server deployment', 'SSL certificate setup (HTTPS)', 'Automated backup schedules', 'Software dependency updates and security patches'],
-        benefits: ['High uptime reliability', 'Protected business and client data'],
+        description: 'We configure high-speed cloud infrastructure, SSL encryption certificates, DNS routing, and uptime monitoring so your website stays secure and blazing fast 24/7.',
+        audience: ['Business owners wanting reliable website uptime and zero hosting headaches'],
+        deliverables: ['DNS and nameserver configuration', 'Cloud hosting deployment', 'Automated SSL security (HTTPS)', 'Daily automated backups & security patches'],
+        benefits: ['99.9% uptime reliability', 'Lightning-fast edge caching worldwide'],
         limitations: ['Domain and cloud hosting provider fees are paid directly to providers'],
         timeline: 'Configured in 1-2 business days.',
         faqs: [
-            ['Do you provide ongoing support?', 'Yes, we offer ongoing maintenance and support plans to keep your platform updated.']
+            ['Do you manage DNS configuration?', 'Yes, we handle complete domain verification, DNS records, and email forwarding.']
         ],
-        related: ['business-website-development', 'custom-mern-applications']
+        related: ['business-website-development', 'business-listing-setup']
+    },
+    {
+        slug: 'business-listing-setup',
+        title: 'Business Directory & Maps Listing Management',
+        category: 'local',
+        delivery: 'direct',
+        order: 70,
+        published: true,
+        summary: 'Complete Google Maps, Apple Maps, Bing Places, and verified local business directory submission.',
+        image: 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80',
+        description: 'Ensuring your business NAP (Name, Address, Phone number) is 100% consistent across all tier-1 search engines and map navigation platforms.',
+        audience: ['Brick-and-mortar storefronts', 'Service area businesses across Mohali, Chandigarh, Punjab & HP'],
+        deliverables: ['Google Business Profile verification assistance', 'Bing Places for Business setup', 'Apple Maps Places listing', 'Tier-1 local directory submissions'],
+        benefits: ['Zero customer confusion from mismatched phone numbers or addresses', 'Higher local citation trust score'],
+        limitations: ['Google postcard or video verification depends on Google guidelines'],
+        timeline: 'Submissions completed in 3-7 business days.',
+        faqs: [
+            ['Why is NAP consistency important?', 'Search engines use matching Name, Address, and Phone numbers across sites to verify your business authenticity.']
+        ],
+        related: ['local-seo-optimization', 'cloud-hosting-devops']
     }
 ];
 // Honest, genuine demonstration projects clearly labeled as architectural samples

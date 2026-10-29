@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ErrorState, Skeleton } from '../components/ui';
+import { fallbackSettings } from '../data/fallbackData';
 import { useFetch } from '../hooks/useFetch';
 import { api } from '../services/api';
 import { useToast } from './toast';
@@ -12,10 +13,22 @@ export default function SettingsPage() {
     const { data, loading, error, reload } = useFetch(() => api('/admin/settings'), []);
     const [f, setF] = useState(null);
     const [err, setErr] = useState('');
-    useEffect(() => { if (data)
-        setF({ ...Object.fromEntries(TOP.map(([k]) => [k, data[k] ?? ''])), social: { ...data.social }, home: { ...data.home } }); }, [data]);
-    if (loading || !f)
-        return error ? <ErrorState error={error} onRetry={reload}/> : <Skeleton className="h-64"/>;
+    useEffect(() => {
+        const src = data || fallbackSettings;
+        if (src) {
+            setF({
+                ...Object.fromEntries(TOP.map(([k]) => [k, src[k] ?? fallbackSettings[k] ?? ''])),
+                social: { ...fallbackSettings.social, ...src.social },
+                home: { ...fallbackSettings.home, ...src.home }
+            });
+        }
+    }, [data]);
+    if (loading && !f)
+        return <Skeleton className="h-64"/>;
+    if (!f && error)
+        return <ErrorState error={error} onRetry={reload}/>;
+    if (!f)
+        return <Skeleton className="h-64"/>;
     const save = async (e) => {
         e.preventDefault();
         setErr('');
