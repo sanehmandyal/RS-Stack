@@ -80,7 +80,7 @@ export function FaqList({ items }) {
 }
 export function Logo({ className = '' }) {
     return (<span className={`inline-flex items-center gap-2.5 font-extrabold tracking-tight ${className}`}>
-      <img src="/logo.png" alt="Growora" className="h-8 w-8 rounded-full object-cover border border-slate-200 shadow-xs"/>
-      <span className="text-lg text-slate-900 tracking-tight">Grow<span className="font-black text-[#143D34]">ora</span></span>
+      <img src="/logo.png" alt="Growora" className="h-8 w-8 rounded-full object-cover border border-orange-200/80 shadow-xs"/>
+      <span className="text-lg text-slate-900 tracking-tight">Grow<span className="font-black bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">ora</span></span>
     </span>);
 }

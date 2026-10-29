@@ -72,7 +72,7 @@ function Header() {
                 className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50 transition shadow-xs"
                 aria-label="Chat on WhatsApp"
               >
-                <MessageCircle className="h-4 w-4 text-[#143D34]"/>
+                <MessageCircle className="h-4 w-4 text-orange-600"/>
                 <span className="hidden sm:inline">WhatsApp</span>
               </a>
             )}
@@ -123,7 +123,7 @@ function Header() {
                     href={wa}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-[#143D34] px-4 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-[#0E2A24] transition"
+                    className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-red-600 to-orange-600 px-4 py-2.5 text-sm font-semibold text-white shadow-xs hover:from-red-700 hover:to-orange-700 transition"
                   >
                     <MessageCircle className="h-4 w-4"/> Chat on WhatsApp (+91 98057 20962)
                   </a>
@@ -190,7 +190,7 @@ function Footer() {
               <li><Link className="hover:text-black transition" to="/terms-and-conditions">Terms & Conditions</Link></li>
               <li><Link className="hover:text-black transition" to="/refund-policy">Refund & Cancellation</Link></li>
               <li className="pt-2">
-                <Link className="hover:text-black inline-flex items-center gap-1.5 text-[#143D34] font-semibold transition" to="/admin/login">
+                <Link className="hover:text-red-700 inline-flex items-center gap-1.5 text-orange-700 font-semibold transition" to="/admin/login">
                   <Lock className="h-3 w-3"/> Admin Portal
                 </Link>
               </li>
@@ -201,8 +201,8 @@ function Footer() {
         <div className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} {s.businessName}. All rights reserved. Phase 5, Mohali, SAS Nagar, Punjab 160059.</p>
           <div className="flex items-center gap-4">
-            <Link to="/admin/login" className="hover:text-black text-slate-600 transition inline-flex items-center gap-1.5 font-medium">
-              <Lock className="h-3 w-3 text-[#143D34]"/> Admin Login
+            <Link to="/admin/login" className="hover:text-red-700 text-slate-600 transition inline-flex items-center gap-1.5 font-medium">
+              <Lock className="h-3 w-3 text-orange-600"/> Admin Login
             </Link>
             <span>|</span>
             <p>Phase 5, Mohali, Punjab, India</p>
@@ -232,7 +232,7 @@ export default function PublicLayout() {
 
     return (
       <div className="relative min-h-dvh flex flex-col justify-between">
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-[#143D34] focus:text-white focus:px-4 focus:py-2">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-red-600 focus:text-white focus:px-4 focus:py-2">
           Skip to content
         </a>
         <Backdrop />
@@ -247,7 +247,7 @@ export default function PublicLayout() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Chat on WhatsApp (${s.whatsappNumber || '+91 98057 20962'})`}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-lg bg-[#143D34] px-4 py-2.5 text-white font-semibold shadow-md hover:bg-[#0E2A24] transition active:scale-95 duration-150"
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-lg bg-gradient-to-r from-red-600 via-orange-600 to-amber-600 px-4 py-2.5 text-white font-semibold shadow-md hover:from-red-700 hover:via-orange-700 hover:to-amber-700 transition active:scale-95 duration-150"
           >
             <MessageCircle className="h-4 w-4"/>
             <span className="text-xs font-bold tracking-wide uppercase">WhatsApp</span>

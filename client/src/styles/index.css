@@ -34,19 +34,19 @@
     @apply text-slate-900 font-extrabold;
   }
   .text-gradient-emerald {
-    @apply text-[#143D34] font-extrabold;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500 font-extrabold;
   }
   .btn {
     @apply inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition duration-150 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60;
   }
   .btn-primary {
-    @apply btn bg-[#143D34] text-white shadow-xs hover:bg-[#0E2A24] active:bg-[#081915];
+    @apply btn bg-gradient-to-r from-red-600 via-orange-600 to-amber-600 text-white shadow-xs hover:from-red-700 hover:via-orange-700 hover:to-amber-700 active:from-red-800 active:to-orange-800;
   }
   .btn-ghost {
-    @apply btn border border-slate-300/80 bg-white text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-400 active:scale-[0.98];
+    @apply btn border border-slate-300/80 bg-white text-slate-800 shadow-xs hover:bg-orange-50/50 hover:border-orange-300 active:scale-[0.98];
   }
   .btn-accent {
-    @apply btn border border-amber-300 bg-amber-50 text-amber-900 hover:bg-amber-100 active:scale-[0.98];
+    @apply btn border border-orange-300 bg-orange-50 text-orange-950 hover:bg-orange-100 active:scale-[0.98];
   }
   .btn-danger {
     @apply btn border border-red-200 bg-red-50 text-red-700 hover:bg-red-100;
@@ -55,7 +55,7 @@
     @apply min-h-[36px] px-3 py-1.5 text-xs rounded-md;
   }
   .input {
-    @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slate-400 shadow-xs transition focus:border-[#143D34] focus:outline-none focus:ring-1 focus:ring-[#143D34];
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slate-400 shadow-xs transition focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500;
   }
   .label {
     @apply mb-1.5 block text-sm font-semibold text-ink;
@@ -67,7 +67,7 @@
     @apply inline-flex items-center rounded-md border border-slate-200 bg-slate-100/90 px-2.5 py-1 text-xs font-semibold text-slate-700;
   }
   .chip-brand {
-    @apply inline-flex items-center rounded-md border border-[#C3DBD2] bg-[#F2F7F5] px-2.5 py-1 text-xs font-semibold text-[#143D34];
+    @apply inline-flex items-center rounded-md border border-orange-200 bg-gradient-to-r from-red-50 to-orange-50 px-2.5 py-1 text-xs font-semibold text-red-900;
   }
   .grid-bg {
     background-image: linear-gradient(rgba(15,23,42,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.035) 1px, transparent 1px);
@@ -81,10 +81,10 @@
   .prose-rs p { @apply my-3; }
   .prose-rs ul { @apply my-3 list-disc space-y-1 pl-6; }
   .prose-rs ol { @apply my-3 list-decimal space-y-1 pl-6; }
-  .prose-rs a { @apply text-[#143D34] font-medium underline underline-offset-2 hover:text-black; }
-  .prose-rs blockquote { @apply my-5 border-l-4 border-[#143D34] bg-slate-50 py-2 pl-4 italic text-slate-700 rounded-r-md; }
+  .prose-rs a { @apply text-orange-600 font-medium underline underline-offset-2 hover:text-red-700; }
+  .prose-rs blockquote { @apply my-5 border-l-4 border-orange-500 bg-orange-50/40 py-2 pl-4 italic text-slate-800 rounded-r-md; }
   .prose-rs img { @apply my-6 rounded-lg shadow-sm border border-slate-200; }
-  .prose-rs code { @apply rounded bg-slate-100 border border-slate-200 px-1.5 py-0.5 text-sm text-[#143D34] font-mono; }
+  .prose-rs code { @apply rounded bg-orange-50 border border-orange-200 px-1.5 py-0.5 text-sm text-red-700 font-mono; }
   .prose-rs pre { @apply my-6 overflow-x-auto rounded-lg bg-slate-900 text-slate-100 p-4 text-sm shadow-sm; }
 }
 

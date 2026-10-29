@@ -46,7 +46,7 @@ export default function Home() {
           <div className="relative mx-auto grid max-w-6xl items-center gap-8 lg:gap-12 lg:grid-cols-2">
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 shadow-xs">
-                <span className="h-2 w-2 rounded-full bg-[#143D34]"/>
+                <span className="h-2 w-2 rounded-full bg-red-600 ring-2 ring-orange-200"/>
                 <span>Phase 5, Mohali HQ • Direct Engineering Team</span>
               </div>
 
@@ -55,7 +55,7 @@ export default function Home() {
                   home.heroHeadline
                 ) : (
                   <>
-                    High-Performance Websites, Local SEO & <span className="text-[#143D34]">Custom Web Applications</span>
+                    High-Performance Websites, Local SEO & <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-600 to-amber-600">Custom Web Applications</span>
                   </>
                 )}
               </h1>
@@ -81,11 +81,11 @@ export default function Home() {
                   <p className="text-xs text-slate-600 font-medium mt-0.5">Code Ownership</p>
                 </div>
                 <div className="rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs">
-                  <p className="text-xl sm:text-2xl font-black text-[#143D34]">React 18</p>
+                  <p className="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">React 18</p>
                   <p className="text-xs text-slate-600 font-medium mt-0.5">Clean Architecture</p>
                 </div>
                 <div className="rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs">
-                  <p className="text-xl sm:text-2xl font-black text-slate-900">Phase 5</p>
+                  <p className="text-xl sm:text-2xl font-black text-orange-600">Phase 5</p>
                   <p className="text-xs text-slate-600 font-medium mt-0.5">Mohali Team</p>
                 </div>
               </div>
@@ -205,24 +205,24 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="rounded-xl border-2 border-[#143D34] bg-white p-6 shadow-sm relative">
-              <div className="absolute -top-3 left-6 inline-flex items-center gap-1 rounded-md bg-[#143D34] px-3 py-0.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-xs">
+            <div className="rounded-xl border-2 border-orange-600 bg-white p-6 shadow-sm relative">
+              <div className="absolute -top-3 left-6 inline-flex items-center gap-1 rounded-md bg-gradient-to-r from-red-600 to-orange-600 px-3 py-0.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-xs">
                 Growora Standard
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#143D34]">Dedicated Engineering</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-orange-600">Dedicated Engineering</span>
               <h3 className="mt-2 text-lg font-bold text-slate-900">Engineered For Growth</h3>
               <ul className="mt-4 space-y-3 text-xs sm:text-sm text-slate-800 font-medium">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0 mt-0.5"/> 100% Full Source Code & Asset Ownership
+                  <CheckCircle2 className="h-4 w-4 text-orange-600 shrink-0 mt-0.5"/> 100% Full Source Code & Asset Ownership
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0 mt-0.5"/> Sub-Second Mobile Loading Performance
+                  <CheckCircle2 className="h-4 w-4 text-orange-600 shrink-0 mt-0.5"/> Sub-Second Mobile Loading Performance
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0 mt-0.5"/> Direct Senior Engineers on WhatsApp
+                  <CheckCircle2 className="h-4 w-4 text-orange-600 shrink-0 mt-0.5"/> Direct Senior Engineers on WhatsApp
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0 mt-0.5"/> Clean REST API, MERN Architecture & Secure RBAC
+                  <CheckCircle2 className="h-4 w-4 text-orange-600 shrink-0 mt-0.5"/> Clean REST API, MERN Architecture & Secure RBAC
                 </li>
               </ul>
               <Link to="/contact" className="mt-6 w-full btn btn-primary">
@@ -434,7 +434,7 @@ export default function Home() {
         <Section>
           <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-10 lg:grid lg:grid-cols-2 lg:gap-12 items-center shadow-xs">
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#143D34] mb-2">Direct Consultation</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600 mb-2 font-black">Direct Consultation</p>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
                 {home.finalCtaTitle ?? 'Ready to Discuss Your Project?'}
               </h2>
@@ -450,7 +450,7 @@ export default function Home() {
                   'Direct communication with local Mohali development team',
                 ].map((x) => (
                   <li key={x} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#143D34] shrink-0" aria-hidden/> {x}
+                    <CheckCircle2 className="h-4 w-4 text-orange-600 shrink-0" aria-hidden/> {x}
                   </li>
                 ))}
               </ul>

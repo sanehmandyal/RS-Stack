@@ -4,24 +4,36 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#FAFAFA',        // Gallery off-white background
+        bg: '#FAFAFA',        // Clean off-white background
         surface: '#FFFFFF',   // Pure White surface
         surface2: '#F4F5F7',  // Elevated neutral 100
         primary: {
-          DEFAULT: '#143D34', // Deep Architectural Forest Pine
-          50: '#F2F7F5',      // Clean stone tint
-          100: '#E1EDE8',
-          200: '#C3DBD2',
-          300: '#9BC2B5',
-          400: '#6FA494',
-          500: '#478372',
-          600: '#1E5A4D',
-          700: '#143D34',     // Core Primary
-          800: '#0E2A24',
-          900: '#081915',
-          950: '#040E0C',
+          DEFAULT: '#C2410C', // Core Red-Orange (Terracotta / Vermilion)
+          50: '#FFF7ED',      // Warm peach tint
+          100: '#FFEDD5',
+          200: '#FED7AA',
+          300: '#FDBA74',
+          400: '#FB923C',     // Bright Orange
+          500: '#F97316',     // True Radiant Orange
+          600: '#EA580C',     // Vivid Red-Orange
+          700: '#C2410C',     // Core Primary Red-Orange
+          800: '#9A3412',     // Burnt Crimson
+          900: '#7C2D12',     // Deep Flame
+          950: '#431407',
         },
-        secondary: '#B45309', // Burnished Brass / Warm Amber accent
+        brandRed: {
+          DEFAULT: '#DC2626',
+          light: '#EF4444',
+          dark: '#B91C1C',
+          deep: '#991B1B',
+        },
+        brandOrange: {
+          DEFAULT: '#EA580C',
+          light: '#F97316',
+          amber: '#F59E0B',
+          dark: '#C2410C',
+        },
+        secondary: '#EA580C', // Vibrant Sunset Orange
         ink: '#0F172A',       // Rich Obsidian 900 text
         'ink-muted': '#334155', // Slate 700 readable body text
         muted: '#64748B',     // Slate 500 secondary text

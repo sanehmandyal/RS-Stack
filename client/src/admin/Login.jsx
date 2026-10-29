@@ -18,7 +18,7 @@ function Shell({ title, subtitle, children }) {
           <span>Back to site</span>
         </Link>
         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-slate-300 bg-slate-100 text-slate-800 text-[11px] font-semibold tracking-wide shadow-xs">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#143D34]"/>
+          <span className="h-1.5 w-1.5 rounded-full bg-red-600 ring-2 ring-orange-200"/>
           Secure Admin
         </span>
       </div>

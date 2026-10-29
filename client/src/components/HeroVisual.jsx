@@ -98,7 +98,7 @@ export function HeroVisual() {
           </div>
 
           <div className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 pr-1">
-            <span className="h-2 w-2 rounded-full bg-[#143D34]" />
+            <span className="h-2 w-2 rounded-full bg-red-600 ring-2 ring-orange-300" />
             <span>Verified Delivery</span>
           </div>
         </div>
@@ -115,13 +115,13 @@ export function HeroVisual() {
 
           {/* Location Chip */}
           <div className="absolute top-2.5 right-2.5 inline-flex items-center gap-1 text-[11px] font-semibold text-slate-100 bg-slate-900/80 backdrop-blur-xs px-2.5 py-0.5 rounded-md border border-slate-700/80">
-            <MapPin className="h-3 w-3 text-emerald-400" />
+            <MapPin className="h-3 w-3 text-orange-400" />
             <span>{project.location}</span>
           </div>
 
           {/* Impact Metric Badge Overlay */}
           <div className="absolute bottom-2.5 left-3 text-white">
-            <p className="text-base sm:text-lg font-black tracking-tight text-white leading-tight">
+            <p className="text-base sm:text-lg font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-amber-200 to-white leading-tight">
               {project.highlightMetric}
             </p>
             <p className="text-[11px] text-slate-300 font-medium mt-0.5">
@@ -146,7 +146,7 @@ export function HeroVisual() {
           <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-slate-700 border-y border-slate-100 py-2.5">
             {project.deliverables.map((item) => (
               <div key={item} className="flex items-center gap-1.5 truncate">
-                <Check className="h-3.5 w-3.5 text-[#143D34] shrink-0" />
+                <Check className="h-3.5 w-3.5 text-orange-600 shrink-0" />
                 <span className="font-medium text-slate-800 truncate">{item}</span>
               </div>
             ))}
@@ -166,7 +166,7 @@ export function HeroVisual() {
           <div className="flex items-center justify-between pt-1">
             <Link
               to={`/portfolio/${project.slug}`}
-              className="inline-flex items-center gap-1 text-xs font-semibold text-[#143D34] hover:text-black transition"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-red-600 hover:text-orange-600 transition"
             >
               Explore Case Study <ArrowRight className="h-3.5 w-3.5" />
             </Link>

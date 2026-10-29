@@ -41,7 +41,7 @@ export const STATUS_COLORS = {
     contacted: 'bg-slate-100 text-slate-700 border border-slate-200',
     qualified: 'bg-amber-50 text-amber-800 border border-amber-200',
     proposal_sent: 'bg-stone-100 text-stone-800 border border-stone-300',
-    won: 'bg-[#143D34]/10 text-[#143D34] border border-[#143D34]/30',
+    won: 'bg-orange-50 text-orange-800 border border-orange-200',
     lost: 'bg-slate-100 text-slate-600 border border-slate-200',
 };
 export const Badge = ({ value }) => <span className={`inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold capitalize ${STATUS_COLORS[value] ?? 'bg-slate-100 text-slate-700 border border-slate-200'}`}>{value.replace(/_/g, ' ')}</span>;
