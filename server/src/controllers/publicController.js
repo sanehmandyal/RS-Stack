@@ -24,10 +24,20 @@ export async function publicSettings(_req, res) {
     });
 }
 export async function listServices(_req, res) {
-    const items = await Service.find({ published: true })
+    let items = await Service.find({ published: true })
         .sort({ order: 1, title: 1 })
         .select('slug title category summary delivery order image imageAlt')
         .lean();
+    if (!items.length) {
+        try {
+            const { autoSeedAndBootstrap } = await import('../seed/autoSeed.js');
+            await autoSeedAndBootstrap();
+            items = await Service.find({ published: true })
+                .sort({ order: 1, title: 1 })
+                .select('slug title category summary delivery order image imageAlt')
+                .lean();
+        } catch { }
+    }
     cache(res);
     res.json({ items });
 }
@@ -46,10 +56,20 @@ export async function listProjects(req, res) {
     const category = qs(req.query.category);
     if (category)
         filter.category = category;
-    const items = await Project.find(filter)
+    let items = await Project.find(filter)
         .sort({ order: 1, createdAt: -1 })
         .select('slug title industry category thumbnail thumbnailAlt summary technologies services results isDemo liveUrl')
         .lean();
+    if (!items.length && !category) {
+        try {
+            const { autoSeedAndBootstrap } = await import('../seed/autoSeed.js');
+            await autoSeedAndBootstrap();
+            items = await Project.find(filter)
+                .sort({ order: 1, createdAt: -1 })
+                .select('slug title industry category thumbnail thumbnailAlt summary technologies services results isDemo liveUrl')
+                .lean();
+        } catch { }
+    }
     cache(res);
     res.json({ items });
 }
@@ -110,16 +130,33 @@ export async function listCategories(_req, res) {
 }
 /** Only testimonials that are BOTH published and marked verified (real client + permission) are exposed. */
 export async function listTestimonials(_req, res) {
-    const items = await Testimonial.find({ published: true, verified: true })
+    let items = await Testimonial.find({ published: true, verified: true })
         .sort({ createdAt: -1 })
-        .select('authorName authorRole businessName quote')
+        .select('authorName authorRole businessName quote avatar')
         .lean();
+    if (!items.length) {
+        try {
+            const { autoSeedAndBootstrap } = await import('../seed/autoSeed.js');
+            await autoSeedAndBootstrap();
+            items = await Testimonial.find({ published: true, verified: true })
+                .sort({ createdAt: -1 })
+                .select('authorName authorRole businessName quote avatar')
+                .lean();
+        } catch { }
+    }
     cache(res, 120);
     res.json({ items });
 }
 export async function listFaqs(req, res) {
     const scope = qs(req.query.scope) ?? 'global';
-    const items = await FAQ.find({ published: true, scope }).sort({ order: 1 }).select('question answer').lean();
+    let items = await FAQ.find({ published: true, scope }).sort({ order: 1 }).select('question answer').lean();
+    if (!items.length && scope === 'global') {
+        try {
+            const { autoSeedAndBootstrap } = await import('../seed/autoSeed.js');
+            await autoSeedAndBootstrap();
+            items = await FAQ.find({ published: true, scope }).sort({ order: 1 }).select('question answer').lean();
+        } catch { }
+    }
     cache(res, 120);
     res.json({ items });
 }

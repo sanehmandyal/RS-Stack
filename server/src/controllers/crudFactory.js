@@ -28,7 +28,16 @@ export function crudRouter(opts) {
         let query = opts.model.find(filter).sort(sort).skip(skip).limit(limit);
         if (opts.populate)
             query = query.populate(opts.populate);
-        const [items, total] = await Promise.all([query.lean(), opts.model.countDocuments(filter)]);
+        let [items, total] = await Promise.all([query.lean(), opts.model.countDocuments(filter)]);
+        if (total === 0 && !search && Object.keys(filter).length === 0) {
+            try {
+                const { autoSeedAndBootstrap } = await import('../seed/autoSeed.js');
+                await autoSeedAndBootstrap();
+                let retryQuery = opts.model.find(filter).sort(sort).skip(skip).limit(limit);
+                if (opts.populate) retryQuery = retryQuery.populate(opts.populate);
+                [items, total] = await Promise.all([retryQuery.lean(), opts.model.countDocuments(filter)]);
+            } catch { }
+        }
         res.json({ items, ...pageMeta(total, page, limit) });
     }));
     r.post('/', asyncHandler(async (req, res) => {

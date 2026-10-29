@@ -53,7 +53,12 @@ export default function AdminLayout() {
             <nav aria-label="Breadcrumb" className="truncate text-sm text-muted"><Link to="/admin/dashboard" className="hover:text-primary transition">Admin</Link>{crumbs.map((c) => <span key={c}> / <span className="capitalize text-ink font-medium">{c.replace(/-/g, ' ').slice(0, 24)}</span></span>)}</nav>
           </div>
           <div className="flex items-center gap-2">
-            <span className="hidden text-right text-xs sm:block"><span className="block font-semibold text-ink">{user.name}</span><span className="capitalize text-muted">{user.role.replace('_', ' ')}</span></span>
+            <span className="hidden text-right text-xs sm:block">
+              <span className="block font-semibold text-ink">
+                {user.name === 'RS Stack Admin' ? 'Growora Admin' : (user.name || 'Growora Admin')}
+              </span>
+              <span className="capitalize text-muted">{user.role?.replace('_', ' ') || 'Super Admin'}</span>
+            </span>
             <Link to="/admin/account" className="btn-ghost btn-sm" aria-label="Account and password"><KeyRound className="h-4 w-4"/></Link>
             <button className="btn-ghost btn-sm" onClick={async () => { await logout(); nav('/admin/login'); }}><LogOut className="h-4 w-4" aria-hidden/> <span className="hidden sm:inline">Sign out</span></button>
           </div>

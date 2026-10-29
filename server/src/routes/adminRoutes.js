@@ -50,6 +50,11 @@ adminRouter.get('/audit-log', requirePermission('audit:view'), asyncHandler(audi
 adminRouter.get('/settings', requirePermission('settings:manage'), asyncHandler(getSettings));
 adminRouter.put('/settings', requirePermission('settings:manage'), asyncHandler(updateSettings));
 adminRouter.get('/integrations', requirePermission('integrations:manage'), integrationsStatus);
+adminRouter.post('/seed-sync', requirePermission('content:manage'), asyncHandler(async (_req, res) => {
+    const { autoSeedAndBootstrap } = await import('../seed/autoSeed.js');
+    await autoSeedAndBootstrap();
+    res.json({ ok: true, message: 'Website and admin panel data synced successfully.' });
+}));
 /* ---------- media ---------- */
 const media = Router();
 media.use(requirePermission('media:manage'));

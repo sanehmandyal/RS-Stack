@@ -173,7 +173,29 @@ export default function Resource({ cfg }) {
       </div>
       {loading && <Skeleton className="h-48"/>}
       {error && <ErrorState error={error} onRetry={reload}/>}
-      {data && data.items.length === 0 && <EmptyState title={`No ${cfg.title.toLowerCase()} yet`} text="Create the first one to get started."/>}
+      {data && data.items.length === 0 && (
+        <EmptyState
+          title={`No ${cfg.title.toLowerCase()} yet`}
+          text="Create the first one to get started, or populate from the website starter catalog."
+          action={
+            <button
+              type="button"
+              className="btn-primary btn-sm mt-3"
+              onClick={async () => {
+                try {
+                  await api('/admin/seed-sync', { method: 'POST' });
+                  toast('ok', 'Catalog synchronized from website');
+                  reload();
+                } catch (e) {
+                  toast('err', e.message || 'Sync failed');
+                }
+              }}
+            >
+              Sync Website Catalog
+            </button>
+          }
+        />
+      )}
       {data && data.items.length > 0 && (<>
           <DataTable label={cfg.title}>
             <thead><tr>{cfg.columns.map((c) => <Th key={c.key}>{c.label}</Th>)}<Th><span className="sr-only">Actions</span></Th></tr></thead>

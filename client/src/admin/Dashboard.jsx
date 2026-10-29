@@ -1,8 +1,11 @@
+import { RefreshCw } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EmptyState, ErrorState, Skeleton } from '../components/ui';
 import { useFetch } from '../hooks/useFetch';
 import { api } from '../services/api';
 import { fmtDateTime } from '../utils/format';
+import { useToast } from './toast';
 import { PageTitle } from './ui';
 const Stat = ({ label, value, to }) => {
     const inner = <><p className="text-xs uppercase tracking-wide text-muted">{label}</p><p className="mt-2 text-3xl font-bold">{value}</p></>;
@@ -16,7 +19,7 @@ function TrendChart({ data }) {
       <svg viewBox={`0 0 ${w} ${h + 18}`} role="img" aria-label={`Inquiries per day for the last 30 days. Total ${total}.`} className="h-auto w-full">
         {data.map((d, i) => {
             const bh = (d.count / max) * h;
-            return <rect key={d.date} x={i * bw + 2} y={h - bh} width={bw - 4} height={Math.max(bh, d.count ? 2 : 1)} rx="2" fill={d.count ? '#1D4ED8' : '#E2E8F0'}><title>{`${d.date}: ${d.count}`}</title></rect>;
+            return <rect key={d.date} x={i * bw + 2} y={h - bh} width={bw - 4} height={Math.max(bh, d.count ? 2 : 1)} rx="2" fill={d.count ? '#059669' : '#E2E8F0'}><title>{`${d.date}: ${d.count}`}</title></rect>;
         })}
         <text x="0" y={h + 14} fontSize="10" fill="#64748B">{data[0]?.date}</text>
         <text x={w} y={h + 14} fontSize="10" textAnchor="end" fill="#64748B">{data[data.length - 1]?.date}</text>
@@ -26,14 +29,33 @@ function TrendChart({ data }) {
 }
 export default function Dashboard() {
     const { data, loading, error, reload } = useFetch(() => api('/admin/dashboard'), []);
+    const [syncing, setSyncing] = useState(false);
+    const toast = useToast();
+    const handleSync = async () => {
+        setSyncing(true);
+        try {
+            await api('/admin/seed-sync', { method: 'POST' });
+            toast('ok', 'Website and Admin database synced successfully');
+            reload();
+        } catch (e) {
+            toast('err', e.message || 'Sync failed');
+        } finally {
+            setSyncing(false);
+        }
+    };
     if (loading)
         return <Skeleton className="h-64"/>;
     if (error || !data)
         return <ErrorState error={error ?? new Error('No data')} onRetry={reload}/>;
     const l = data.leads;
     return (<>
-      <PageTitle title="Dashboard"/>
-      <p className="mb-4 text-xs text-muted">All figures come from your database. Nothing here is estimated or sample data.</p>
+      <PageTitle title="Dashboard">
+        <button type="button" className="btn-ghost btn-sm inline-flex items-center gap-1.5" onClick={handleSync} disabled={syncing}>
+          <RefreshCw className={`h-3.5 w-3.5 text-emerald-700 ${syncing ? 'animate-spin' : ''}`} />
+          <span>{syncing ? 'Syncing...' : 'Sync Site Catalog'}</span>
+        </button>
+      </PageTitle>
+      <p className="mb-4 text-xs text-muted">All figures come from your live database. Nothing here is estimated or sample data.</p>
       {l && (<>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             <Stat label="Total inquiries" value={l.total} to="/admin/leads"/>
